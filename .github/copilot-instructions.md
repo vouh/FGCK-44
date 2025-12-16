@@ -1,0 +1,6 @@
+- Verify this file exists (done)
+- Scaffold Next.js in workspace root
+- Implement FGCK public pages + dashboard placeholders
+- Use Tailwind + blue/white theme
+- Use a free Google font similar to reference (Inter)
+- Keep code modular by feature

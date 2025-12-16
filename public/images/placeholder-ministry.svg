@@ -1,0 +1,22 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ministryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5b21b6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#ministryGrad)" />
+  <circle cx="520" cy="60" r="70" fill="rgba(255,255,255,0.05)" />
+  <circle cx="80" cy="340" r="50" fill="rgba(255,255,255,0.05)" />
+  <g transform="translate(150, 100)">
+    <circle cx="150" cy="80" r="35" fill="rgba(255,255,255,0.25)" />
+    <ellipse cx="150" cy="180" rx="45" ry="60" fill="rgba(255,255,255,0.2)" />
+    <circle cx="50" cy="100" r="30" fill="rgba(255,255,255,0.15)" />
+    <ellipse cx="50" cy="190" rx="40" ry="55" fill="rgba(255,255,255,0.12)" />
+    <circle cx="250" cy="100" r="30" fill="rgba(255,255,255,0.15)" />
+    <ellipse cx="250" cy="190" rx="40" ry="55" fill="rgba(255,255,255,0.12)" />
+  </g>
+  <g transform="translate(265, 280)" fill="rgba(255,255,255,0.2)">
+    <path d="M35,10 C25,-5 0,-5 0,20 C0,40 35,60 35,60 C35,60 70,40 70,20 C70,-5 45,-5 35,10 Z" />
+  </g>
+</svg>
