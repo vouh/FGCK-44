@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { primaryNav, site } from "@/lib/site";
 import { Container } from "./Container";
 
@@ -31,11 +31,6 @@ function NavLink({ href, label }: { href: string; label: string }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-
-  const desktopNav = useMemo(
-    () => primaryNav.filter((item) => item.label !== "Home"),
-    [],
-  );
 
   return (
     <header className="sticky top-0 z-50 shadow-lg">
@@ -84,7 +79,7 @@ export function SiteHeader() {
             </Link>
 
             <nav className="hidden items-center gap-1 xl:flex">
-              {desktopNav.map((item) => (
+              {primaryNav.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} />
               ))}
               <Link

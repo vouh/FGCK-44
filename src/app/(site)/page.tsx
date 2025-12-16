@@ -112,31 +112,28 @@ export default function HomePage() {
             <div className="hidden lg:block animate-fade-in delay-200">
               <div className="relative mx-auto aspect-square max-w-md">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/30 to-cyan-400/30 backdrop-blur animate-pulse-slow" />
-                <div className="absolute inset-4 overflow-hidden rounded-2xl bg-white/10 shadow-2xl ring-1 ring-white/20">
-                  {/* Logo display */}
-                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-blue-800 to-blue-950">
-                    <div className="relative h-48 w-48 animate-float">
-                      <Image
-                        src="/logo.png"
-                        alt="FGCK Githurai 44 Logo"
-                        fill
-                        className="object-contain drop-shadow-2xl"
-                        priority
-                      />
-                    </div>
+                <div className="absolute inset-4 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
+                  {/* Real worship image */}
+                  <Image
+                    src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800&q=80"
+                    alt="Church worship service"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent" />
+                </div>
+                {/* Bouncing logo */}
+                <div className="absolute -left-6 top-1/4 rounded-2xl bg-white p-3 shadow-xl animate-bounce-subtle">
+                  <div className="relative h-12 w-12">
+                    <Image src="/logo.png" alt="FGCK Logo" fill className="object-contain" />
                   </div>
                 </div>
                 {/* Bible icon */}
-                <div className="absolute -left-6 top-1/4 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 p-4 shadow-xl animate-bounce-subtle">
+                <div className="absolute -right-4 bottom-1/4 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 p-4 shadow-xl animate-bounce-subtle delay-300">
                   <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
-                </div>
-                {/* Cross icon */}
-                <div className="absolute -right-4 bottom-1/4 rounded-2xl bg-white p-4 shadow-xl animate-bounce-subtle delay-300">
-                  <div className="relative h-10 w-10">
-                    <Image src="/logo.png" alt="" fill className="object-contain" />
-                  </div>
                 </div>
               </div>
             </div>

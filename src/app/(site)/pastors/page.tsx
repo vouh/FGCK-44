@@ -1,189 +1,165 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-
-const pastors = [
-  {
-    id: 1,
-    name: "Pastor John Doe",
-    title: "Senior Pastor",
-    bio: "Pastor John has been serving at FGCK Githurai 44 for over 15 years. His passion for the Word of God and heart for the community has helped grow our church into a vibrant family of believers.",
-    image: "/images/placeholder-person.svg",
-    email: "pastor.john@fgckgithurai44.com",
-    featured: true,
-  },
-  {
-    id: 2,
-    name: "Pastor Jane Wanjiku",
-    title: "Associate Pastor",
-    bio: "Pastor Jane oversees our women's ministry and counseling programs. Her compassionate leadership has touched countless lives in our congregation.",
-    image: "/images/placeholder-person.svg",
-    email: "pastor.jane@fgckgithurai44.com",
-  },
-  {
-    id: 3,
-    name: "Pastor David Kamau",
-    title: "Youth Pastor",
-    bio: "Pastor David leads our dynamic youth ministry, empowering the next generation to live for Christ. His energy and dedication inspire our young people.",
-    image: "/images/placeholder-person.svg",
-    email: "pastor.david@fgckgithurai44.com",
-  },
-  {
-    id: 4,
-    name: "Elder Mary Njeri",
-    title: "Children's Ministry Director",
-    bio: "Elder Mary has a special gift for teaching children about God's love. She leads our Sunday School and children's programs with creativity and joy.",
-    image: "/images/placeholder-person.svg",
-  },
-  {
-    id: 5,
-    name: "Elder Peter Ochieng",
-    title: "Worship Leader",
-    bio: "Elder Peter leads our worship team with excellence. His heart for praise creates an atmosphere where people encounter God's presence.",
-    image: "/images/placeholder-person.svg",
-  },
-  {
-    id: 6,
-    name: "Elder Grace Akinyi",
-    title: "Outreach Coordinator",
-    bio: "Elder Grace coordinates our community outreach programs, ensuring we are the hands and feet of Jesus in Githurai and beyond.",
-    image: "/images/placeholder-person.svg",
-  },
-];
-
-function PastorCard({
-  pastor,
-  featured = false,
-}: {
-  pastor: typeof pastors[0];
-  featured?: boolean;
-}) {
-  if (featured) {
-    return (
-      <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-900 text-white shadow-xl animate-fade-in">
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-transparent to-transparent" />
-        <div className="grid md:grid-cols-2">
-          <div className="relative h-80 md:h-full">
-            <Image
-              src={pastor.image}
-              alt={pastor.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-blue-950/50 md:block hidden" />
-          </div>
-          <div className="relative flex flex-col justify-center p-8 md:p-12">
-            <span className="inline-flex w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
-              {pastor.title}
-            </span>
-            <h2 className="mt-4 text-3xl font-black md:text-4xl">{pastor.name}</h2>
-            <p className="mt-4 text-lg leading-relaxed text-white/80">{pastor.bio}</p>
-            {pastor.email && (
-              <a
-                href={`mailto:${pastor.email}`}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition-colors hover:text-white"
-              >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                {pastor.email}
-              </a>
-            )}
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-blue-950 transition-all hover:bg-blue-50 hover:scale-105"
-            >
-              Schedule a Meeting
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="group hover-lift overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-blue-100 to-slate-100">
-        <Image
-          src={pastor.image}
-          alt={pastor.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-      </div>
-      <div className="p-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-          {pastor.title}
-        </span>
-        <h3 className="mt-2 text-xl font-bold text-slate-900">{pastor.name}</h3>
-        <p className="mt-3 text-sm leading-relaxed text-slate-600 line-clamp-3">{pastor.bio}</p>
-        {pastor.email && (
-          <a
-            href={`mailto:${pastor.email}`}
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-800"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            Contact
-          </a>
-        )}
-      </div>
-    </div>
-  );
-}
+import { site } from "@/lib/site";
 
 export default function PastorsPage() {
-  const featuredPastor = pastors.find((p) => p.featured);
-  const otherPastors = pastors.filter((p) => !p.featured);
-
   return (
     <PageShell
-      title="Our Pastors"
-      description="Meet the spiritual leaders who shepherd our congregation with love and dedication."
+      title="Pastor's Office"
+      description="Meet our senior pastor and learn about pastoral care at FGCK Githurai 44."
     >
-      {/* Intro */}
-      <div className="mb-10 text-center animate-fade-in">
-        <p className="mx-auto max-w-2xl text-lg text-slate-600 leading-relaxed">
-          Our pastoral team is committed to serving God and our community. They provide spiritual
-          guidance, counseling, and leadership to help you grow in your faith journey.
-        </p>
-      </div>
-
-      {/* Featured Pastor */}
-      {featuredPastor && (
-        <div className="mb-12">
-          <PastorCard pastor={featuredPastor} featured />
-        </div>
-      )}
-
-      {/* Leadership Team */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-slate-900">Leadership Team</h2>
-        <p className="mt-2 text-slate-600">Our elders and ministry leaders.</p>
-      </div>
-
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {otherPastors.map((pastor, i) => (
-          <div
-            key={pastor.id}
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
-          >
-            <PastorCard pastor={pastor} />
+      {/* Pastor Profile */}
+      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-900 text-white shadow-xl animate-fade-in">
+        <div className="grid lg:grid-cols-2">
+          {/* Pastor Image */}
+          <div className="relative h-80 lg:h-full min-h-[400px]">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+              alt="Pastor John Ngaruiya"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-blue-950/50" />
           </div>
-        ))}
+
+          {/* Pastor Info */}
+          <div className="relative flex flex-col justify-center p-8 lg:p-12">
+            <span className="inline-flex w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
+              Senior Pastor
+            </span>
+            <h2 className="mt-4 text-3xl font-black lg:text-4xl">Pastor John Ngaruiya</h2>
+            <p className="mt-6 text-lg leading-relaxed text-white/80">
+              Pastor John Ngaruiya has been faithfully serving as the Senior Pastor of FGCK Githurai 44 
+              (Jesus Healing Center) for many years. His dedication to preaching the Word of God and 
+              shepherding our congregation has been a blessing to countless families in our community.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-white/80">
+              With a heart for souls and a passion for spiritual growth, Pastor Ngaruiya leads our 
+              church with wisdom, love, and unwavering faith. Under his leadership, our church has 
+              grown into a vibrant community of believers committed to serving Christ.
+            </p>
+            <a
+              href={`mailto:${site.contact.email}`}
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition-colors hover:text-white"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {site.contact.email}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Office Hours & Services */}
+      <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Office Hours */}
+        <div className="hover-lift rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+            <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-bold text-slate-900">Office Hours</h3>
+          <ul className="mt-4 space-y-3">
+            <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
+              <span className="text-slate-600">Monday - Friday</span>
+              <span className="font-bold text-slate-900">9:00 AM - 5:00 PM</span>
+            </li>
+            <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
+              <span className="text-slate-600">Saturday</span>
+              <span className="font-bold text-slate-900">By Appointment</span>
+            </li>
+            <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
+              <span className="text-slate-600">Sunday</span>
+              <span className="font-bold text-slate-900">After Service</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Pastoral Services */}
+        <div className="hover-lift rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-green-100">
+            <svg className="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-bold text-slate-900">Pastoral Services</h3>
+          <ul className="mt-4 space-y-2">
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Spiritual Counseling
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Marriage Counseling
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Prayer Sessions
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Hospital Visitation
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Home Blessings
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Funeral Services
+            </li>
+            <li className="flex items-center gap-2 text-sm text-slate-600">
+              <span className="text-green-500">✓</span> Wedding Ceremonies
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className="hover-lift rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
+            <svg className="h-6 w-6 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-bold text-slate-900">Get in Touch</h3>
+          <div className="mt-4 space-y-3 text-sm">
+            <div>
+              <div className="font-semibold text-slate-900">Phone</div>
+              <div className="text-slate-600">{site.contact.phone}</div>
+            </div>
+            <div>
+              <div className="font-semibold text-slate-900">Email</div>
+              <div className="text-slate-600">{site.contact.email}</div>
+            </div>
+            <div>
+              <div className="font-semibold text-slate-900">Location</div>
+              <div className="text-slate-600">{site.contact.addressLine}</div>
+            </div>
+          </div>
+          <Link
+            href="/contact"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-900 px-4 py-3 text-sm font-bold text-white transition-all hover:bg-blue-800"
+          >
+            Schedule Appointment
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Scripture Quote */}
+      <div className="mt-12 rounded-2xl bg-gradient-to-r from-blue-50 to-slate-50 p-8 text-center">
+        <blockquote className="text-lg italic text-slate-700">
+          &ldquo;The Lord is my shepherd; I shall not want. He maketh me to lie down in green 
+          pastures: he leadeth me beside the still waters. He restoreth my soul.&rdquo;
+        </blockquote>
+        <cite className="mt-4 block text-sm font-semibold text-slate-900">Psalm 23:1-3</cite>
       </div>
 
       {/* CTA */}
-      <div className="mt-16 rounded-2xl bg-gradient-to-r from-blue-50 to-slate-50 p-8 text-center animate-fade-in">
+      <div className="mt-12 text-center">
         <h3 className="text-xl font-bold text-slate-900">Need Pastoral Care?</h3>
         <p className="mt-2 text-slate-600">
-          Our pastors are here to support you through prayer, counseling, and guidance.
+          Pastor Ngaruiya and our church family are here to support you.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <Link
@@ -193,10 +169,10 @@ export default function PastorsPage() {
             Request Prayer
           </Link>
           <Link
-            href="/contact"
+            href="/new-here"
             className="rounded-lg border border-slate-300 px-6 py-3 text-sm font-bold text-slate-900 transition-all hover:bg-white hover:scale-105"
           >
-            Schedule Counseling
+            Visit Us This Sunday
           </Link>
         </div>
       </div>
