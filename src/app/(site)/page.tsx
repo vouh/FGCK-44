@@ -341,7 +341,7 @@ export default function HomePage() {
               <span className="font-medium">{site.contact.addressLine}</span>
             </div>
             <Link
-              href="https://maps.google.com/?q=Full+Gospel+Churches+of+Kenya+Githurai+44"
+              href="https://www.google.com/maps/dir//Full+Gospel+Churches+of+Kenya+Githurai+44.Jesus+healing+center,+Githurai,+44+Ngumba+Rd,+Nairobi,+Kenya/@-1.1999106,36.9050656,16.83z/data=!4m16!1m7!3m6!1s0x182f3f2ae8740691:0x6f9dba54754c29fc!2sFull+Gospel+Churches+of+Kenya+Githurai+44.Jesus+healing+center!8m2!3d-1.2009733!4d36.9100173!16s%2Fg%2F11sycxzc4b!4m7!1m0!1m5!1m1!1s0x182f3f2ae8740691:0x6f9dba54754c29fc!2m2!1d36.9100124!2d-1.2009876?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-blue-900 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-blue-800 hover:scale-105"

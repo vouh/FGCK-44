@@ -58,7 +58,17 @@ export default function NewHerePage() {
           <h3 className="text-lg font-bold text-slate-900">Location</h3>
           <p className="mt-4 text-slate-600">{site.contact.addressLine}</p>
           <div className="mt-4 h-32 rounded-lg bg-slate-100 flex items-center justify-center text-sm text-slate-500">
-            Map will be embedded here
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.762749608763!2d36.90459324725747!3d-1.2017814305877208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f2ae8740691%3A0x6f9dba54754c29fc!2sFull%20Gospel%20Churches%20of%20Kenya%20Githurai%2044.Jesus%20healing%20center!5e0!3m2!1sen!2suk!4v1765977613853!5m2!1sen!2suk"
+              width="100%"
+              height="200"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full rounded-lg"
+              title="FGCK Githurai 44 Location"
+            />
           </div>
         </div>
 
