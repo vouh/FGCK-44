@@ -303,6 +303,58 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Location Map Section */}
+      <section className="border-t border-slate-200 bg-gradient-to-b from-slate-50 to-white py-16">
+        <Container>
+          <div className="text-center mb-10 animate-fade-in">
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-blue-900">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Find Us
+            </span>
+            <h2 className="mt-4 text-3xl font-black text-slate-900 sm:text-4xl">Visit Our Church</h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-slate-600">
+              Located in the heart of Githurai 44, we&apos;re easy to find. Come worship with us!
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg animate-fade-in-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.762749608763!2d36.90459324725747!3d-1.2017814305877208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f2ae8740691%3A0x6f9dba54754c29fc!2sFull%20Gospel%20Churches%20of%20Kenya%20Githurai%2044.Jesus%20healing%20center!5e0!3m2!1sen!2suk!4v1765977613853!5m2!1sen!2suk"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+              title="FGCK Githurai 44 Location"
+            />
+          </div>
+          <div className="mt-6 flex flex-wrap justify-center gap-6 text-center">
+            <div className="flex items-center gap-2 text-slate-600">
+              <svg className="h-5 w-5 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="font-medium">{site.contact.addressLine}</span>
+            </div>
+            <Link
+              href="https://maps.google.com/?q=Full+Gospel+Churches+of+Kenya+Githurai+44"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-900 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-blue-800 hover:scale-105"
+            >
+              Get Directions
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
       {/* CTA Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 py-24">
         <div className="absolute inset-0 opacity-10">
