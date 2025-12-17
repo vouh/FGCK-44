@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "Full Gospel Church Githurai 44 — sermons, events, ministries, projects, and visitor information.",
   icons: {
     icon: "/logo.png",
+    shortcut: "/logo.png",
     apple: "/logo.png",
   },
 };
