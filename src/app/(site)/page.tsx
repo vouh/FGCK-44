@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
+import ScrollFadeIn from "@/components/site/ScrollFadeIn";
 import { site } from "@/lib/site";
 
 function FeatureCard({
@@ -69,7 +70,8 @@ export default function HomePage() {
         </div>
         <Container>
           <div className="relative grid min-h-[75vh] items-center gap-12 py-20 lg:grid-cols-2">
-            <div className="text-center lg:text-left animate-fade-in">
+            <ScrollFadeIn>
+              <div className="text-center lg:text-left">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm">
                 <span className="animate-pulse">✦</span>
                 {site.locationShort}
@@ -107,9 +109,11 @@ export default function HomePage() {
                   Join us every <strong>Sunday at 9:00 AM</strong> — All are welcome.
                 </span>
               </div>
-            </div>
+              </div>
+            </ScrollFadeIn>
 
-            <div className="hidden lg:block animate-fade-in delay-200">
+            <ScrollFadeIn delay={0.2}>
+              <div className="hidden lg:block">
               <div className="relative mx-auto aspect-square max-w-md">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/30 to-cyan-400/30 backdrop-blur animate-pulse-slow" />
                 <div className="absolute inset-4 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
@@ -136,7 +140,8 @@ export default function HomePage() {
                   </svg>
                 </div>
               </div>
-            </div>
+              </div>
+            </ScrollFadeIn>
           </div>
         </Container>
       </section>
