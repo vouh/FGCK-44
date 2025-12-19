@@ -10,7 +10,8 @@ interface ScrollFadeInProps {
 
 export default function ScrollFadeIn({ children, className = "", delay = 0 }: ScrollFadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  // Increase margin so animation triggers later (more dramatic)
+  const inView = useInView(ref, { once: true, margin: "-300px 0px -100px 0px" });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function ScrollFadeIn({ children, className = "", delay = 0 }: Sc
       controls.start({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.7, delay },
+        transition: { duration: 1.2, delay, ease: "easeOut" },
       });
     }
   }, [inView, controls, delay]);
@@ -26,7 +27,7 @@ export default function ScrollFadeIn({ children, className = "", delay = 0 }: Sc
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 80 }}
       animate={controls}
       className={className}
     >
