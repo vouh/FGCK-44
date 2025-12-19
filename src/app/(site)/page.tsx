@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HeroCarousel from "@/components/site/HeroCarousel";
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
 import ScrollFadeIn from "@/components/site/ScrollFadeIn";
