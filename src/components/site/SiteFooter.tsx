@@ -7,8 +7,6 @@ export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-blue-950 via-blue-950 to-slate-950 text-white">
       {/* Removed decorative stars */}
-      </div>
-
       <Container>
         <div className="relative grid gap-10 py-16 md:grid-cols-4">
           {/* Logo & Info */}
@@ -50,7 +48,6 @@ export function SiteFooter() {
                     href={item.href}
                     className="group flex items-center gap-2 text-sm text-white/80 transition-all hover:text-white hover:translate-x-1"
                   >
-                    <span className="text-blue-400 transition-transform group-hover:scale-125">★</span>
                     {item.label}
                   </Link>
                 </li>
