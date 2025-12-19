@@ -6,13 +6,7 @@ import { Container } from "./Container";
 export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-blue-950 via-blue-950 to-slate-950 text-white">
-      {/* Decorative stars */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 text-4xl animate-pulse">✦</div>
-        <div className="absolute top-20 right-20 text-2xl animate-pulse delay-300">★</div>
-        <div className="absolute bottom-32 left-1/4 text-3xl animate-pulse delay-500">✦</div>
-        <div className="absolute top-1/3 right-1/3 text-xl animate-pulse delay-200">★</div>
-        <div className="absolute bottom-20 right-10 text-4xl animate-pulse delay-400">✦</div>
+      {/* Removed decorative stars */}
       </div>
 
       <Container>

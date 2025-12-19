@@ -62,20 +62,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
         <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 text-6xl text-white/5 animate-float">✦</div>
-          <div className="absolute top-40 right-20 text-4xl text-white/5 animate-float delay-200">★</div>
-          <div className="absolute bottom-20 left-1/4 text-5xl text-white/5 animate-float delay-400">✦</div>
-        </div>
+        <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
         <Container>
           <div className="relative grid min-h-[75vh] items-center gap-12 py-20 lg:grid-cols-2">
             <ScrollFadeIn>
               <div className="text-center lg:text-left">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm">
-                <span className="animate-pulse">✦</span>
-                {site.locationShort}
-              </span>
               <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Welcome to <br />
                 <span className="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">{site.name}</span>
@@ -114,30 +105,16 @@ export default function HomePage() {
 
             <ScrollFadeIn delay={0.2}>
               <div className="hidden lg:block">
-              <div className="relative mx-auto aspect-square max-w-md">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/30 to-cyan-400/30 backdrop-blur animate-pulse-slow" />
-                <div className="absolute inset-4 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
-                  {/* Real worship image */}
-                  <Image
-                    src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800&q=80"
-                    alt="Church worship service"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent" />
+              <div className="relative mx-auto flex max-w-md items-center justify-center">
+                {/* Collage of images - overlapping style, rounded corners */}
+                <div className="absolute left-0 top-8 z-10 h-40 w-40 rounded-2xl overflow-hidden border-4 border-white shadow-lg" style={{ transform: 'rotate(-8deg)' }}>
+                  <Image src="/images/test.png" alt="Church moment 1" fill className="object-cover" />
                 </div>
-                {/* Bouncing logo */}
-                <div className="absolute -left-6 top-1/4 rounded-2xl bg-white p-3 shadow-xl animate-bounce-subtle">
-                  <div className="relative h-12 w-12">
-                    <Image src="/logo.png" alt="FGCK Logo" fill className="object-contain" />
-                  </div>
+                <div className="absolute right-0 top-0 z-20 h-44 w-44 rounded-2xl overflow-hidden border-4 border-white shadow-lg" style={{ transform: 'rotate(10deg)' }}>
+                  <Image src="/images/test.png" alt="Church moment 2" fill className="object-cover" />
                 </div>
-                {/* Bible icon */}
-                <div className="absolute -right-4 bottom-1/4 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 p-4 shadow-xl animate-bounce-subtle delay-300">
-                  <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
+                <div className="relative z-30 h-48 w-48 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                  <Image src="/images/test.png" alt="Church moment 3" fill className="object-cover" />
                 </div>
               </div>
               </div>
