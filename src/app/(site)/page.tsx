@@ -108,13 +108,13 @@ export default function HomePage() {
               <div className="relative mx-auto flex max-w-md items-center justify-center">
                 {/* Collage of images - overlapping style, rounded corners */}
                 <div className="absolute left-0 top-8 z-10 h-40 w-40 rounded-2xl overflow-hidden border-4 border-white shadow-lg" style={{ transform: 'rotate(-8deg)' }}>
-                  <Image src="/test.png" alt="Church moment 1" fill className="object-cover" />
+                  <Image src="/images/test.png" alt="Church moment 1" fill className="object-cover" />
                 </div>
                 <div className="absolute right-0 top-0 z-20 h-44 w-44 rounded-2xl overflow-hidden border-4 border-white shadow-lg" style={{ transform: 'rotate(10deg)' }}>
-                  <Image src="/test.png" alt="Church moment 2" fill className="object-cover" />
+                  <Image src="/images/test.png" alt="Church moment 2" fill className="object-cover" />
                 </div>
                 <div className="relative z-30 h-48 w-48 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
-                  <Image src="/test.png" alt="Church moment 3" fill className="object-cover" />
+                  <Image src="/images/test.png" alt="Church moment 3" fill className="object-cover" />
                 </div>
               </div>
               </div>
@@ -339,7 +339,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 py-24">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-20 text-8xl animate-float">✦</div>
+          <div className="absolute top-10 left-20 text-8xl animate-float" style={{ display: 'none' }}>✦</div>
           <div className="absolute bottom-10 right-20 text-6xl animate-float delay-300">★</div>
         </div>
         <Container>

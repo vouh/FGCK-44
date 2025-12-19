@@ -35,11 +35,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 shadow-lg">
       {/* Removed green accent bar */}
-      <div className="bg-gradient-to-b from-blue-950 via-blue-900 to-blue-900 text-white">
+        <div className="bg-blue-950 text-white" style={{ background: 'linear-gradient(to bottom, #0f172a 0%, #1e293b 100%)' }}>
         <Container>
           <div className="flex flex-wrap items-center justify-between gap-2 py-2 text-xs">
             <div className="flex items-center gap-2">
-              <span className="animate-pulse">✦</span>
               <span className="opacity-90">Welcome to {site.name}.</span>
             </div>
             <div className="flex flex-wrap items-center gap-4 opacity-90">
@@ -62,7 +61,7 @@ export function SiteHeader() {
       </div>
 
       {/* Main nav */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-950 to-blue-900 text-white">
+      <div className="bg-blue-900 text-white" style={{ background: 'linear-gradient(to bottom, #1e293b 0%, #1e40af 100%)' }}>
         <Container>
           <div className="flex items-center justify-between py-3">
             <Link href="/" className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105">
