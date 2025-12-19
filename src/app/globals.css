@@ -1,3 +1,15 @@
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1e3a8a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #22d3ee 40%, #16a34a 100%);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1e3a8a;
+}
 @import "tailwindcss";
 
 :root {

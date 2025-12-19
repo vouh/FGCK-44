@@ -34,11 +34,8 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 shadow-lg">
-      {/* Top accent bar like Zimmerman */}
-      <div className="h-1 bg-gradient-to-r from-green-500 via-green-400 to-green-500" />
-      
-      {/* Top info bar */}
-      <div className="bg-blue-950 text-white">
+      {/* Removed green accent bar */}
+      <div className="bg-gradient-to-b from-blue-950 via-blue-900 to-blue-900 text-white">
         <Container>
           <div className="flex flex-wrap items-center justify-between gap-2 py-2 text-xs">
             <div className="flex items-center gap-2">
@@ -65,7 +62,7 @@ export function SiteHeader() {
       </div>
 
       {/* Main nav */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white">
+      <div className="bg-gradient-to-r from-blue-900 via-blue-950 to-blue-900 text-white">
         <Container>
           <div className="flex items-center justify-between py-3">
             <Link href="/" className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105">
