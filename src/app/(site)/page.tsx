@@ -182,7 +182,6 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-slate-50 to-white py-20">
         <Container>
           <div className="mb-12 text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-blue-600">Stay Connected</span>
             <h2 className="mt-2 text-3xl font-black text-slate-900">Latest Updates</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
