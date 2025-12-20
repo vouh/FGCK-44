@@ -72,9 +72,9 @@ export default function HeroTextImageCarousel() {
 
   // Wider on desktop, less top space, more width for text
   return (
-    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-7xl mx-auto pt-2 lg:pt-4">
+    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-12 px-0 md:px-8 max-w-7xl mx-auto pt-0 lg:pt-2">
       {/* Animated Text with accent line */}
-      <div className="flex flex-col justify-center items-start z-10 w-full max-w-2xl px-2 sm:px-4 lg:pl-10 relative">
+      <div className="flex flex-col justify-center items-start z-10 w-full max-w-3xl px-2 sm:px-6 lg:pl-16 relative">
         {/* Accent line connecting to image */}
         <div className="hidden lg:block absolute top-1/2 right-0 w-24 h-2 -translate-y-1/2">
           <svg width="100%" height="100%" viewBox="0 0 96 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,15 +93,15 @@ export default function HeroTextImageCarousel() {
             <HeroSlideText slide={heroSlides[index]} />
           </motion.div>
         </AnimatePresence>
-        <div className="mt-8 grid grid-cols-2 gap-3 w-full max-w-xs sm:max-w-md">
+        <div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
           {heroSlides[index].buttons.map((btn, i) => (
             <a
               key={i}
               href={btn.href}
               className={
                 i === 0
-                  ? "group rounded-lg bg-white px-4 py-3 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl text-center"
-                  : "rounded-lg border-2 border-white/30 bg-white/10 px-4 py-3 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105 text-center"
+                  ? "group rounded-lg bg-white px-2 py-2 sm:px-5 sm:py-3 text-[11px] sm:text-xs font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl text-center"
+                  : "rounded-lg border-2 border-white/30 bg-white/10 px-2 py-2 sm:px-5 sm:py-3 text-[11px] sm:text-xs font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105 text-center"
               }
             >
               {btn.text}
@@ -110,7 +110,7 @@ export default function HeroTextImageCarousel() {
         </div>
       </div>
       {/* Animated Image with custom blue border */}
-      <div className="flex items-center justify-center relative w-full max-w-2xl h-[28rem] lg:h-[32rem]">
+      <div className="flex items-center justify-center relative w-full max-w-2xl h-[28rem] lg:h-[32rem] mt-8 lg:mt-0">
         <div className="relative flex items-center justify-center h-[22rem] w-[22rem] md:h-[28rem] md:w-[28rem] lg:h-[30rem] lg:w-[30rem]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -157,12 +157,16 @@ export default function HeroTextImageCarousel() {
 // Animated text component for hero slide (heading, tagline, description)
 function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
   // Animate each line from a different direction
-  const directions = [
-    { x: -60, y: 0 }, // left
-    { x: 60, y: 0 },  // right
-    { x: 0, y: -60 }, // top
-    { x: 0, y: 60 }   // bottom
-  ];
+  // Each letter comes from a random direction for typing effect
+  function getRandomDirection() {
+    const dirs = [
+      { x: -40, y: 0 }, // left
+      { x: 40, y: 0 },  // right
+      { x: 0, y: -40 }, // top
+      { x: 0, y: 40 }   // bottom
+    ];
+    return dirs[Math.floor(Math.random() * dirs.length)];
+  }
   return (
     <motion.div
       initial="hidden"
@@ -179,26 +183,29 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
       {slide.heading.split("\n").map((line, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, ...directions[i % directions.length] }}
+          initial={{ opacity: 0, x: 0, y: 0 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, ...directions[i % directions.length] }}
+          exit={{ opacity: 0, x: 0, y: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
           className="text-4xl sm:text-5xl md:text-6xl font-black text-blue-300 leading-tight max-w-full"
           style={{ wordBreak: "break-word" }}
         >
-          {line.split("").map((char, j) => (
-            <motion.span
-              key={j}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
+          {line.split("").map((char, j) => {
+            const dir = getRandomDirection();
+            return (
+              <motion.span
+                key={j}
+                variants={{
+                  hidden: { opacity: 0, x: dir.x, y: dir.y },
+                  visible: { opacity: 1, x: 0, y: 0 }
+                }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            );
+          })}
         </motion.div>
       ))}
       {/* Tagline: italic, white, slightly smaller, above description */}
