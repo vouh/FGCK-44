@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/site/Container";
 import ScrollFadeIn from "@/components/site/ScrollFadeIn";
 import { site } from "@/lib/site";
+import HeroTextImageCarousel from "@/components/site/HeroTextImageCarousel";
 
 function FeatureCard({
   title,
@@ -66,53 +67,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
         <Container>
           <div className="relative grid min-h-[75vh] items-center gap-12 py-20 lg:grid-cols-2">
-            <ScrollFadeIn>
-              <div className="text-center lg:text-left">
-              <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Welcome to <br />
-                <span className="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">{site.name}</span>
-              </h1>
-              <p className="mt-6 text-lg italic text-blue-200">&ldquo;{site.tagline}&rdquo;</p>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80 lg:text-xl">
-                We are grateful for your presence and thankful that you are part of our fellowship.
-                Join us every Sunday as we worship together.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
-                <Link
-                  href="/new-here"
-                  className="group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
-                >
-                  Plan Your Visit
-                  <span className="inline-block transition-transform group-hover:translate-x-1"> →</span>
-                </Link>
-                <Link
-                  href="/sermons"
-                  className="rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105"
-                >
-                  Watch Sermons
-                </Link>
-              </div>
-              {/* Service time highlight */}
-              <div className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white/10 px-5 py-3 backdrop-blur-sm">
-                <svg className="h-5 w-5 text-green-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-                <span className="text-lg text-white">
-                  Join us every <strong>Sunday at 9:00 AM</strong> — All are welcome.
-                </span>
-              </div>
-              </div>
-            </ScrollFadeIn>
-
-            <ScrollFadeIn delay={0.2}>
-              <div className="hidden lg:block">
-              <div className="relative mx-auto flex max-w-md items-center justify-center">
-                {/* Collage of images - overlapping style, rounded corners */}
-                  {/* Animated carousel for hero images */}
-                  <HeroCarousel />
-              </div>
-              </div>
-            </ScrollFadeIn>
+            <HeroTextImageCarousel />
           </div>
         </Container>
       </section>
