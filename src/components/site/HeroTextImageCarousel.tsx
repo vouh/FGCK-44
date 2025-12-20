@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 // Each slide has: heading, tagline, description, image, buttons (array of {text, href})
 export const heroSlides = [
   {
-    heading: "Welcome to\nFull Gospel Church Githurai 44",
+    heading: "Welcome to\nFull Gospel Church\nGithurai 44",
     tagline: "Jesus Healing Center",
     description: "We are grateful for your presence and thankful that you are part of our fellowship. Join us every Sunday as we worship together.",
     image: "/images/test.png",
@@ -17,7 +17,7 @@ export const heroSlides = [
     ]
   },
   {
-    heading: "Sermons",
+    heading: "Get Inspired by Our\nSermons",
     tagline: "Inspiring Messages",
     description: "Listen to powerful sermons and grow in faith with us every week.",
     image: "/images/logo.png",
@@ -27,8 +27,8 @@ export const heroSlides = [
     ]
   },
   {
-    heading: "Ministries",
-    tagline: "Find Your Place",
+    heading: "Discover Our\nMinistries",
+    tagline: "Find Your Place to Serve",
     description: "Serve, grow, and connect with our church family through our ministries.",
     image: "/images/test.png",
     buttons: [
@@ -37,7 +37,7 @@ export const heroSlides = [
     ]
   },
   {
-    heading: "Events",
+    heading: "Get to Know About\nOur Events",
     tagline: "Be Part of Our Community",
     description: "Join us for special gatherings, outreach, and vibrant community events.",
     image: "/images/logo.png",
@@ -71,9 +71,9 @@ export default function HeroTextImageCarousel() {
   };
 
   return (
-    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-[1800px] mx-auto">
+    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-6xl mx-auto pt-4 lg:pt-8">
       {/* Animated Text with accent line */}
-      <div className="flex flex-col justify-center items-start z-10 w-full max-w-2xl px-4 lg:pl-16 relative">
+      <div className="flex flex-col justify-center items-start z-10 w-full max-w-xl px-2 sm:px-4 lg:pl-10 relative">
         {/* Accent line connecting to image */}
         <div className="hidden lg:block absolute top-1/2 right-0 w-24 h-2 -translate-y-1/2">
           <svg width="100%" height="100%" viewBox="0 0 96 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,15 +92,15 @@ export default function HeroTextImageCarousel() {
             <HeroSlideText slide={heroSlides[index]} />
           </motion.div>
         </AnimatePresence>
-        <div className="mt-8 flex gap-4 flex-wrap">
+        <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
           {heroSlides[index].buttons.map((btn, i) => (
             <a
               key={i}
               href={btn.href}
               className={
                 i === 0
-                  ? "group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
-                  : "rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105"
+                  ? "group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl text-center"
+                  : "rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105 text-center"
               }
             >
               {btn.text}
@@ -167,11 +167,11 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
       }}
       className="text-left break-words"
     >
-      {/* Heading: large, bold, blue */}
+      {/* Heading: large, bold, blue, with manual line breaks */}
       {slide.heading.split("\n").map((line, i) => (
         <div
           key={i}
-          className="text-3xl sm:text-4xl md:text-5xl font-black text-blue-300 leading-tight max-w-xl"
+          className="text-4xl sm:text-5xl md:text-6xl font-black text-blue-300 leading-tight max-w-full"
           style={{ wordBreak: "break-word" }}
         >
           {line.split("").map((char, j) => (
@@ -189,15 +189,15 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
           ))}
         </div>
       ))}
-      {/* Tagline: italic, white, slightly smaller */}
+      {/* Tagline: italic, white, slightly smaller, above description */}
       {slide.tagline && (
-        <div className="mt-4 text-lg italic text-white max-w-xl">
+        <div className="mt-6 text-xl italic text-white max-w-full">
           {slide.tagline}
         </div>
       )}
       {/* Description: normal, white */}
       {slide.description && (
-        <div className="mt-4 text-base sm:text-lg md:text-xl text-white max-w-xl">
+        <div className="mt-4 text-lg md:text-xl text-white max-w-full">
           {slide.description}
         </div>
       )}
