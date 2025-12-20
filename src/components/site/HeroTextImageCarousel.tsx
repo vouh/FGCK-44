@@ -46,9 +46,15 @@ export default function HeroTextImageCarousel() {
   };
 
   return (
-    <div className="relative mx-auto grid max-w-5xl w-full h-[28rem] grid-cols-1 lg:grid-cols-2 items-center gap-8 px-2 md:px-6">
-      {/* Animated Text */}
-      <div className="flex flex-col justify-center items-start z-10 max-w-xl w-full mx-auto lg:mx-0">
+    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-[1800px] mx-auto">
+      {/* Animated Text with accent line */}
+      <div className="flex flex-col justify-center items-start z-10 w-full max-w-2xl px-4 lg:pl-16 relative">
+        {/* Accent line connecting to image */}
+        <div className="hidden lg:block absolute top-1/2 right-0 w-24 h-2 -translate-y-1/2">
+          <svg width="100%" height="100%" viewBox="0 0 96 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 4 H90 Q95 4 95 8" stroke="#2563eb" strokeWidth="4" fill="none" />
+          </svg>
+        </div>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={index}
@@ -66,18 +72,19 @@ export default function HeroTextImageCarousel() {
           <a href="/sermons" className="rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105">Watch Sermons</a>
         </div>
       </div>
-      {/* Animated Image */}
-      <div className="flex items-center justify-center relative w-full h-full">
-        <div className="relative flex items-center justify-center h-[20rem] w-[20rem] md:h-[24rem] md:w-[24rem]">
+      {/* Animated Image with custom blue border */}
+      <div className="flex items-center justify-center relative w-full max-w-2xl h-[28rem] lg:h-[32rem]">
+        <div className="relative flex items-center justify-center h-[22rem] w-[22rem] md:h-[28rem] md:w-[28rem] lg:h-[30rem] lg:w-[30rem]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={index}
-              className="absolute h-full w-full rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white flex items-center justify-center"
+              className="absolute h-full w-full rounded-[2.5rem] overflow-hidden border-8 border-blue-600 shadow-2xl bg-white flex items-center justify-center"
               custom={direction}
               initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.98 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.98 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
+              style={{ boxShadow: '0 0 0 8px #2563eb33, 0 8px 32px 0 #2563eb22' }}
             >
               <Image src={heroSlides[index].image} alt={`Hero image ${index + 1}`} fill className="object-contain" />
             </motion.div>
