@@ -56,7 +56,7 @@ export default function HeroTextImageCarousel() {
     const interval = setInterval(() => {
       setDirection(1);
       setIndex((i) => (i + 1) % heroSlides.length);
-    }, 6000); // 6 seconds
+    }, 7000); // 7 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -70,10 +70,11 @@ export default function HeroTextImageCarousel() {
     });
   };
 
+  // Wider on desktop, less top space, more width for text
   return (
-    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-6xl mx-auto pt-4 lg:pt-8">
+    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 px-0 md:px-8 max-w-7xl mx-auto pt-2 lg:pt-4">
       {/* Animated Text with accent line */}
-      <div className="flex flex-col justify-center items-start z-10 w-full max-w-xl px-2 sm:px-4 lg:pl-10 relative">
+      <div className="flex flex-col justify-center items-start z-10 w-full max-w-2xl px-2 sm:px-4 lg:pl-10 relative">
         {/* Accent line connecting to image */}
         <div className="hidden lg:block absolute top-1/2 right-0 w-24 h-2 -translate-y-1/2">
           <svg width="100%" height="100%" viewBox="0 0 96 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,15 +93,15 @@ export default function HeroTextImageCarousel() {
             <HeroSlideText slide={heroSlides[index]} />
           </motion.div>
         </AnimatePresence>
-        <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
+        <div className="mt-8 grid grid-cols-2 gap-3 w-full max-w-xs sm:max-w-md">
           {heroSlides[index].buttons.map((btn, i) => (
             <a
               key={i}
               href={btn.href}
               className={
                 i === 0
-                  ? "group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl text-center"
-                  : "rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105 text-center"
+                  ? "group rounded-lg bg-white px-4 py-3 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl text-center"
+                  : "rounded-lg border-2 border-white/30 bg-white/10 px-4 py-3 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105 text-center"
               }
             >
               {btn.text}
@@ -116,10 +117,10 @@ export default function HeroTextImageCarousel() {
               key={index}
               className="absolute h-full w-full rounded-[2.5rem] overflow-hidden border-8 border-blue-600 shadow-2xl bg-white flex items-center justify-center"
               custom={direction}
-              initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.98 }}
+              initial={{ opacity: 0, x: direction > 0 ? 120 : -120, scale: 0.98 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.98 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              exit={{ opacity: 0, x: direction > 0 ? -120 : 120, scale: 0.98 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{ boxShadow: '0 0 0 8px #2563eb33, 0 8px 32px 0 #2563eb22' }}
             >
               <Image src={heroSlides[index].image} alt={`Hero image ${index + 1}`} fill className="object-contain" />
@@ -155,6 +156,13 @@ export default function HeroTextImageCarousel() {
 
 // Animated text component for hero slide (heading, tagline, description)
 function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
+  // Animate each line from a different direction
+  const directions = [
+    { x: -60, y: 0 }, // left
+    { x: 60, y: 0 },  // right
+    { x: 0, y: -60 }, // top
+    { x: 0, y: 60 }   // bottom
+  ];
   return (
     <motion.div
       initial="hidden"
@@ -169,8 +177,12 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
     >
       {/* Heading: large, bold, blue, with manual line breaks */}
       {slide.heading.split("\n").map((line, i) => (
-        <div
+        <motion.div
           key={i}
+          initial={{ opacity: 0, ...directions[i % directions.length] }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, ...directions[i % directions.length] }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           className="text-4xl sm:text-5xl md:text-6xl font-black text-blue-300 leading-tight max-w-full"
           style={{ wordBreak: "break-word" }}
         >
@@ -187,19 +199,31 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
               {char === " " ? "\u00A0" : char}
             </motion.span>
           ))}
-        </div>
+        </motion.div>
       ))}
       {/* Tagline: italic, white, slightly smaller, above description */}
       {slide.tagline && (
-        <div className="mt-6 text-xl italic text-white max-w-full">
+        <motion.div
+          initial={{ opacity: 0, x: 0, y: 60 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: 0, y: 60 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="mt-6 text-xl italic text-white max-w-full"
+        >
           {slide.tagline}
-        </div>
+        </motion.div>
       )}
       {/* Description: normal, white */}
       {slide.description && (
-        <div className="mt-4 text-lg md:text-xl text-white max-w-full">
+        <motion.div
+          initial={{ opacity: 0, x: 0, y: -60 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: 0, y: -60 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="mt-4 text-lg md:text-xl text-white max-w-full"
+        >
           {slide.description}
-        </div>
+        </motion.div>
       )}
     </motion.div>
   );
