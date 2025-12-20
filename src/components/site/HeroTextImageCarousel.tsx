@@ -46,9 +46,9 @@ export default function HeroTextImageCarousel() {
   };
 
   return (
-    <div className="relative mx-auto flex max-w-5xl items-center justify-between h-[28rem] w-full">
+    <div className="relative mx-auto grid max-w-5xl w-full h-[28rem] grid-cols-1 lg:grid-cols-2 items-center gap-8 px-2 md:px-6">
       {/* Animated Text */}
-      <div className="flex-1 flex flex-col justify-center items-start pl-2 md:pl-8 z-10">
+      <div className="flex flex-col justify-center items-start z-10 max-w-xl w-full mx-auto lg:mx-0">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={index}
@@ -61,18 +61,18 @@ export default function HeroTextImageCarousel() {
             <AnimatedHeroText text={heroSlides[index].text} />
           </motion.div>
         </AnimatePresence>
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex gap-4 flex-wrap">
           <a href="/new-here" className="group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl">Plan Your Visit →</a>
           <a href="/sermons" className="rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105">Watch Sermons</a>
         </div>
       </div>
       {/* Animated Image */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="relative flex items-center justify-center h-[26rem] w-[26rem]">
+      <div className="flex items-center justify-center relative w-full h-full">
+        <div className="relative flex items-center justify-center h-[20rem] w-[20rem] md:h-[24rem] md:w-[24rem]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={index}
-              className="absolute h-[24rem] w-[24rem] rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white flex items-center justify-center"
+              className="absolute h-full w-full rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white flex items-center justify-center"
               custom={direction}
               initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.98 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -121,10 +121,18 @@ function AnimatedHeroText({ text }: { text: string }) {
           transition: { staggerChildren: 0.03 }
         }
       }}
-      className="text-left"
+      className="text-left break-words"
     >
       {text.split("\n").map((line, i) => (
-        <div key={i} className={i === 0 ? "text-4xl md:text-5xl font-black text-white" : "mt-4 text-lg md:text-xl text-blue-200"}>
+        <div
+          key={i}
+          className={
+            i === 0
+              ? "text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight max-w-xl"
+              : "mt-4 text-base sm:text-lg md:text-xl text-blue-200 max-w-xl"
+          }
+          style={{ wordBreak: "break-word" }}
+        >
           {line.split("").map((char, j) => (
             <motion.span
               key={j}
