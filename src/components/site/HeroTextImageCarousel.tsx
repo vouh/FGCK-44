@@ -72,9 +72,9 @@ export default function HeroTextImageCarousel() {
 
   // Wider on desktop, less top space, more width for text
   return (
-    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-12 px-0 md:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-0 lg:pt-2">
+    <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-12 px-0 md:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-2 lg:pt-4">
       {/* Animated Text with accent line */}
-      <div className="flex flex-col justify-center items-start z-10 w-full max-w-4xl px-2 sm:px-8 lg:pl-24 relative">
+      <div className="flex flex-col justify-center items-start z-10 w-full max-w-4xl px-2 sm:px-8 lg:pl-24 relative mt-2 lg:mt-0 mb-2 lg:mb-0">
         {/* Accent line connecting to image */}
         <div className="hidden lg:block absolute top-1/2 right-0 w-24 h-2 -translate-y-1/2">
           <svg width="100%" height="100%" viewBox="0 0 96 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,8 +110,8 @@ export default function HeroTextImageCarousel() {
         </div>
       </div>
       {/* Animated Image with custom blue border */}
-      <div className="flex items-center justify-center relative w-full max-w-3xl h-[32rem] lg:h-[36rem] mt-8 lg:mt-0">
-        <div className="relative flex items-center justify-center h-[26rem] w-[26rem] md:h-[32rem] md:w-[32rem] lg:h-[36rem] lg:w-[36rem]">
+      <div className="flex items-center justify-center relative w-full max-w-2xl h-[22rem] lg:h-[26rem] mt-2 lg:mt-0">
+        <div className="relative flex items-center justify-center h-[16rem] w-[16rem] md:h-[20rem] md:w-[20rem] lg:h-[24rem] lg:w-[24rem]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={index}
