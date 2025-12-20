@@ -3,23 +3,48 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-// You can change these slides: update image src and text as needed
+
+// Each slide has: heading, tagline, description, image, buttons (array of {text, href})
 export const heroSlides = [
   {
+    heading: "Welcome to\nFull Gospel Church Githurai 44",
+    tagline: "Jesus Healing Center",
+    description: "We are grateful for your presence and thankful that you are part of our fellowship. Join us every Sunday as we worship together.",
     image: "/images/test.png",
-    text: "Welcome to Full Gospel Church Githurai 44 — 'Jesus Healing Center'\nWe are grateful for your presence and thankful that you are part of our fellowship. Join us every Sunday as we worship together."
+    buttons: [
+      { text: "Plan Your Visit →", href: "/new-here" },
+      { text: "Watch Sermons", href: "/sermons" }
+    ]
   },
   {
+    heading: "Sermons",
+    tagline: "Inspiring Messages",
+    description: "Listen to powerful sermons and grow in faith with us every week.",
     image: "/images/logo.png",
-    text: "Welcome to Our Sermon Room\nExperience inspiring messages and worship with us every week."
+    buttons: [
+      { text: "Browse Sermons", href: "/sermons" },
+      { text: "Meet Pastors", href: "/pastors" }
+    ]
   },
   {
+    heading: "Ministries",
+    tagline: "Find Your Place",
+    description: "Serve, grow, and connect with our church family through our ministries.",
     image: "/images/test.png",
-    text: "Discover Our Ministries\nFind a place to serve, grow, and connect with our church family."
+    buttons: [
+      { text: "Explore Ministries", href: "/ministries" },
+      { text: "Join a Team", href: "/contact" }
+    ]
   },
   {
+    heading: "Events",
+    tagline: "Be Part of Our Community",
+    description: "Join us for special gatherings, outreach, and vibrant community events.",
     image: "/images/logo.png",
-    text: "Join Our Events\nBe part of our vibrant community through special gatherings and outreach."
+    buttons: [
+      { text: "Upcoming Events", href: "/events" },
+      { text: "Plan Your Visit →", href: "/new-here" }
+    ]
   }
 ];
 
@@ -31,7 +56,7 @@ export default function HeroTextImageCarousel() {
     const interval = setInterval(() => {
       setDirection(1);
       setIndex((i) => (i + 1) % heroSlides.length);
-    }, 4000);
+    }, 6000); // 6 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -64,12 +89,23 @@ export default function HeroTextImageCarousel() {
             transition={{ duration: 0.7, ease: "easeInOut" }}
             className="w-full"
           >
-            <AnimatedHeroText text={heroSlides[index].text} />
+            <HeroSlideText slide={heroSlides[index]} />
           </motion.div>
         </AnimatePresence>
         <div className="mt-8 flex gap-4 flex-wrap">
-          <a href="/new-here" className="group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl">Plan Your Visit →</a>
-          <a href="/sermons" className="rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105">Watch Sermons</a>
+          {heroSlides[index].buttons.map((btn, i) => (
+            <a
+              key={i}
+              href={btn.href}
+              className={
+                i === 0
+                  ? "group rounded-lg bg-white px-7 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
+                  : "rounded-lg border-2 border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105"
+              }
+            >
+              {btn.text}
+            </a>
+          ))}
         </div>
       </div>
       {/* Animated Image with custom blue border */}
@@ -116,8 +152,9 @@ export default function HeroTextImageCarousel() {
   );
 }
 
-// Animated text component for letter-by-letter effect
-function AnimatedHeroText({ text }: { text: string }) {
+
+// Animated text component for hero slide (heading, tagline, description)
+function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
   return (
     <motion.div
       initial="hidden"
@@ -130,14 +167,11 @@ function AnimatedHeroText({ text }: { text: string }) {
       }}
       className="text-left break-words"
     >
-      {text.split("\n").map((line, i) => (
+      {/* Heading: large, bold, blue */}
+      {slide.heading.split("\n").map((line, i) => (
         <div
           key={i}
-          className={
-            i === 0
-              ? "text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight max-w-xl"
-              : "mt-4 text-base sm:text-lg md:text-xl text-blue-200 max-w-xl"
-          }
+          className="text-3xl sm:text-4xl md:text-5xl font-black text-blue-300 leading-tight max-w-xl"
           style={{ wordBreak: "break-word" }}
         >
           {line.split("").map((char, j) => (
@@ -155,6 +189,18 @@ function AnimatedHeroText({ text }: { text: string }) {
           ))}
         </div>
       ))}
+      {/* Tagline: italic, white, slightly smaller */}
+      {slide.tagline && (
+        <div className="mt-4 text-lg italic text-white max-w-xl">
+          {slide.tagline}
+        </div>
+      )}
+      {/* Description: normal, white */}
+      {slide.description && (
+        <div className="mt-4 text-base sm:text-lg md:text-xl text-white max-w-xl">
+          {slide.description}
+        </div>
+      )}
     </motion.div>
   );
 }
