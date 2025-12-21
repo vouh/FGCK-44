@@ -203,8 +203,7 @@ export default function HeroTextImageCarousel() {
             </button>
           </div>
         </div>
-      </>
-    </div>
+      </div>
   );
 }
 
