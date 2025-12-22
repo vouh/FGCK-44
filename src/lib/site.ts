@@ -4,7 +4,7 @@ export const site = {
   locationShort: "Githurai 44, Kenya",
   contact: {
     phone: "011788919",
-    email: "fgckegithurai44@gmail.com",
+    email: "fgckgithurai44@gmail.com",
     addressLine: "Githurai 44, Nairobi, Kenya",
   },
   serviceTimes: [

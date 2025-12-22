@@ -250,28 +250,54 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
           ))}
         </motion.div>
       ))}
-      {/* Tagline: italic, white, slightly smaller, above description */}
+      {/* Tagline: italic, white, slightly smaller, above description, with typing effect */}
       {slide.tagline && (
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.03 } }
+          }}
           className="mt-6 text-xl italic text-white max-w-full"
         >
-          {slide.tagline}
+          {slide.tagline.split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.3 + i * 0.03 }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </motion.div>
       )}
-      {/* Description: normal, white */}
+      {/* Description: normal, white, with typing effect */}
       {slide.description && (
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.45 }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.02 } }
+          }}
           className="mt-4 text-lg md:text-xl text-white max-w-full"
         >
-          {slide.description}
+          {slide.description.split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.45 + i * 0.02 }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </motion.div>
       )}
     </motion.div>

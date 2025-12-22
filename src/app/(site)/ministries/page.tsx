@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import ministriesData from "@/lib/ministries.json";
+import { useRef } from "react";
 
 function MinistryCard({ name, description, image, id }: { name: string; description: string; image: string; id: string }) {
   return (
@@ -25,6 +26,15 @@ function MinistryCard({ name, description, image, id }: { name: string; descript
 }
 
 export default function MinistriesPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    const node = scrollRef.current;
+    if (!node) return;
+    const scrollAmount = 320; // px
+    node.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
+
   return (
     <PageShell title="Ministries" description="Find your place in our church community. We have ministries for all ages and interests.">
       {/* Ministry Intro */}
@@ -49,11 +59,33 @@ export default function MinistriesPage() {
         </div>
       </div>
 
-      {/* Ministry Horizontal Scroll */}
-      <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
-        {ministriesData.map((m) => (
-          <MinistryCard key={m.id} {...m} />
-        ))}
+      {/* Ministry Horizontal Scroll with Arrows */}
+      <div className="relative">
+        <button
+          aria-label="Scroll ministries left"
+          onClick={() => scroll('left')}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 border border-slate-200 rounded-full shadow p-2 hover:bg-blue-100 transition hidden md:block"
+          style={{ marginLeft: '-1.5rem' }}
+        >
+          <svg className="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
+          style={{ scrollBehavior: 'smooth' }}
+        >
+          {ministriesData.map((m) => (
+            <MinistryCard key={m.id} {...m} />
+          ))}
+        </div>
+        <button
+          aria-label="Scroll ministries right"
+          onClick={() => scroll('right')}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 border border-slate-200 rounded-full shadow p-2 hover:bg-blue-100 transition hidden md:block"
+          style={{ marginRight: '-1.5rem' }}
+        >
+          <svg className="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </button>
       </div>
     </PageShell>
   );
