@@ -212,17 +212,7 @@ export default function HeroTextImageCarousel() {
 
 // Animated text component for hero slide (heading, tagline, description)
 function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
-  // Animate each line from a different direction
-  // Each letter comes from a random direction for typing effect
-  function getRandomDirection() {
-    const dirs = [
-      { x: -40, y: 0 }, // left
-      { x: 40, y: 0 },  // right
-      { x: 0, y: -40 }, // top
-      { x: 0, y: 40 }   // bottom
-    ];
-    return dirs[Math.floor(Math.random() * dirs.length)];
-  }
+  // All letters and lines fade in from below for a unified effect
   return (
     <motion.div
       initial="hidden"
@@ -230,7 +220,7 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
       variants={{
         hidden: {},
         visible: {
-          transition: { staggerChildren: 0.03 }
+          transition: { staggerChildren: 0.05 }
         }
       }}
       className="text-left break-words"
@@ -239,38 +229,34 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
       {slide.heading.split("\n").map((line, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, x: 0, y: 0 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: 0, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 60 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.15 }}
           className="text-4xl sm:text-5xl md:text-6xl font-black text-blue-300 leading-tight max-w-full"
           style={{ wordBreak: "break-word" }}
         >
-          {line.split("").map((char, j) => {
-            const dir = getRandomDirection();
-            return (
-              <motion.span
-                key={j}
-                variants={{
-                  hidden: { opacity: 0, x: dir.x, y: dir.y },
-                  visible: { opacity: 1, x: 0, y: 0 }
-                }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                className="inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            );
-          })}
+          {line.split("").map((char, j) => (
+            <motion.span
+              key={j}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30, delay: j * 0.04 + i * 0.15 }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </motion.div>
       ))}
       {/* Tagline: italic, white, slightly smaller, above description */}
       {slide.tagline && (
         <motion.div
-          initial={{ opacity: 0, x: 0, y: 60 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: 0, y: 60 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
           className="mt-6 text-xl italic text-white max-w-full"
         >
           {slide.tagline}
@@ -279,10 +265,10 @@ function HeroSlideText({ slide }: { slide: typeof heroSlides[number] }) {
       {/* Description: normal, white */}
       {slide.description && (
         <motion.div
-          initial={{ opacity: 0, x: 0, y: -60 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: 0, y: -60 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.45 }}
           className="mt-4 text-lg md:text-xl text-white max-w-full"
         >
           {slide.description}

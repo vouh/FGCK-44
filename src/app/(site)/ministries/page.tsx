@@ -1,23 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import { placeholderMinistries } from "@/lib/placeholders";
+import ministriesData from "@/lib/ministries.json";
 
-function MinistryCard({ title, subtitle, slug }: { title: string; subtitle?: string; slug?: string }) {
+function MinistryCard({ name, description, image, id }: { name: string; description: string; image: string; id: string }) {
   return (
     <Link
-      href={`/ministries/${slug}`}
-      className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
+      href={`/ministries/${id}`}
+      className="group min-w-[260px] max-w-xs flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md mx-2"
     >
       <div className="relative h-40 bg-slate-100">
-        <Image src="/images/placeholder-ministry.svg" alt={title} fill className="object-cover" />
+        <Image src={image} alt={name} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-lg font-bold text-white group-hover:text-blue-200">{title}</h3>
+          <h3 className="text-lg font-bold text-white group-hover:text-blue-200">{name}</h3>
         </div>
       </div>
       <div className="p-5">
-        <p className="text-sm text-slate-600">{subtitle}</p>
+        <p className="text-sm text-slate-600">{description}</p>
         <span className="mt-3 inline-block text-sm font-semibold text-blue-900">Learn more →</span>
       </div>
     </Link>
@@ -49,10 +49,10 @@ export default function MinistriesPage() {
         </div>
       </div>
 
-      {/* Ministry Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {placeholderMinistries.map((m) => (
-          <MinistryCard key={m.id} title={m.title} subtitle={m.subtitle} slug={m.slug} />
+      {/* Ministry Horizontal Scroll */}
+      <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+        {ministriesData.map((m) => (
+          <MinistryCard key={m.id} {...m} />
         ))}
       </div>
     </PageShell>

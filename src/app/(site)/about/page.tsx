@@ -28,7 +28,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Mission & Vision */}
+      {/* Mission, Vision & Core Values */}
       <div className="grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
@@ -38,8 +38,7 @@ export default function AboutPage() {
           </div>
           <h3 className="text-xl font-bold text-slate-900">Our Mission</h3>
           <p className="mt-3 leading-relaxed text-slate-600">
-            To spread the Gospel of Jesus Christ, make disciples, and serve our community with love and compassion.
-            We are committed to spiritual growth, fellowship, and outreach.
+            To proclaim the full Gospel of Jesus Christ through sound biblical teaching, discipleship, prayer, and compassionate outreach, equipping believers to live godly lives and serve God effectively.
           </p>
         </div>
 
@@ -52,10 +51,23 @@ export default function AboutPage() {
           </div>
           <h3 className="text-xl font-bold text-slate-900">Our Vision</h3>
           <p className="mt-3 leading-relaxed text-slate-600">
-            To be a vibrant, Spirit-filled church that transforms lives and communities through the power of God&apos;s
-            Word, worship, and practical ministry.
+            To be a Christ-centered church that transforms lives, families, and the community of Githurai 44 and beyond through the power of the Gospel.
           </p>
         </div>
+      </div>
+
+      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-bold text-blue-900 mb-4">Core Values</h3>
+        <ul className="list-disc pl-6 space-y-2 text-slate-700">
+          <li><strong>Biblical Authority:</strong> We uphold the Bible as the inspired and final authority in faith and practice (2 Timothy 3:16).</li>
+          <li><strong>Prayer and the Holy Spirit:</strong> We depend on prayer and the leading of the Holy Spirit in all aspects of ministry (Acts 1:8).</li>
+          <li><strong>Christ-Centered Worship:</strong> We worship God in spirit and in truth, honoring Jesus Christ in all we do (John 4:24).</li>
+          <li><strong>Discipleship and Growth:</strong> We commit to nurturing believers toward spiritual maturity and Christ-likeness (Matthew 28:19–20).</li>
+          <li><strong>Love and Compassion:</strong> We demonstrate God’s love through care, generosity, and service to others (John 13:34–35).</li>
+          <li><strong>Integrity and Accountability:</strong> We practice honesty, transparency, and responsible stewardship (Proverbs 11:3).</li>
+          <li><strong>Unity and Fellowship:</strong> We value oneness in the body of Christ, walking together in peace and mutual respect (Psalm 133:1).</li>
+          <li><strong>Evangelism and Missions:</strong> We are committed to winning souls and extending the Kingdom of God locally and globally (Mark 16:15).</li>
+        </ul>
       </div>
 
       {/* Leadership */}
