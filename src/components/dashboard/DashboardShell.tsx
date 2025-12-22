@@ -3,13 +3,10 @@ import type { PropsWithChildren } from "react";
 
 const nav = [
   { label: "Overview", href: "/dashboard" },
+  { label: "Blog", href: "/dashboard/blog" },
+  { label: "Projects", href: "/dashboard/projects" },
   { label: "Sermons", href: "/dashboard/sermons" },
   { label: "Events", href: "/dashboard/events" },
-  { label: "Ministries", href: "/dashboard/ministries" },
-  { label: "Projects", href: "/dashboard/projects" },
-  { label: "Blog", href: "/dashboard/blog" },
-  { label: "Pages", href: "/dashboard/pages" },
-  { label: "Media", href: "/dashboard/media" },
 ];
 
 export function DashboardShell({ children }: PropsWithChildren) {

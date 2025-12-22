@@ -1,63 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
-import { AuthPanel } from "@/features/auth/AuthPanel";
-import { PageShell } from "@/components/site/PageShell";
+import { OverviewCharts } from "./overview-charts";
 
-export default function AdminDashboard() {
-  const [tab, setTab] = useState("analytics");
+export default function DashboardOverviewPage() {
   return (
-    <PageShell title="Admin Dashboard" description="Manage content and view analytics.">
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Sidebar */}
-        <nav className="w-full md:w-56 flex-shrink-0 mb-4 md:mb-0">
-          <ul className="space-y-2">
-            <li><button className={`w-full text-left px-4 py-2 rounded-lg font-semibold ${tab === "analytics" ? "bg-blue-100 text-blue-900" : "hover:bg-slate-100"}`} onClick={() => setTab("analytics")}>Analytics</button></li>
-            <li><button className={`w-full text-left px-4 py-2 rounded-lg font-semibold ${tab === "blog" ? "bg-blue-100 text-blue-900" : "hover:bg-slate-100"}`} onClick={() => setTab("blog")}>Upload Blog</button></li>
-            <li><button className={`w-full text-left px-4 py-2 rounded-lg font-semibold ${tab === "project" ? "bg-blue-100 text-blue-900" : "hover:bg-slate-100"}`} onClick={() => setTab("project")}>Upload Project</button></li>
-            <li><button className={`w-full text-left px-4 py-2 rounded-lg font-semibold ${tab === "sermon" ? "bg-blue-100 text-blue-900" : "hover:bg-slate-100"}`} onClick={() => setTab("sermon")}>Upload Sermon (YouTube)</button></li>
-            <li><button className={`w-full text-left px-4 py-2 rounded-lg font-semibold ${tab === "event" ? "bg-blue-100 text-blue-900" : "hover:bg-slate-100"}`} onClick={() => setTab("event")}>Upload Event</button></li>
-          </ul>
-        </nav>
-        {/* Main Content */}
-        <div className="flex-1">
-          <div className="mb-6"><AuthPanel /></div>
-          {tab === "analytics" && <AnalyticsPanel />}
-          {tab === "blog" && <BlogUploadPanel />}
-          {tab === "project" && <ProjectUploadPanel />}
-          {tab === "sermon" && <SermonUploadPanel />}
-          {tab === "event" && <EventUploadPanel />}
-        </div>
+    <div className="space-y-8">
+      <div className="mb-6">
+        <h1 className="text-3xl font-black text-blue-950 mb-2">Admin Dashboard</h1>
+        <p className="text-slate-600">Manage content and view analytics.</p>
       </div>
-    </PageShell>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <StatCard label="Total Users" value="2,500" color="blue" />
+        <StatCard label="Total Page Views" value="8,220" color="green" />
+        <StatCard label="Blog Reads" value="120" color="yellow" />
+        <StatCard label="Sermon Views" value="45" color="red" />
+      </div>
+      <OverviewCharts />
+    </div>
   );
 }
 
-function AnalyticsPanel() {
+function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
+  const colorMap: any = {
+    blue: "bg-blue-100 text-blue-900",
+    green: "bg-green-100 text-green-900",
+    yellow: "bg-yellow-100 text-yellow-900",
+    red: "bg-red-100 text-red-900",
+  };
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Site Analytics</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="rounded-xl bg-blue-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-900">2,500</div>
-          <div className="text-xs text-slate-600">Total Users</div>
-        </div>
-        <div className="rounded-xl bg-blue-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-900">8,220</div>
-          <div className="text-xs text-slate-600">Total Page Views</div>
-        </div>
-        <div className="rounded-xl bg-blue-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-900">120</div>
-          <div className="text-xs text-slate-600">Blog Reads</div>
-        </div>
-        <div className="rounded-xl bg-blue-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-900">45</div>
-          <div className="text-xs text-slate-600">Sermon Views</div>
-        </div>
-      </div>
-      <div className="rounded-xl bg-white p-6 shadow-sm">
-        <div className="h-48 flex items-center justify-center text-slate-400">[Analytics Chart Placeholder]</div>
-      </div>
+    <div className={`rounded-xl p-4 text-center font-bold ${colorMap[color]}`}> 
+      <div className="text-2xl">{value}</div>
+      <div className="text-xs font-semibold mt-1">{label}</div>
     </div>
   );
 }
