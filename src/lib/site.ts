@@ -3,7 +3,7 @@ export const site = {
   tagline: "Jesus Healing Center",
   locationShort: "Githurai 44, Kenya",
   contact: {
-    phone: "011788919",
+    phone: "0113788919",
     email: "fgckgithurai44@gmail.com",
     addressLine: "Githurai 44, Nairobi, Kenya",
   },
