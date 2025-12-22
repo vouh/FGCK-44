@@ -55,14 +55,14 @@ export default function HeroTextImageCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection(1);
-      setIndex((i) => (i + 1) % heroSlides.length);
+      setIndex((i: number) => (i + 1) % heroSlides.length);
     }, 7000); // 7 seconds
     return () => clearInterval(interval);
   }, []);
 
   const paginate = (dir: number) => {
     setDirection(dir);
-    setIndex((prev) => {
+    setIndex((prev: number) => {
       let next = prev + dir;
       if (next < 0) return heroSlides.length - 1;
       if (next >= heroSlides.length) return 0;
@@ -71,6 +71,7 @@ export default function HeroTextImageCarousel() {
   };
 
   // Wider on desktop, less top space, more width for text
+  return (
     <div className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-12 px-0 md:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-2 lg:pt-4">
       {/* Mobile: background image behind text */}
       <div className="block lg:hidden relative w-full min-h-[22rem] rounded-[2.5rem] overflow-hidden border-8 border-blue-600 shadow-2xl bg-white flex flex-col justify-center items-center" style={{ backgroundImage: `url(${heroSlides[index].image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -203,7 +204,8 @@ export default function HeroTextImageCarousel() {
             </button>
           </div>
         </div>
-      </div>
+      </>
+    </div>
   );
 }
 
