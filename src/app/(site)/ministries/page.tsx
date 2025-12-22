@@ -62,30 +62,37 @@ export default function MinistriesPage() {
 
       {/* Ministry Horizontal Scroll with Arrows */}
       <div className="relative">
+        {/* Left Arrow */}
         <button
           aria-label="Scroll ministries left"
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 border border-slate-200 rounded-full shadow p-2 hover:bg-blue-100 transition hidden md:block"
-          style={{ marginLeft: '-1.5rem' }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border-2 border-blue-700 rounded-full shadow p-1.5 hover:bg-blue-700 hover:text-white transition text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ marginLeft: '-1rem', width: '2rem', height: '2rem' }}
         >
-          <svg className="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
+        {/* Ministries Scrollable Bar */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
-          style={{ scrollBehavior: 'smooth' }}
+          className="flex gap-3 overflow-x-auto pb-2 hide-scrollbar scroll-smooth min-h-[170px] sm:min-h-[180px] md:min-h-[190px]"
+          style={{ scrollBehavior: 'smooth', background: 'linear-gradient(90deg, #2563eb22 0%, #fff 100%)', borderRadius: '1.5rem', border: '2px solid #2563eb' }}
         >
           {ministriesData.map((m) => (
             <MinistryCard key={m.id} {...m} />
           ))}
         </div>
+        {/* Right Arrow */}
         <button
           aria-label="Scroll ministries right"
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 border border-slate-200 rounded-full shadow p-2 hover:bg-blue-100 transition hidden md:block"
-          style={{ marginRight: '-1.5rem' }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border-2 border-blue-700 rounded-full shadow p-1.5 hover:bg-blue-700 hover:text-white transition text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ marginRight: '-1rem', width: '2rem', height: '2rem' }}
         >
-          <svg className="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
     </PageShell>
