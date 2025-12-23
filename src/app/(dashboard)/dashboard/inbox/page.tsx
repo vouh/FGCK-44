@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import * as React from "react";
 
 interface Message {
   id: string;
@@ -9,9 +9,10 @@ interface Message {
   createdAt: string;
 }
 
+
 export default function InboxPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [messages, setMessages] = React.useState<Message[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
     // TODO: Replace with real API call or data fetch

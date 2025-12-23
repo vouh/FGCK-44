@@ -9,7 +9,6 @@ export const site = {
   },
   serviceTimes: [
     { label: "Sunday Service", time: "9:00 AM" },
-    { label: "Midweek Service", time: "Wednesday 6:00 PM" },
   ],
 };
 
