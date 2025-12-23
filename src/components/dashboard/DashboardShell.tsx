@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 
 const nav = [
   { label: "Overview", href: "/dashboard" },
+  { label: "Inbox", href: "/dashboard/inbox" },
   { label: "Blog", href: "/dashboard/blog" },
   { label: "Projects", href: "/dashboard/projects" },
   { label: "Sermons", href: "/dashboard/sermons" },

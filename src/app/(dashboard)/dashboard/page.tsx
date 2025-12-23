@@ -6,18 +6,22 @@ import { OverviewCharts } from "./overview-charts";
 
 export default function DashboardOverviewPage() {
   return (
-    <div className="space-y-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-black text-blue-950 mb-2">Admin Dashboard</h1>
-        <p className="text-slate-600">Manage content and view analytics.</p>
+    <div className="space-y-10">
+      <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-2">
+        <div>
+          <h1 className="text-4xl font-extrabold text-blue-950 mb-1 tracking-tight">Admin Dashboard</h1>
+          <p className="text-slate-500 text-lg">Manage content and view analytics.</p>
+        </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
         <StatCard label="Total Users" value="2,500" color="blue" />
         <StatCard label="Total Page Views" value="8,220" color="green" />
         <StatCard label="Blog Reads" value="120" color="yellow" />
         <StatCard label="Sermon Views" value="45" color="red" />
       </div>
-      <OverviewCharts />
+      <div className="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
+        <OverviewCharts />
+      </div>
     </div>
   );
 }
@@ -30,9 +34,9 @@ function StatCard({ label, value, color }: { label: string; value: string; color
     red: "bg-red-100 text-red-900",
   };
   return (
-    <div className={`rounded-xl p-4 text-center font-bold ${colorMap[color]}`}> 
-      <div className="text-2xl">{value}</div>
-      <div className="text-xs font-semibold mt-1">{label}</div>
+    <div className={`rounded-2xl shadow-sm border border-blue-100 p-6 text-center font-bold flex flex-col items-center gap-1 ${colorMap[color]}`}> 
+      <div className="text-3xl font-extrabold">{value}</div>
+      <div className="text-xs font-semibold uppercase tracking-wide mt-1 opacity-80">{label}</div>
     </div>
   );
 }
