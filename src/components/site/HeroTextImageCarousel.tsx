@@ -12,7 +12,7 @@ export const heroSlides = [
     description: "We are grateful for your presence and thankful that you are part of our fellowship. Join us every Sunday as we worship together.",
     image: "/images/test.png",
     buttons: [
-      { text: "Plan Your Visit →", href: "/new-here" },
+      { text: "Service Times", href: "/about#service-times" },
       { text: "Watch Sermons", href: "/sermons" }
     ]
   },

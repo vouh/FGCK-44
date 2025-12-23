@@ -56,6 +56,33 @@ export default function AboutPage() {
         </div>
       </div>
 
+        {/* Service Times & Weekly Events */}
+        <div className="mt-12">
+          <h3 className="text-2xl font-bold text-blue-900 mb-4">Service Times</h3>
+          <div className="mb-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+              <h4 className="text-lg font-bold text-blue-900 mb-2">Sunday Services</h4>
+              <ul className="list-disc pl-6 text-slate-700 space-y-1">
+                <li><strong>Morning Devotion:</strong> 7:00am – 8:00am</li>
+                <li><strong>Bible Study:</strong> 8:00am – 9:00am</li>
+                <li><strong>First Service:</strong> 9:00am – 10:45am</li>
+                <li><strong>Second Service:</strong> 10:45am – 1:00pm</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+              <h4 className="text-lg font-bold text-blue-900 mb-2">Weekly Events</h4>
+              <ul className="list-disc pl-6 text-slate-700 space-y-1">
+                <li><strong>Monday:</strong> 7:00am – 8:00am Intercessory Prayers</li>
+                <li><strong>Tuesday:</strong> 7:00am – 8:00am Men Fellowship</li>
+                <li><strong>Wednesday:</strong> 2:00pm – 3:00pm Ladies Fellowship</li>
+                <li><strong>Wednesday:</strong> 7:00pm – 8:00pm Youth Fellowship</li>
+                <li><strong>Thursday:</strong> 7:00pm – 8:00pm All Fellowship</li>
+                <li><strong>Friday:</strong> 7:00am – 8:00am Intercessory Prayers</li>
+                <li><strong>Saturday:</strong> 5:00pm – 7:00pm Praise & Worship Practice</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h3 className="text-xl font-bold text-blue-900 mb-4">Core Values</h3>
         <ul className="list-disc pl-6 space-y-2 text-slate-700">
@@ -70,17 +97,7 @@ export default function AboutPage() {
         </ul>
       </div>
 
-      {/* Leadership */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-bold text-slate-900">Our Leadership</h3>
-        <p className="mt-2 text-slate-600">Meet the pastors and leaders who guide our church family.</p>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <LeaderCard name="Bishop (Placeholder)" role="Senior Pastor" />
-          <LeaderCard name="Pastor (Placeholder)" role="Associate Pastor" />
-          <LeaderCard name="Elder (Placeholder)" role="Church Elder" />
-          <LeaderCard name="Deacon (Placeholder)" role="Church Deacon" />
-        </div>
-      </div>
+
 
       {/* Statement of Faith */}
       <div className="mt-12 rounded-2xl bg-blue-950 p-8 text-white">

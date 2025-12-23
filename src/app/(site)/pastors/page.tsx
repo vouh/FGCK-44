@@ -65,16 +65,12 @@ export default function PastorsPage() {
           <h3 className="text-lg font-bold text-slate-900">Office Hours</h3>
           <ul className="mt-4 space-y-3">
             <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
-              <span className="text-slate-600">Monday - Friday</span>
-              <span className="font-bold text-slate-900">9:00 AM - 5:00 PM</span>
+              <span className="text-slate-600">Tuesday & Thursday</span>
+              <span className="font-bold text-slate-900">8:00 AM - 5:00 PM</span>
             </li>
             <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
-              <span className="text-slate-600">Saturday</span>
+              <span className="text-slate-600">Other Hours</span>
               <span className="font-bold text-slate-900">By Appointment</span>
-            </li>
-            <li className="flex items-center justify-between rounded-lg bg-slate-50 p-3">
-              <span className="text-slate-600">Sunday</span>
-              <span className="font-bold text-slate-900">After Service</span>
             </li>
           </ul>
         </div>

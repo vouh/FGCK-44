@@ -92,10 +92,10 @@ export default function HomePage() {
               ))}
             </div>
             <Link
-              href="/new-here"
+              href="/about#service-times"
               className="group rounded-lg bg-gradient-to-r from-blue-900 to-blue-800 px-5 py-2.5 text-sm font-bold text-white shadow-lg transition-all hover:from-blue-800 hover:to-blue-700 hover:scale-105"
             >
-              Get Directions
+              View Service Times
               <span className="inline-block transition-transform group-hover:translate-x-1"> →</span>
             </Link>
           </div>
