@@ -14,7 +14,7 @@ export default function InboxPage() {
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // TODO: Replace with real API call or data fetch
     setTimeout(() => {
       setMessages([
