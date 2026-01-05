@@ -1,6 +1,7 @@
 // Firestore service exports
 export * from "./types";
 export * from "./collections";
+export * from "./utils";
 export * from "./blogService";
 export * from "./sermonService";
 export * from "./eventService";

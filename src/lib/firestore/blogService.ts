@@ -14,6 +14,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "@/features/firebase/firebaseConfig";
+import { slugify } from "./utils";
 import { Blog } from "./types";
 import { COLLECTIONS } from "./collections";
 
@@ -79,12 +80,4 @@ export async function getRecentBlogs(count: number = 3): Promise<Blog[]> {
     id: doc.id,
     ...doc.data(),
   })) as Blog[];
-}
-
-// Utility function to create slug from title
-export function slugify(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }

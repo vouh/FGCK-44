@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/features/firebase/firebaseConfig";
 import { Sermon } from "./types";
+import { slugify } from "./utils";
 import { COLLECTIONS } from "./collections";
 
 const sermonsRef = collection(db, COLLECTIONS.SERMONS);
@@ -78,12 +79,4 @@ export async function getRecentSermons(count: number = 6): Promise<Sermon[]> {
     id: doc.id,
     ...doc.data(),
   })) as Sermon[];
-}
-
-// Utility function to create slug from title
-export function slugify(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }
