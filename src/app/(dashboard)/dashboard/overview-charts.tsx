@@ -56,10 +56,10 @@ export function OverviewCharts() {
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="bg-white rounded-xl shadow p-6">
+      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6">
         <Bar data={barData} options={barOptions} height={300} />
       </div>
-      <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 flex flex-col items-center justify-center">
         <Pie data={pieData} />
       </div>
     </div>

@@ -1,114 +1,102 @@
-
 "use client";
 
-import { useState } from "react";
 import { OverviewCharts } from "./overview-charts";
+import { Users, Eye, BookOpen, Video } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function DashboardOverviewPage() {
   return (
-    <div className="space-y-10">
-      <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-2">
-        <div>
-          <h1 className="text-4xl font-extrabold text-blue-950 mb-1 tracking-tight">Admin Dashboard</h1>
-          <p className="text-slate-500 text-lg">Manage content and view analytics.</p>
-        </div>
+    <div className="space-y-8 animate-fade-in">
+      <div>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Overview</h1>
+        <p className="text-slate-600 dark:text-slate-400">Welcome back! Here's what's happening today.</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-        <StatCard label="Total Users" value="2,500" color="blue" />
-        <StatCard label="Total Page Views" value="8,220" color="green" />
-        <StatCard label="Blog Reads" value="120" color="yellow" />
-        <StatCard label="Sermon Views" value="45" color="red" />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard
+          label="Total Users"
+          value="2,500"
+          icon={Users}
+          trend="+12%"
+          trendUp={true}
+          description="from last month"
+          className="bg-blue-500 text-white"
+        />
+        <StatCard
+          label="Total Page Views"
+          value="8,220"
+          icon={Eye}
+          trend="+8%"
+          trendUp={true}
+          description="from last month"
+          className="bg-emerald-500 text-white"
+        />
+        <StatCard
+          label="Blog Reads"
+          value="120"
+          icon={BookOpen}
+          trend="-2%"
+          trendUp={false}
+          description="from last month"
+          className="bg-amber-500 text-white"
+        />
+        <StatCard
+          label="Sermon Views"
+          value="45"
+          icon={Video}
+          trend="+24%"
+          trendUp={true}
+          description="from last month"
+          className="bg-rose-500 text-white"
+        />
       </div>
-      <div className="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
+
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
         <OverviewCharts />
       </div>
     </div>
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
-  const colorMap: any = {
-    blue: "bg-blue-100 text-blue-900",
-    green: "bg-green-100 text-green-900",
-    yellow: "bg-yellow-100 text-yellow-900",
-    red: "bg-red-100 text-red-900",
-  };
+function StatCard({
+  label,
+  value,
+  icon: Icon,
+  trend,
+  trendUp,
+  description,
+  className
+}: {
+  label: string;
+  value: string;
+  icon: any;
+  trend: string;
+  trendUp: boolean;
+  description: string;
+  className?: string;
+}) {
   return (
-    <div className={`rounded-2xl shadow-sm border border-blue-100 p-6 text-center font-bold flex flex-col items-center gap-1 ${colorMap[color]}`}> 
-      <div className="text-3xl font-extrabold">{value}</div>
-      <div className="text-xs font-semibold uppercase tracking-wide mt-1 opacity-80">{label}</div>
-    </div>
-  );
-}
-
-function BlogUploadPanel() {
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Upload New Blog</h2>
-      <form className="space-y-4 max-w-lg">
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Blog Title" />
-        <textarea className="w-full border rounded-lg px-3 py-2" placeholder="Blog Content" rows={5} />
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Image URL (optional)" />
-        <button type="button" className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold">Upload Blog</button>
-      </form>
-    </div>
-  );
-}
-
-function ProjectUploadPanel() {
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Upload New Project</h2>
-      <form className="space-y-4 max-w-lg">
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Project Title" />
-        <textarea className="w-full border rounded-lg px-3 py-2" placeholder="Project Description" rows={4} />
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Image URL (optional)" />
-        <button type="button" className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold">Upload Project</button>
-      </form>
-    </div>
-  );
-}
-
-function SermonUploadPanel() {
-  const [youtubeUrl, setYoutubeUrl] = useState("");
-  const getYoutubeId = (url: string) => {
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
-    return match ? match[1] : null;
-  };
-  const videoId = getYoutubeId(youtubeUrl);
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Upload New Sermon (YouTube)</h2>
-      <form className="space-y-4 max-w-lg">
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Sermon Title" />
-        <textarea className="w-full border rounded-lg px-3 py-2" placeholder="Sermon Description" rows={3} />
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="YouTube Link" value={youtubeUrl} onChange={e => setYoutubeUrl(e.target.value)} />
-        {videoId && (
-          <div className="mt-4 flex flex-col items-center">
-            <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} alt="YouTube Thumbnail" className="rounded-lg w-64" />
-            <div className="flex gap-4 mt-2">
-              <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noopener" className="text-blue-900 underline font-semibold">View on YouTube</a>
-              <button type="button" className="text-blue-900 underline font-semibold">View Here</button>
-            </div>
+    <div className={cn("rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group", className)}>
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <div className="p-2 bg-white/20 rounded-lg">
+            <Icon className="w-5 h-5 text-white" />
           </div>
-        )}
-        <button type="button" className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold">Upload Sermon</button>
-      </form>
-    </div>
-  );
-}
+          <div className={cn("text-xs font-semibold px-2 py-1 rounded-full bg-white/20 text-white")}>
+            {trend}
+          </div>
+        </div>
+        <div className="space-y-1">
+          <h3 className="text-3xl font-bold text-white tracking-tight">{value}</h3>
+          <p className="text-sm font-medium text-white/80">{label}</p>
+        </div>
+        <div className="mt-4 text-xs text-white/60 font-medium">
+          {description}
+        </div>
+      </div>
 
-function EventUploadPanel() {
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Upload New Event</h2>
-      <form className="space-y-4 max-w-lg">
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Event Title" />
-        <textarea className="w-full border rounded-lg px-3 py-2" placeholder="Event Description" rows={3} />
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Event Date" type="date" />
-        <input className="w-full border rounded-lg px-3 py-2" placeholder="Image URL (optional)" />
-        <button type="button" className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold">Upload Event</button>
-      </form>
+      {/* Decorative background element */}
+      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors" />
     </div>
   );
 }
