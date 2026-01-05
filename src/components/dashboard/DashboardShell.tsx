@@ -24,7 +24,6 @@ import { signOut } from "firebase/auth";
 import { getClientAuth } from "@/features/auth/firebaseClient";
 
 const nav = [
-  { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { label: "Inbox", href: "/dashboard/inbox", icon: Inbox },
   { label: "Blog", href: "/dashboard/blog", icon: FileText },
   { label: "Projects", href: "/dashboard/projects", icon: FolderOpen },
@@ -92,7 +91,9 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex transition-colors duration-300">
       {/* Sidebar - Desktop */}
       <aside className="hidden lg:flex flex-col w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 fixed h-full z-20 transition-colors duration-300">
-        <div className="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-800">
+        <div className="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
           <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             FGCK Admin
           </div>
@@ -142,6 +143,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="flex items-center gap-2 ml-auto">
+            <button
+              onClick={handleSignOut}
+              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors"
+              title="Sign Out"
+            >
+              <LogOut className="w-5 h-5" />
+            </button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors"

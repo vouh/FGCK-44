@@ -18,9 +18,11 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-blue-950">FGCK Admin</h1>
-          <p className="text-slate-600">Sign in to manage your website</p>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <div className="relative w-24 h-24 mb-4">
+             {/* eslint-disable-next-line @next/next/no-img-element */}
+             <img src="/images/logo.png" alt="FGCK Logo" className="object-contain w-full h-full" />
+          </div>
         </div>
         <AuthPanel />
       </div>

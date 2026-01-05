@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Trash2, Phone, Mail, Clock, Loader2, CheckCircle, Circle } from "lucide-react";
+import { Trash2, Phone, Mail, Clock, Loader2, CheckCircle, Circle, Eye, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   getInboxMessages,
@@ -13,6 +13,7 @@ import {
 export default function InboxPage() {
   const [messages, setMessages] = useState<InboxMessage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedMessage, setSelectedMessage] = useState<InboxMessage | null>(null);
 
   useEffect(() => {
     loadMessages();
@@ -35,6 +36,7 @@ export default function InboxPage() {
     try {
       await deleteInboxMessage(id);
       setMessages(messages.filter((msg) => msg.id !== id));
+      if (selectedMessage?.id === id) setSelectedMessage(null);
     } catch (error) {
       console.error("Error deleting message:", error);
     }
@@ -57,6 +59,11 @@ export default function InboxPage() {
       hour: "2-digit",
       minute: "2-digit",
     });
+  };
+
+  const truncateText = (text: string, maxLength: number = 50) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + ".............................................";
   };
 
   return (
@@ -140,8 +147,8 @@ export default function InboxPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-200">
-                        {msg.message}
+                      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-sm">
+                        {truncateText(msg.message, 50)}
                       </p>
                     </td>
                     <td className="px-6 py-4">
@@ -151,13 +158,22 @@ export default function InboxPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button
-                        onClick={() => msg.id && handleDelete(msg.id)}
-                        className="p-2 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                        title="Delete Message"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => setSelectedMessage(msg)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                          title="View Details"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => msg.id && handleDelete(msg.id)}
+                          className="p-2 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                          title="Delete Message"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -166,6 +182,65 @@ export default function InboxPage() {
           </table>
         </div>
       </div>
+
+      {/* Message Details Modal */}
+      {selectedMessage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden animate-scale-in">
+            <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-full text-green-600 dark:text-green-400">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Message Details</h2>
+              </div>
+              <button
+                onClick={() => setSelectedMessage(null)}
+                className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</label>
+                  <div className="text-slate-900 dark:text-white font-medium">{selectedMessage.name}</div>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Date & Time</label>
+                  <div className="text-slate-900 dark:text-white font-medium">{formatDate(selectedMessage.createdAt)}</div>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</label>
+                  <div className="text-slate-900 dark:text-white font-medium">{selectedMessage.email}</div>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Phone</label>
+                  <div className="text-slate-900 dark:text-white font-medium">{selectedMessage.phone || "N/A"}</div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Message</label>
+                <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">
+                  {selectedMessage.message}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+              <button
+                onClick={() => setSelectedMessage(null)}
+                className="px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-green-600/20"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
