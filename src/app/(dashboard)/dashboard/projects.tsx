@@ -32,7 +32,8 @@ export default function ProjectsAdminPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string | undefined) => {
+    if (!id) return;
     if (!confirm("Are you sure you want to delete this project?")) return;
     try {
       await deleteProject(id);
@@ -73,7 +74,7 @@ export default function ProjectsAdminPage() {
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <div key={project.id} className="rounded-xl border bg-white p-4 shadow-sm flex flex-col gap-2">
+          <div key={project.id ?? project.title} className="rounded-xl border bg-white p-4 shadow-sm flex flex-col gap-2">
             <img src={project.image || "https://placehold.co/600x300"} alt={project.title} className="rounded-lg h-40 object-cover mb-2" />
             <div className="font-bold text-lg">{project.title}</div>
             <div className="text-blue-900 text-xs font-semibold mb-1">Deadline: {project.deadline || "N/A"}</div>
@@ -81,7 +82,9 @@ export default function ProjectsAdminPage() {
             <div className="text-sm mb-2 line-clamp-3">{project.description}</div>
             <div className="flex gap-2 mt-auto">
               <button className="bg-yellow-100 text-yellow-900 px-3 py-1 rounded font-bold text-xs">Edit</button>
-              <button className="bg-red-100 text-red-900 px-3 py-1 rounded font-bold text-xs" onClick={() => handleDelete(project.id)}>Delete</button>
+              <button className="bg-red-100 text-red-900 px-3 py-1 rounded font-bold text-xs" onClick={() => handleDelete(project.id)} disabled={!project.id}>
+                Delete
+              </button>
             </div>
           </div>
         ))}
