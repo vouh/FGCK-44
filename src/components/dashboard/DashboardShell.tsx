@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Inbox,
@@ -19,6 +19,9 @@ import {
   Settings
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useFirebaseAuth } from "@/features/auth/useFirebaseAuth";
+import { signOut } from "firebase/auth";
+import { getClientAuth } from "@/features/auth/firebaseClient";
 
 const nav = [
   { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
@@ -33,6 +36,15 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, loading } = useFirebaseAuth();
+
+  // Protect Dashboard
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading, router]);
 
   // Initialize Dark Mode
   useEffect(() => {
@@ -57,6 +69,24 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       localStorage.setItem("theme", "light");
     }
   };
+
+  const handleSignOut = async () => {
+    const auth = getClientAuth();
+    if (auth) {
+      await signOut(auth);
+      router.push("/login");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="text-blue-900 font-semibold">Loading dashboard...</div>
+      </div>
+    );
+  }
+
+  if (!user) return null;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex transition-colors duration-300">
@@ -90,12 +120,10 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </nav>
 
         <div className="p-4 border-t border-slate-100 dark:border-slate-800">
-          <div className="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 text-sm font-medium cursor-pointer hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
-            <Link href="/" className="flex items-center gap-3 w-full">
-              <LogOut className="w-5 h-5" />
-              Exit to Website
-            </Link>
-          </div>
+          <button onClick={handleSignOut} className="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 text-sm font-medium cursor-pointer hover:text-slate-900 dark:hover:text-slate-200 transition-colors w-full text-left">
+            <LogOut className="w-5 h-5" />
+            Sign Out
+          </button>
         </div>
       </aside>
 

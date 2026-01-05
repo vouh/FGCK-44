@@ -1,29 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
-const dummyBlogs = [
-  {
-    id: 1,
-    title: "Welcome to FGCK Blog",
-    subheading: "Our first post!",
-    image: "https://placehold.co/600x300",
-    date: "2025-12-01",
-    content: "This is the first blog post for FGCK admin dashboard."
-  },
-  {
-    id: 2,
-    title: "Christmas Service",
-    subheading: "Join us for Christmas!",
-    image: "https://placehold.co/600x300",
-    date: "2025-12-20",
-    content: "Details about our Christmas service and celebrations."
-  }
-];
+import { useState, useEffect } from "react";
+import { createBlog, deleteBlog, getBlogs } from "@/lib/firestore/blogService";
+import { Blog } from "@/lib/firestore/types";
 
 export default function BlogAdminPage() {
-  const [blogs, setBlogs] = useState(dummyBlogs);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [newBlog, setNewBlog] = useState({
     title: "",
     subheading: "",
@@ -32,18 +17,50 @@ export default function BlogAdminPage() {
     content: ""
   });
 
-  const handleDelete = (id: number) => {
-    setBlogs(blogs.filter((b) => b.id !== id));
+  useEffect(() => {
+    loadBlogs();
+  }, []);
+
+  const loadBlogs = async () => {
+    try {
+      const data = await getBlogs();
+      setBlogs(data);
+    } catch (error) {
+      console.error("Failed to load blogs:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleAdd = () => {
-    setBlogs([
-      ...blogs,
-      { ...newBlog, id: Date.now() }
-    ]);
-    setShowModal(false);
-    setNewBlog({ title: "", subheading: "", image: "", date: "", content: "" });
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this blog post?")) return;
+    try {
+      await deleteBlog(id);
+      setBlogs(blogs.filter((b) => b.id !== id));
+    } catch (error) {
+      console.error("Failed to delete blog:", error);
+      alert("Failed to delete blog");
+    }
   };
+
+  const handleAdd = async () => {
+    if (!newBlog.title) return alert("Title is required");
+    
+    setSubmitting(true);
+    try {
+      await createBlog(newBlog);
+      await loadBlogs();
+      setShowModal(false);
+      setNewBlog({ title: "", subheading: "", image: "", date: "", content: "" });
+    } catch (error) {
+      console.error("Failed to create blog:", error);
+      alert("Failed to create blog");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (loading) return <div>Loading blogs...</div>;
 
   return (
     <div className="space-y-8">
@@ -56,7 +73,7 @@ export default function BlogAdminPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {blogs.map((blog) => (
           <div key={blog.id} className="rounded-xl border bg-white p-4 shadow-sm flex flex-col gap-2">
-            <img src={blog.image} alt={blog.title} className="rounded-lg h-40 object-cover mb-2" />
+            <img src={blog.image || "https://placehold.co/600x300"} alt={blog.title} className="rounded-lg h-40 object-cover mb-2" />
             <div className="font-bold text-lg">{blog.title}</div>
             <div className="text-blue-900 text-xs font-semibold mb-1">{blog.subheading}</div>
             <div className="text-slate-500 text-xs mb-2">{blog.date}</div>
@@ -78,8 +95,10 @@ export default function BlogAdminPage() {
             <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Date" type="date" value={newBlog.date} onChange={e => setNewBlog({ ...newBlog, date: e.target.value })} />
             <textarea className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Content" rows={4} value={newBlog.content} onChange={e => setNewBlog({ ...newBlog, content: e.target.value })} />
             <div className="flex gap-2 justify-end mt-2">
-              <button className="bg-slate-100 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="bg-blue-900 text-white px-4 py-2 rounded font-bold" onClick={handleAdd}>Add Blog</button>
+              <button className="bg-slate-100 px-4 py-2 rounded" onClick={() => setShowModal(false)} disabled={submitting}>Cancel</button>
+              <button className="bg-blue-900 text-white px-4 py-2 rounded font-bold" onClick={handleAdd} disabled={submitting}>
+                {submitting ? "Adding..." : "Add Blog"}
+              </button>
             </div>
           </div>
         </div>

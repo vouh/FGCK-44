@@ -1,29 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
-const dummyProjects = [
-  {
-    id: 1,
-    title: "Church Renovation",
-    image: "https://placehold.co/600x300",
-    deadline: "2026-03-01",
-    progress: 60,
-    description: "Renovating the main church hall."
-  },
-  {
-    id: 2,
-    title: "Youth Center",
-    image: "https://placehold.co/600x300",
-    deadline: "2026-06-15",
-    progress: 80,
-    description: "Building a new youth center for the community."
-  }
-];
+import { useState, useEffect } from "react";
+import { createProject, deleteProject, getProjects } from "@/lib/firestore/projectService";
+import { Project } from "@/lib/firestore/types";
 
 export default function ProjectsAdminPage() {
-  const [projects, setProjects] = useState(dummyProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [newProject, setNewProject] = useState({
     title: "",
     image: "",
@@ -32,18 +17,51 @@ export default function ProjectsAdminPage() {
     description: ""
   });
 
-  const handleDelete = (id: number) => {
-    setProjects(projects.filter((p) => p.id !== id));
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    try {
+      const data = await getProjects();
+      setProjects(data);
+    } catch (error) {
+      console.error("Failed to load projects:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleAdd = () => {
-    setProjects([
-      ...projects,
-      { ...newProject, id: Date.now() }
-    ]);
-    setShowModal(false);
-    setNewProject({ title: "", image: "", deadline: "", progress: 0, description: "" });
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this project?")) return;
+    try {
+      await deleteProject(id);
+      setProjects(projects.filter((p) => p.id !== id));
+    } catch (error) {
+      console.error("Failed to delete project:", error);
+      alert("Failed to delete project");
+    }
   };
+
+  const handleAdd = async () => {
+    if (!newProject.title) return alert("Title is required");
+    
+    setSubmitting(true);
+    try {
+      const id = await createProject(newProject);
+      // Refresh list or add to state
+      await loadProjects();
+      setShowModal(false);
+      setNewProject({ title: "", image: "", deadline: "", progress: 0, description: "" });
+    } catch (error) {
+      console.error("Failed to create project:", error);
+      alert("Failed to create project");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (loading) return <div>Loading projects...</div>;
 
   return (
     <div className="space-y-8">
@@ -56,7 +74,7 @@ export default function ProjectsAdminPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div key={project.id} className="rounded-xl border bg-white p-4 shadow-sm flex flex-col gap-2">
-            <img src={project.image} alt={project.title} className="rounded-lg h-40 object-cover mb-2" />
+            <img src={project.image || "https://placehold.co/600x300"} alt={project.title} className="rounded-lg h-40 object-cover mb-2" />
             <div className="font-bold text-lg">{project.title}</div>
             <div className="text-blue-900 text-xs font-semibold mb-1">Deadline: {project.deadline || "N/A"}</div>
             <div className="text-slate-500 text-xs mb-2">Progress: {project.progress}%</div>
@@ -78,8 +96,10 @@ export default function ProjectsAdminPage() {
             <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Progress (%)" type="number" min="0" max="100" value={newProject.progress} onChange={e => setNewProject({ ...newProject, progress: Number(e.target.value) })} />
             <textarea className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Description" rows={4} value={newProject.description} onChange={e => setNewProject({ ...newProject, description: e.target.value })} />
             <div className="flex gap-2 justify-end mt-2">
-              <button className="bg-slate-100 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="bg-blue-900 text-white px-4 py-2 rounded font-bold" onClick={handleAdd}>Add Project</button>
+              <button className="bg-slate-100 px-4 py-2 rounded" onClick={() => setShowModal(false)} disabled={submitting}>Cancel</button>
+              <button className="bg-blue-900 text-white px-4 py-2 rounded font-bold" onClick={handleAdd} disabled={submitting}>
+                {submitting ? "Adding..." : "Add Project"}
+              </button>
             </div>
           </div>
         </div>

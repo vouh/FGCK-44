@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // --- Public Content (Read: Public, Write: Admin) ---
+    
+    match /blogs/{document} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+    
+    match /sermons/{document} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+    
+    match /events/{document} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+    
+    match /projects/{document} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // --- User Submissions (Create: Public, Read/Update: Admin) ---
+
+    // Contact form submissions
+    match /inbox/{document} {
+      allow create: if true;
+      allow read, update, delete: if isAuthenticated();
+    }
+    
+    // Analytics tracking
+    match /pageVisits/{document} {
+      allow create: if true;
+      allow read: if isAuthenticated();
+      allow update, delete: if false; // Analytics data should be immutable
+    }
+
+    // --- Default Deny ---
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
