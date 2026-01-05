@@ -1,7 +1,7 @@
 // src/features/firebase/firebaseConfig.ts
 // Firebase configuration and initialization for FGCK-44
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics"; // removed tracking
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -11,12 +11,12 @@ const firebaseConfig = {
   storageBucket: "fgck44-a89a0.appspot.com",
   messagingSenderId: "93588370898",
   appId: "1:93588370898:web:b5dc3735525a12485c040b",
-  measurementId: "G-H0VBR1Z7HQ"
+  // measurementId: "G-H0VBR1Z7HQ" // removed tracking
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = typeof window !== "undefined" ? getAnalytics(app) : undefined;
+// const analytics = typeof window !== "undefined" ? getAnalytics(app) : undefined; // removed tracking
 const db = getFirestore(app);
 
-export { app, analytics, db };
+export { app, db };

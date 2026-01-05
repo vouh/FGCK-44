@@ -30,20 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-H0VBR1Z7HQ"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-H0VBR1Z7HQ');
-          `}
-        </Script>
+        {/* Google Analytics removed */}
       </head>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>

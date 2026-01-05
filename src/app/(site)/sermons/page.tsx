@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import PageTracker from "@/components/site/PageTracker";
+// import PageTracker from "@/components/site/PageTracker"; // removed tracking
 import { useState, useEffect } from "react";
 import { getSermons, Sermon, slugify } from "@/lib/firestore";
 import { Loader2 } from "lucide-react";
@@ -84,8 +84,7 @@ export default function SermonsPage() {
 
   return (
     <PageShell title="Sermons" description="Listen to inspiring messages from our pastors. Browse by topic, speaker, or series.">
-      {/* Page Analytics Tracking */}
-      <PageTracker page="sermons" />
+      {/* Tracking removed */}
       
       {loading ? (
         <div className="flex items-center justify-center py-20">

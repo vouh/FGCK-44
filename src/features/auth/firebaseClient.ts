@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "fgck44-a89a0.appspot.com",
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? "93588370898",
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID ?? "1:93588370898:web:b5dc3735525a12485c040b",
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ?? "G-H0VBR1Z7HQ",
+  // measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ?? "G-H0VBR1Z7HQ", // removed tracking
 };
 
 function isConfigured() {

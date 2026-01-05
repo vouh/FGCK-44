@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import PageTracker from "@/components/site/PageTracker";
+// import PageTracker from "@/components/site/PageTracker"; // removed tracking
 import { useState, useEffect } from "react";
 import { getBlogs, Blog, slugify } from "@/lib/firestore";
 import { Loader2 } from "lucide-react";
@@ -71,8 +71,7 @@ export default function BlogPage() {
 
   return (
     <PageShell title="Blog" description="Read devotionals, announcements, and updates from our church family.">
-      {/* Page Analytics Tracking */}
-      <PageTracker page="blog" />
+      {/* Tracking removed */}
       
       {loading ? (
         <div className="flex items-center justify-center py-20">
