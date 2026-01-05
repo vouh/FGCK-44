@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site/PageShell";
 import { site } from "@/lib/site";
+import ContactForm from "@/components/site/ContactForm";
 
 export default function ContactPage() {
   return (
@@ -74,52 +75,7 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form */}
-        <form className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <h3 className="text-xl font-bold text-slate-900">Send Us a Message</h3>
-          <p className="mt-2 text-sm text-slate-600">We&apos;ll get back to you as soon as possible.</p>
-
-          <div className="mt-6 space-y-5">
-            <div>
-              <label className="block text-sm font-semibold text-slate-700">Full Name</label>
-              <input
-                className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-slate-700">Email Address</label>
-              <input
-                type="email"
-                className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-slate-700">Phone (optional)</label>
-              <input
-                type="tel"
-                className="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                placeholder="+254 7XX XXX XXX"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-slate-700">Message</label>
-              <textarea
-                className="mt-2 min-h-32 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                placeholder="How can we help you?"
-              />
-            </div>
-            <button
-              type="button"
-              className="w-full rounded-lg bg-blue-900 py-3 text-sm font-bold text-white transition hover:bg-blue-800"
-            >
-              Send Message
-            </button>
-            <p className="text-center text-xs text-slate-500">
-              Form submission will be connected to Firestore + email notifications.
-            </p>
-          </div>
-        </form>
+        <ContactForm />
       </div>
     </PageShell>
   );
