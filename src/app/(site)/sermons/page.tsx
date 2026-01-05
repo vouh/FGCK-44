@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import { placeholderSermons } from "@/lib/placeholders";
+import PageTracker from "@/components/site/PageTracker";
 
 function SermonCard({
   title,
@@ -59,6 +60,9 @@ function SermonCard({
 export default function SermonsPage() {
   return (
     <PageShell title="Sermons" description="Listen to inspiring messages from our pastors. Browse by topic, speaker, or series.">
+      {/* Page Analytics Tracking */}
+      <PageTracker page="sermons" />
+      
       {/* Featured Sermon */}
       <div className="mb-10 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950 to-blue-900 text-white">
         <div className="grid md:grid-cols-2">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import { placeholderPosts } from "@/lib/placeholders";
+import PageTracker from "@/components/site/PageTracker";
 
 function BlogCard({
   title,
@@ -39,6 +40,9 @@ function BlogCard({
 export default function BlogPage() {
   return (
     <PageShell title="Blog" description="Read devotionals, announcements, and updates from our church family.">
+      {/* Page Analytics Tracking */}
+      <PageTracker page="blog" />
+      
       {/* Featured Post */}
       <div className="mb-10 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="grid md:grid-cols-2">

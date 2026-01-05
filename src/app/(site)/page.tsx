@@ -5,6 +5,7 @@ import { Container } from "@/components/site/Container";
 import ScrollFadeIn from "@/components/site/ScrollFadeIn";
 import { site } from "@/lib/site";
 import HeroTextImageCarousel from "@/components/site/HeroTextImageCarousel";
+import PageTracker from "@/components/site/PageTracker";
 
 function FeatureCard({
   title,
@@ -61,6 +62,9 @@ function QuickInfoCard({ title, children, delay = 0 }: { title: string; children
 export default function HomePage() {
   return (
     <>
+      {/* Page Analytics Tracking */}
+      <PageTracker page="home" />
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 w-full">
         <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
