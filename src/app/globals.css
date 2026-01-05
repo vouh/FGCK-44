@@ -3,33 +3,45 @@
   width: 8px;
   background: #1e3a8a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, #22d3ee 40%, #16a34a 100%);
   border-radius: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #1e3a8a;
 }
+
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a; /* slate-900 */
+  --foreground: #0f172a;
+  /* slate-900 */
   --card: #ffffff;
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #1e3a8a; /* blue-900 */
-  --primary-foreground: #f8fafc; /* slate-50 */
-  --secondary: #f1f5f9; /* slate-100 */
+  --primary: #1e3a8a;
+  /* blue-900 */
+  --primary-foreground: #f8fafc;
+  /* slate-50 */
+  --secondary: #f1f5f9;
+  /* slate-100 */
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
-  --muted-foreground: #64748b; /* slate-500 */
+  --muted-foreground: #64748b;
+  /* slate-500 */
   --accent: #f1f5f9;
   --accent-foreground: #0f172a;
-  --destructive: #ef4444; /* red-500 */
+  --destructive: #ef4444;
+  /* red-500 */
   --destructive-foreground: #f8fafc;
-  --border: #e2e8f0; /* slate-200 */
+  --border: #e2e8f0;
+  /* slate-200 */
   --input: #e2e8f0;
   --ring: #1e3a8a;
   --radius: 0.5rem;
@@ -45,21 +57,28 @@
 }
 
 .dark {
-  --background: #020617; /* slate-950 */
-  --foreground: #f8fafc; /* slate-50 */
-  --card: #0f172a; /* slate-900 */
+  --background: #020617;
+  /* slate-950 */
+  --foreground: #f8fafc;
+  /* slate-50 */
+  --card: #0f172a;
+  /* slate-900 */
   --card-foreground: #f8fafc;
   --popover: #0f172a;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6; /* blue-500 */
+  --primary: #3b82f6;
+  /* blue-500 */
   --primary-foreground: #0f172a;
-  --secondary: #1e293b; /* slate-800 */
+  --secondary: #1e293b;
+  /* slate-800 */
   --secondary-foreground: #f8fafc;
   --muted: #1e293b;
-  --muted-foreground: #94a3b8; /* slate-400 */
+  --muted-foreground: #94a3b8;
+  /* slate-400 */
   --accent: #1e293b;
   --accent-foreground: #f8fafc;
-  --destructive: #7f1d1d; /* red-900 */
+  --destructive: #7f1d1d;
+  /* red-900 */
   --destructive-foreground: #f8fafc;
   --border: #1e293b;
   --input: #1e293b;
@@ -103,18 +122,32 @@ html {
 }
 
 /* Stagger animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 /* Hover lift effect */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .hover-lift:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
-
