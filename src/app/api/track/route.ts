@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/features/firebase/firebaseConfig";
 
+export const runtime = "nodejs";
+
 // Validate page value
 function isValidPage(page: unknown): page is "home" | "blog" | "sermons" {
   return page === "home" || page === "blog" || page === "sermons";
@@ -78,9 +80,21 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("[API /track] Error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    const code = typeof error === "object" && error !== null && "code" in error ? (error as any).code : undefined;
+
+    console.error("[API /track] Error:", { code, message, error });
+
+    // If Firestore rules block the write, surface a clearer status.
+    if (code === "permission-denied") {
+      return NextResponse.json(
+        { error: "Permission denied", code },
+        { status: 403 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", code },
       { status: 500 }
     );
   }

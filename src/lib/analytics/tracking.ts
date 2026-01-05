@@ -86,7 +86,12 @@ export async function trackPageVisit(page: "home" | "blog" | "sermons"): Promise
     });
     
     if (!response.ok) {
-      console.error("[Analytics] Failed to track visit:", response.statusText);
+      const text = await response.text().catch(() => "");
+      console.error("[Analytics] Failed to track visit:", {
+        status: response.status,
+        statusText: response.statusText,
+        body: text,
+      });
     } else {
       console.log(`[Analytics] Tracked visit to ${page}`);
     }
