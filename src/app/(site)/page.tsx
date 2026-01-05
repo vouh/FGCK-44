@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import HeroCarousel from "@/components/site/HeroCarousel";
 import Link from "next/link";
@@ -6,6 +8,19 @@ import ScrollFadeIn from "@/components/site/ScrollFadeIn";
 import { site } from "@/lib/site";
 import HeroTextImageCarousel from "@/components/site/HeroTextImageCarousel";
 import PageTracker from "@/components/site/PageTracker";
+import { useState, useEffect } from "react";
+import { 
+  getRecentBlogs, 
+  getRecentEvents, 
+  getRecentSermons, 
+  getRecentProjects,
+  Blog,
+  Event,
+  Sermon,
+  Project,
+  slugify
+} from "@/lib/firestore";
+import { Loader2 } from "lucide-react";
 
 function FeatureCard({
   title,
@@ -59,7 +74,42 @@ function QuickInfoCard({ title, children, delay = 0 }: { title: string; children
   );
 }
 
+function formatDate(dateString: string): { day: string; month: string } {
+  const date = new Date(dateString);
+  const day = date.getDate().toString();
+  const month = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+  return { day, month };
+}
+
 export default function HomePage() {
+  const [latestSermon, setLatestSermon] = useState<Sermon | null>(null);
+  const [latestEvent, setLatestEvent] = useState<Event | null>(null);
+  const [latestProject, setLatestProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadLatestData() {
+      try {
+        const [sermons, events, projects] = await Promise.all([
+          getRecentSermons(1),
+          getRecentEvents(1),
+          getRecentProjects(1),
+        ]);
+        
+        setLatestSermon(sermons[0] || null);
+        setLatestEvent(events[0] || null);
+        setLatestProject(projects[0] || null);
+      } catch (error) {
+        console.error("Error loading latest data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadLatestData();
+  }, []);
+
+  const eventDate = latestEvent?.date ? formatDate(latestEvent.date) : { day: "--", month: "TBD" };
+
   return (
     <>
       {/* Page Analytics Tracking */}
@@ -106,74 +156,115 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Quick Info Section */}
+      {/* Quick Info Section - Latest Updates */}
       <section className="bg-gradient-to-b from-slate-50 to-white py-20">
         <Container>
           <div className="mb-12 text-center">
             <h2 className="mt-2 text-3xl font-black text-slate-900">Latest Updates</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <QuickInfoCard title="Latest Sermon" delay={0}>
-              <div className="group relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-slate-100">
-                <Image src="/images/placeholder-sermon.svg" alt="Latest sermon" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
-                  <div className="rounded-full bg-white/90 p-3">
-                    <svg className="h-6 w-6 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <h5 className="text-lg font-bold text-slate-900">Tremendous Divine Grace</h5>
-              <p className="mt-1 text-sm text-slate-600">Pastor (placeholder) • Dec 2025</p>
-              <Link href="/sermons" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
-                Watch now 
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </QuickInfoCard>
-
-            <QuickInfoCard title="Upcoming Event" delay={100}>
-              <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-green-100 to-blue-100">
-                <Image src="/images/placeholder-event.svg" alt="Upcoming event" fill className="object-cover" />
-                <div className="absolute top-3 left-3 rounded-lg bg-white px-3 py-1 shadow-lg">
-                  <div className="text-xs font-bold text-red-600">SUN</div>
-                  <div className="text-lg font-black text-slate-900">22</div>
-                </div>
-              </div>
-              <h5 className="text-lg font-bold text-slate-900">Sunday Worship Service</h5>
-              <p className="mt-1 text-sm text-slate-600">This Sunday • 9:00 AM</p>
-              <Link href="/events" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
-                View all events 
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </QuickInfoCard>
-
-            <QuickInfoCard title="Featured Project" delay={200}>
-              <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-100">
-                <Image src="/images/placeholder-project.svg" alt="Featured project" fill className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 flex-1 rounded-full bg-white/30">
-                      <div className="h-full w-3/4 rounded-full bg-green-400" />
+          
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            </div>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-3">
+              {/* Latest Sermon */}
+              <QuickInfoCard title="Latest Sermon" delay={0}>
+                {latestSermon ? (
+                  <>
+                    <div className="group relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-slate-100">
+                      <Image src="/images/placeholder-sermon.svg" alt="Latest sermon" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+                        <div className="rounded-full bg-white/90 p-3">
+                          <svg className="h-6 w-6 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-xs font-bold text-white">75%</span>
-                  </div>
-                </div>
-              </div>
-              <h5 className="text-lg font-bold text-slate-900">Church Development Project</h5>
-              <p className="mt-1 text-sm text-slate-600">Status: Active</p>
-              <Link href="/projects" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
-                Learn how to help 
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </QuickInfoCard>
-          </div>
+                    <h5 className="text-lg font-bold text-slate-900">{latestSermon.title}</h5>
+                    <p className="mt-1 text-sm text-slate-600">{latestSermon.date || "No date"}</p>
+                    <Link href={`/sermons/${slugify(latestSermon.title)}`} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                      Watch now 
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </>
+                ) : (
+                  <p className="text-slate-500 text-sm">No sermons available yet.</p>
+                )}
+              </QuickInfoCard>
+
+              {/* Upcoming Event */}
+              <QuickInfoCard title="Upcoming Event" delay={100}>
+                {latestEvent ? (
+                  <>
+                    <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-green-100 to-blue-100">
+                      <Image 
+                        src={latestEvent.image || "/images/placeholder-event.svg"} 
+                        alt="Upcoming event" 
+                        fill 
+                        className="object-cover" 
+                      />
+                      <div className="absolute top-3 left-3 rounded-lg bg-white px-3 py-1 shadow-lg">
+                        <div className="text-xs font-bold text-red-600">{eventDate.month}</div>
+                        <div className="text-lg font-black text-slate-900">{eventDate.day}</div>
+                      </div>
+                    </div>
+                    <h5 className="text-lg font-bold text-slate-900">{latestEvent.title}</h5>
+                    <p className="mt-1 text-sm text-slate-600">{latestEvent.date || "Date TBD"}</p>
+                    <Link href="/events" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                      View all events 
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </>
+                ) : (
+                  <p className="text-slate-500 text-sm">No events available yet.</p>
+                )}
+              </QuickInfoCard>
+
+              {/* Featured Project */}
+              <QuickInfoCard title="Featured Project" delay={200}>
+                {latestProject ? (
+                  <>
+                    <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-100">
+                      <Image 
+                        src={latestProject.image || "/images/placeholder-project.svg"} 
+                        alt="Featured project" 
+                        fill 
+                        className="object-cover" 
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div className="flex items-center gap-2">
+                          <div className="h-1.5 flex-1 rounded-full bg-white/30">
+                            <div 
+                              className="h-full rounded-full bg-green-400" 
+                              style={{ width: `${latestProject.progress || 0}%` }}
+                            />
+                          </div>
+                          <span className="text-xs font-bold text-white">{latestProject.progress || 0}%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <h5 className="text-lg font-bold text-slate-900">{latestProject.title}</h5>
+                    <p className="mt-1 text-sm text-slate-600">Status: Active</p>
+                    <Link href={`/projects/${slugify(latestProject.title)}`} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                      Learn how to help 
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </>
+                ) : (
+                  <p className="text-slate-500 text-sm">No projects available yet.</p>
+                )}
+              </QuickInfoCard>
+            </div>
+          )}
         </Container>
       </section>
 

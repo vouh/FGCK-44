@@ -1,26 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { initializeApp, getApps, cert } from "firebase-admin/app";
-import { getFirestore, FieldValue } from "firebase-admin/firestore";
-
-// Initialize Firebase Admin SDK
-function initializeFirebaseAdmin() {
-  if (getApps().length === 0) {
-    // For development, use environment variables
-    // For production, use service account
-    const projectId = process.env.FIREBASE_PROJECT_ID || "fgck44-a89a0";
-    
-    initializeApp({
-      projectId,
-      // If you have service account credentials, add them here:
-      // credential: cert({
-      //   projectId: process.env.FIREBASE_PROJECT_ID,
-      //   clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      //   privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      // }),
-    });
-  }
-  return getFirestore();
-}
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/features/firebase/firebaseConfig";
 
 // Validate page value
 function isValidPage(page: unknown): page is "home" | "blog" | "sermons" {
@@ -63,19 +43,20 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const db = initializeFirebaseAdmin();
-    const pageVisitsRef = db.collection("pageVisits");
+    const pageVisitsRef = collection(db, "pageVisits");
     
     // Check for duplicate visit within 5 minutes
     const fiveMinutesAgo = timestamp - (5 * 60 * 1000);
-    const duplicateQuery = await pageVisitsRef
-      .where("visitorId", "==", visitorId)
-      .where("page", "==", page)
-      .where("timestamp", ">=", fiveMinutesAgo)
-      .limit(1)
-      .get();
+    const duplicateQuery = query(
+      pageVisitsRef,
+      where("visitorId", "==", visitorId),
+      where("page", "==", page),
+      where("timestamp", ">=", fiveMinutesAgo)
+    );
     
-    if (!duplicateQuery.empty) {
+    const duplicateSnapshot = await getDocs(duplicateQuery);
+    
+    if (!duplicateSnapshot.empty) {
       return NextResponse.json(
         { message: "Duplicate visit ignored" },
         { status: 200 }
@@ -90,7 +71,7 @@ export async function POST(request: NextRequest) {
       timestamp,
     };
     
-    await pageVisitsRef.add(visitData);
+    await addDoc(pageVisitsRef, visitData);
     
     return NextResponse.json(
       { message: "Visit tracked successfully" },

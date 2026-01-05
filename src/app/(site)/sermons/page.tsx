@@ -1,18 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import { placeholderSermons } from "@/lib/placeholders";
 import PageTracker from "@/components/site/PageTracker";
+import { useState, useEffect } from "react";
+import { getSermons, Sermon, slugify } from "@/lib/firestore";
+import { Loader2 } from "lucide-react";
 
 function SermonCard({
   title,
-  subtitle,
-  dateLabel,
+  description,
+  date,
   slug,
 }: {
   title: string;
-  subtitle?: string;
-  dateLabel?: string;
+  description?: string;
+  date?: string;
   slug?: string;
 }) {
   return (
@@ -34,10 +38,10 @@ function SermonCard({
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-bold text-slate-900 group-hover:text-blue-900">{title}</h3>
           <span className="shrink-0 rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-900">
-            {dateLabel}
+            {date || "No date"}
           </span>
         </div>
-        <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
+        <p className="mt-2 text-sm text-slate-600 line-clamp-2">{description}</p>
         <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
           <span className="flex items-center gap-1">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,51 +62,95 @@ function SermonCard({
 }
 
 export default function SermonsPage() {
+  const [sermons, setSermons] = useState<Sermon[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadSermons() {
+      try {
+        const data = await getSermons();
+        setSermons(data);
+      } catch (error) {
+        console.error("Error loading sermons:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadSermons();
+  }, []);
+
+  const featuredSermon = sermons[0];
+  const restSermons = sermons.slice(1);
+
   return (
     <PageShell title="Sermons" description="Listen to inspiring messages from our pastors. Browse by topic, speaker, or series.">
       {/* Page Analytics Tracking */}
       <PageTracker page="sermons" />
       
-      {/* Featured Sermon */}
-      <div className="mb-10 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950 to-blue-900 text-white">
-        <div className="grid md:grid-cols-2">
-          <div className="relative h-64 md:h-auto">
-            <Image src="/images/placeholder-sermon.svg" alt="Featured sermon" fill className="object-cover" />
-          </div>
-          <div className="flex flex-col justify-center p-8">
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-300">Featured Sermon</span>
-            <h2 className="mt-3 text-2xl font-black">Tremendous Divine Grace</h2>
-            <p className="mt-3 text-white/80">A powerful message about God&apos;s grace and love for His people.</p>
-            <div className="mt-4 flex flex-wrap gap-3 text-sm">
-              <span className="rounded-full bg-white/10 px-3 py-1">Pastor (placeholder)</span>
-              <span className="rounded-full bg-white/10 px-3 py-1">Dec 2025</span>
+      {loading ? (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        </div>
+      ) : sermons.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-lg text-slate-600">No sermons available yet.</p>
+          <p className="mt-2 text-sm text-slate-500">Check back soon for new messages!</p>
+        </div>
+      ) : (
+        <>
+          {/* Featured Sermon */}
+          {featuredSermon && (
+            <div className="mb-10 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950 to-blue-900 text-white">
+              <div className="grid md:grid-cols-2">
+                <div className="relative h-64 md:h-auto">
+                  <Image src="/images/placeholder-sermon.svg" alt="Featured sermon" fill className="object-cover" />
+                </div>
+                <div className="flex flex-col justify-center p-8">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-blue-300">Featured Sermon</span>
+                  <h2 className="mt-3 text-2xl font-black">{featuredSermon.title}</h2>
+                  <p className="mt-3 text-white/80">{featuredSermon.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                    <span className="rounded-full bg-white/10 px-3 py-1">{featuredSermon.date || "No date"}</span>
+                  </div>
+                  <Link
+                    href={`/sermons/${slugify(featuredSermon.title)}`}
+                    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-blue-950 transition hover:bg-blue-50"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    Watch Now
+                  </Link>
+                </div>
+              </div>
             </div>
-            <Link
-              href="/sermons/tremendous-divine-grace"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-blue-950 transition hover:bg-blue-50"
-            >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Watch Now
+          )}
+
+          {/* Sermon Grid */}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-xl font-bold text-slate-900">All Sermons</h3>
+            <Link href="/sermons/archive" className="text-sm font-semibold text-blue-900 hover:underline">
+              View Archive & Search →
             </Link>
           </div>
-        </div>
-      </div>
 
-      {/* Sermon Grid */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-xl font-bold text-slate-900">All Sermons</h3>
-        <Link href="/sermons/archive" className="text-sm font-semibold text-blue-900 hover:underline">
-          View Archive & Search →
-        </Link>
-      </div>
-
-      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {placeholderSermons.map((sermon) => (
-          <SermonCard key={sermon.id} {...sermon} />
-        ))}
-      </div>
+          {restSermons.length === 0 && sermons.length === 1 ? (
+            <p className="mt-4 text-slate-600">More sermons coming soon.</p>
+          ) : (
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {(restSermons.length > 0 ? restSermons : sermons).map((sermon) => (
+                <SermonCard 
+                  key={sermon.id} 
+                  title={sermon.title}
+                  description={sermon.description}
+                  date={sermon.date}
+                  slug={slugify(sermon.title)}
+                />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </PageShell>
   );
 }
