@@ -27,11 +27,11 @@ export default function AboutPage() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-blue-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-blue-950/35 to-transparent" />
+        <div className="absolute inset-0 bg-blue-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/70 via-blue-950/20 to-transparent" />
         <div className="absolute bottom-6 left-6 right-6">
           <h2 className="text-2xl font-black text-white md:text-3xl">Jesus Healing Center</h2>
-          <p className="mt-2 text-white/80">A community of faith in Githurai 44, Kenya</p>
+          <p className="mt-2 text-white/90">A community of faith in Githurai 44, Kenya</p>
         </div>
       </div>
 

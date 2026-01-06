@@ -62,14 +62,14 @@ function FeatureCard({
 function QuickInfoCard({ title, children, delay = 0 }: { title: string; children: React.ReactNode; delay?: number }) {
   return (
     <div 
-      className="hover-lift rounded-2xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up"
+      className="hover-lift rounded-2xl border border-slate-200 bg-white p-4 shadow-sm animate-fade-in-up"
       style={{ animationDelay: `${delay}ms` }}
     >
       <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-600">
         <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
         {title}
       </h4>
-      <div className="mt-4">{children}</div>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
@@ -168,8 +168,17 @@ export default function HomePage() {
               <QuickInfoCard title="Latest Sermon" delay={0}>
                 {latestSermon ? (
                   <>
-                    <div className="group relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-slate-100">
-                      <Image src="/images/placeholder-sermon.svg" alt="Latest sermon" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="group relative mb-3 h-52 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-slate-100">
+                      {latestSermon.youtubeUrl ? (
+                        <Image 
+                          src={`https://img.youtube.com/vi/${latestSermon.youtubeUrl.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
+                          alt="Latest sermon" 
+                          fill 
+                          className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                        />
+                      ) : (
+                        <Image src="/images/placeholder-sermon.svg" alt="Latest sermon" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                      )}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
                         <div className="rounded-full bg-white/90 p-3">
                           <svg className="h-6 w-6 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
@@ -180,12 +189,26 @@ export default function HomePage() {
                     </div>
                     <h5 className="text-lg font-bold text-slate-900">{latestSermon.title}</h5>
                     <p className="mt-1 text-sm text-slate-600">{latestSermon.date || "No date"}</p>
-                    <Link href={`/sermons/${slugify(latestSermon.title)}`} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
-                      Watch now 
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                    {latestSermon.youtubeUrl ? (
+                      <a 
+                        href={latestSermon.youtubeUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1"
+                      >
+                        Watch now 
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <Link href={`/sermons/${slugify(latestSermon.title)}`} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                        View sermon 
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    )}
                   </>
                 ) : (
                   <p className="text-slate-500 text-sm">No sermons available yet.</p>
@@ -196,7 +219,7 @@ export default function HomePage() {
               <QuickInfoCard title="Upcoming Event" delay={100}>
                 {latestEvent ? (
                   <>
-                    <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-green-100 to-blue-100">
+                    <div className="relative mb-3 h-52 overflow-hidden rounded-xl bg-gradient-to-br from-green-100 to-blue-100">
                       <Image 
                         src={latestEvent.image || "/images/placeholder-event.svg"} 
                         alt="Upcoming event" 
@@ -210,7 +233,7 @@ export default function HomePage() {
                     </div>
                     <h5 className="text-lg font-bold text-slate-900">{latestEvent.title}</h5>
                     <p className="mt-1 text-sm text-slate-600">{latestEvent.date || "Date TBD"}</p>
-                    <Link href="/events" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                    <Link href="/events" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
                       View all events 
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -226,7 +249,7 @@ export default function HomePage() {
               <QuickInfoCard title="Featured Project" delay={200}>
                 {latestProject ? (
                   <>
-                    <div className="relative mb-4 h-40 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-100">
+                    <div className="relative mb-3 h-52 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-100">
                       <Image 
                         src={latestProject.image || "/images/placeholder-project.svg"} 
                         alt="Featured project" 
@@ -247,7 +270,17 @@ export default function HomePage() {
                     </div>
                     <h5 className="text-lg font-bold text-slate-900">{latestProject.title}</h5>
                     <p className="mt-1 text-sm text-slate-600">Status: Active</p>
-                    <Link href={`/projects/${slugify(latestProject.title)}`} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                    <Link href={`/projects/${slugify(latestProject.title)}`} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
+                      Learn more 
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </>
+                ) : (
+                  <p className="text-slate-500 text-sm">No projects available yet.</p>
+                )}
+              </QuickInfoCard>
                       Learn how to help 
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

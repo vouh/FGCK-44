@@ -8,7 +8,8 @@ export const site = {
     addressLine: "Githurai 44, Nairobi, Kenya",
   },
   serviceTimes: [
-    { label: "Sunday Service", time: "9:00 AM" },
+    { label: "1st Service", time: "9:00am - 10:45am" },
+    { label: "2nd Service", time: "10:45am - 1:00pm" },
   ],
 };
 
