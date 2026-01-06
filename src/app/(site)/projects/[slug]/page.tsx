@@ -1,17 +1,56 @@
+"use client";
+
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import { getProjects, slugify } from "@/lib/firestore";
+import { getProjects, slugify, Project } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const projects = await getProjects();
-  const project = projects.find((p) => slugify(p.title) === slug);
+  useEffect(() => {
+    async function loadProject() {
+      try {
+        const projects = await getProjects();
+        const found = projects.find((p) => slugify(p.title) === params.slug);
+        setProject(found || null);
+      } catch (error) {
+        console.error("Error loading project:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadProject();
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <PageShell title="Loading..." description="">
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        </div>
+      </PageShell>
+    );
+  }
 
   if (!project) {
-    notFound();
+    return (
+      <PageShell title="Project Not Found" description="">
+        <div className="text-center py-12">
+          <p className="text-slate-600">This project could not be found.</p>
+          <Link href="/projects" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to projects
+          </Link>
+        </div>
+      </PageShell>
+    );
   }
 
   return (

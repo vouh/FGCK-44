@@ -1,17 +1,56 @@
+"use client";
+
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
-import { getBlogs, slugify } from "@/lib/firestore";
+import { getBlogs, slugify, Blog } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const blogs = await getBlogs();
-  const blog = blogs.find((b) => slugify(b.title) === slug);
+  useEffect(() => {
+    async function loadBlog() {
+      try {
+        const blogs = await getBlogs();
+        const found = blogs.find((b) => slugify(b.title) === params.slug);
+        setBlog(found || null);
+      } catch (error) {
+        console.error("Error loading blog:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadBlog();
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <PageShell title="Loading..." description="">
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        </div>
+      </PageShell>
+    );
+  }
 
   if (!blog) {
-    notFound();
+    return (
+      <PageShell title="Blog Post Not Found" description="">
+        <div className="text-center py-12">
+          <p className="text-slate-600">This blog post could not be found.</p>
+          <Link href="/blog" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-900">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to blog
+          </Link>
+        </div>
+      </PageShell>
+    );
   }
 
   return (
