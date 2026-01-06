@@ -5,12 +5,7 @@
     "description": "Building strong men of faith who lead their families and serve the community with integrity.",
     "image": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love. (1 Corinthians 16:13–14)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love. (1 Corinthians 16:13–14)"
   },
   {
     "id": "womens-ministry",
@@ -18,12 +13,7 @@
     "description": "Empowering women to grow in grace, fellowship together, and make a difference in God's kingdom.",
     "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "She is clothed with strength and dignity; she can laugh at the days to come. (Proverbs 31:25)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "She is clothed with strength and dignity; she can laugh at the days to come. (Proverbs 31:25)"
   },
   {
     "id": "youth-ministry",
@@ -31,12 +21,7 @@
     "description": "Inspiring the next generation to encounter God, build authentic relationships, and live out their faith.",
     "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Don't let anyone look down on you because you are young, but set an example for the believers. (1 Timothy 4:12)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "Don't let anyone look down on you because you are young, but set an example for the believers. (1 Timothy 4:12)"
   },
   {
     "id": "junior-youth",
@@ -44,38 +29,31 @@
     "description": "Guiding young teens to discover their identity in Christ and develop godly character through fellowship and biblical teaching.",
     "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Remember your Creator in the days of your youth. (Ecclesiastes 12:1)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "Remember your Creator in the days of your youth. (Ecclesiastes 12:1)"
   },
   {
     "id": "childrens-ministry",
-    "name": "Children's Ministry & Sunday School",
+    "name": "Children's Ministry",
     "description": "A fun and safe environment where kids learn about Jesus through Bible stories, songs, and play.",
     "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Let the little children come to me, and do not hinder them. (Mark 10:14)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "Let the little children come to me, and do not hinder them. (Mark 10:14)"
   },
   {
-    "id": "ushers-hospitality",
-    "name": "Ushers & Hospitality",
-    "description": "Welcoming guests with a warm smile and ensuring a smooth and organized service experience.",
+    "id": "ushers-ministry",
+    "name": "Ushers Ministry",
+    "description": "Ensuring a smooth and organized service experience by guiding congregation members and maintaining order in the house of God.",
     "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Do not forget to show hospitality to strangers. (Hebrews 13:2)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "For a day in your courts is better than a thousand elsewhere. I would rather be a doorkeeper in the house of my God than dwell in the tents of wickedness. (Psalm 84:10)"
+  },
+  {
+    "id": "hospitality-ministry",
+    "name": "Hospitality Ministry",
+    "description": "Welcoming guests with a warm smile and demonstrating God's love through kindness and service to everyone who walks through our doors.",
+    "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Do not forget to show hospitality to strangers, for by so doing some have shown hospitality to angels without knowing it. (Hebrews 13:2)"
   },
   {
     "id": "royal-queens",
@@ -83,12 +61,7 @@
     "description": "A special fellowship of women called to serve with dignity, grace, and spiritual excellence in God's kingdom.",
     "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "You are a chosen people, a royal priesthood, a holy nation. (1 Peter 2:9)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "You are a chosen people, a royal priesthood, a holy nation. (1 Peter 2:9)"
   },
   {
     "id": "media-ministry",
@@ -96,12 +69,7 @@
     "description": "Using technology and creative arts to amplify the Gospel message through video, audio, and digital platforms.",
     "image": "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "Go into all the world and preach the gospel to all creation. (Mark 16:15)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "Go into all the world and preach the gospel to all creation. (Mark 16:15)"
   },
   {
     "id": "evangelism",
@@ -109,12 +77,7 @@
     "description": "Reaching out to the lost with the life-changing message of Jesus Christ through community outreach and missions.",
     "image": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "How beautiful are the feet of those who bring good news! (Romans 10:15)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "How beautiful are the feet of those who bring good news! (Romans 10:15)"
   },
   {
     "id": "intercessory-prayer",
@@ -122,11 +85,6 @@
     "description": "Standing in the gap through fervent prayer, interceding for the church, community, and nations.",
     "image": "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900",
     "phone": "0113788919",
-    "quote": "The prayer of a righteous person is powerful and effective. (James 5:16)",
-    "gallery": [
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400"
-    ]
+    "quote": "The prayer of a righteous person is powerful and effective. (James 5:16)"
   }
 ]

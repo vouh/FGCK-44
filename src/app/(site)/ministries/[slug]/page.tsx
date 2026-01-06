@@ -11,15 +11,12 @@ type Ministry = {
   image: string;
   phone?: string;
   quote?: string;
-  gallery?: string[];
 };
 
 export default async function MinistryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const ministry = (ministriesData as Ministry[]).find((m) => m.id === slug);
   if (!ministry) notFound();
-
-  const gallery = (ministry.gallery?.length ? ministry.gallery : [ministry.image, ministry.image, ministry.image]).slice(0, 3);
 
   return (
     <PageShell title={ministry.name} description={ministry.description}>
@@ -30,25 +27,6 @@ export default async function MinistryDetailPage({ params }: { params: Promise<{
           <div className="absolute inset-0 bg-gradient-to-t from-blue-950/75 via-blue-950/25 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
             <h2 className="text-2xl font-black text-white md:text-3xl">{ministry.name}</h2>
-          </div>
-        </div>
-      </div>
-
-      {/* Gallery */}
-      <div className="grid gap-4 md:grid-cols-12">
-        <div className="relative overflow-hidden rounded-2xl bg-slate-100 md:col-span-7 md:row-span-2">
-          <div className="aspect-[4/3] md:aspect-[7/5]">
-            <Image src={gallery[0]} alt={`${ministry.name} gallery 1`} fill className="object-cover" sizes="(min-width: 768px) 60vw, 100vw" />
-          </div>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl bg-slate-100 md:col-span-5">
-          <div className="aspect-[4/3] md:aspect-[5/4]">
-            <Image src={gallery[1]} alt={`${ministry.name} gallery 2`} fill className="object-cover" sizes="(min-width: 768px) 40vw, 100vw" />
-          </div>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl bg-slate-100 md:col-span-5">
-          <div className="aspect-[4/3] md:aspect-[5/4]">
-            <Image src={gallery[2]} alt={`${ministry.name} gallery 3`} fill className="object-cover" sizes="(min-width: 768px) 40vw, 100vw" />
           </div>
         </div>
       </div>
