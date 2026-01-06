@@ -95,7 +95,7 @@ export default function HeroTextImageCarousel() {
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
 
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto py-16">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-8 sm:pt-10 lg:pt-16 pb-28 sm:pb-24 lg:pb-16">
         {/* Text */}
         <div className="w-full max-w-4xl lg:pl-16">
           <AnimatePresence mode="wait" initial={false}>
@@ -111,7 +111,7 @@ export default function HeroTextImageCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-6 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
+          <div className="mt-6 mb-16 sm:mb-20 lg:mb-0 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
             {heroSlides[index].buttons.map((btn, i) => (
               <a
                 key={i}
@@ -149,7 +149,7 @@ export default function HeroTextImageCarousel() {
         </div>
 
         {/* Arrows */}
-        <div className="absolute bottom-8 lg:bottom-6 left-1/2 -translate-x-1/2 flex gap-6 z-20">
+        <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 flex gap-6 z-20">
           <button
             aria-label="Previous image"
             onClick={() => paginate(-1)}
