@@ -5,10 +5,11 @@ import { PageShell } from "@/components/site/PageShell";
 import { getBlogs, slugify, Blog } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     async function loadBlog() {
       try {
         const blogs = await getBlogs();
-        const found = blogs.find((b) => slugify(b.title) === params.slug);
+        const found = blogs.find((b) => slugify(b.title) === slug);
         setBlog(found || null);
       } catch (error) {
         console.error("Error loading blog:", error);
@@ -25,7 +26,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       }
     }
     loadBlog();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return (

@@ -5,10 +5,11 @@ import { PageShell } from "@/components/site/PageShell";
 import { getProjects, slugify, Project } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+export default function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
     async function loadProject() {
       try {
         const projects = await getProjects();
-        const found = projects.find((p) => slugify(p.title) === params.slug);
+        const found = projects.find((p) => slugify(p.title) === slug);
         setProject(found || null);
       } catch (error) {
         console.error("Error loading project:", error);
@@ -25,7 +26,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       }
     }
     loadProject();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return (

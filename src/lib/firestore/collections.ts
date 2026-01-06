@@ -5,5 +5,5 @@ export const COLLECTIONS = {
   EVENTS: "events",
   PROJECTS: "projects",
   INBOX: "inbox",
-  // PAGE_VISITS: "pageVisits", // removed tracking
+  PAGE_VISITS: "pageVisits",
 } as const;

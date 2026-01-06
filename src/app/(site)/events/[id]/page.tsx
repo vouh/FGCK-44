@@ -5,10 +5,11 @@ import { PageShell } from "@/components/site/PageShell";
 import { getEvents, Event } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
 
-export default function EventDetailPage({ params }: { params: { id: string } }) {
+export default function EventDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
     async function loadEvent() {
       try {
         const events = await getEvents();
-        const found = events.find((e) => e.id === params.id);
+        const found = events.find((e) => e.id === id);
         setEvent(found || null);
       } catch (error) {
         console.error("Error loading event:", error);
@@ -25,7 +26,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       }
     }
     loadEvent();
-  }, [params.id]);
+  }, [id]);
 
   if (loading) {
     return (

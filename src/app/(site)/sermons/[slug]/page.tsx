@@ -5,10 +5,11 @@ import { PageShell } from "@/components/site/PageShell";
 import { getSermons, slugify, Sermon } from "@/lib/firestore";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
 
-export default function SermonDetailPage({ params }: { params: { slug: string } }) {
+export default function SermonDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [sermon, setSermon] = useState<Sermon | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,7 @@ export default function SermonDetailPage({ params }: { params: { slug: string } 
     async function loadSermon() {
       try {
         const sermons = await getSermons();
-        const found = sermons.find((s) => slugify(s.title) === params.slug);
+        const found = sermons.find((s) => slugify(s.title) === slug);
         setSermon(found || null);
       } catch (error) {
         console.error("Error loading sermon:", error);
@@ -25,7 +26,7 @@ export default function SermonDetailPage({ params }: { params: { slug: string } 
       }
     }
     loadSermon();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return (
