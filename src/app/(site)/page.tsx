@@ -115,12 +115,8 @@ export default function HomePage() {
       {/* Tracking removed */}
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 w-full">
-        <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
-        <div className="absolute inset-0 bg-[url('/images/hero-bg.svg')] bg-cover bg-center opacity-20" />
-        <div className="relative w-full min-h-[75vh] flex items-center justify-center py-20">
-          <HeroTextImageCarousel />
-        </div>
+      <section className="relative overflow-hidden w-full">
+        <HeroTextImageCarousel />
       </section>
 
       {/* Service Times Banner */}

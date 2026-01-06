@@ -58,58 +58,61 @@ export default function GivePage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           }
-          title="M-Pesa Paybill"
+          title="Tithes (Lipa na M-Pesa Paybill)"
         >
           <div className="rounded-lg bg-slate-50 p-3">
             <div className="flex justify-between">
               <span className="text-slate-500">Paybill:</span>
-              <span className="font-bold text-slate-900">(placeholder)</span>
+              <span className="font-bold text-slate-900">544600</span>
             </div>
             <div className="mt-1 flex justify-between">
               <span className="text-slate-500">Account:</span>
-              <span className="font-bold text-slate-900">(placeholder)</span>
+              <span className="font-bold text-slate-900">T77330#NAME</span>
             </div>
           </div>
-          <p className="text-xs text-slate-500">Go to M-Pesa → Lipa na M-Pesa → Paybill</p>
+          <p className="text-xs text-slate-500">Go to M-Pesa → Lipa na M-Pesa → Paybill. Replace NAME with your name.</p>
         </PaymentMethodCard>
 
         <PaymentMethodCard
           icon={
             <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           }
-          title="Bank Transfer"
+          title="Offering (Lipa na M-Pesa Paybill)"
         >
-          <div className="rounded-lg bg-slate-50 p-3 space-y-1">
-            <div className="flex justify-between">
-              <span className="text-slate-500">Bank:</span>
-              <span className="font-bold text-slate-900">(placeholder)</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-slate-500">Account:</span>
-              <span className="font-bold text-slate-900">(placeholder)</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-slate-500">Branch:</span>
-              <span className="font-bold text-slate-900">(placeholder)</span>
-            </div>
-          </div>
-        </PaymentMethodCard>
-
-        <PaymentMethodCard
-          icon={
-            <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          }
-          title="In-Person"
-        >
-          <p>Give your tithes and offerings during our Sunday services or visit the church office.</p>
           <div className="rounded-lg bg-slate-50 p-3">
-            <div className="text-xs font-semibold text-slate-500">Office Hours</div>
-            <div className="font-bold text-slate-900">Mon-Fri: 9AM - 5PM</div>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Paybill:</span>
+              <span className="font-bold text-slate-900">544600</span>
+            </div>
+            <div className="mt-1 flex justify-between">
+              <span className="text-slate-500">Account:</span>
+              <span className="font-bold text-slate-900">F77330#NAME</span>
+            </div>
           </div>
+          <p className="text-xs text-slate-500">Replace NAME with your name.</p>
+        </PaymentMethodCard>
+
+        <PaymentMethodCard
+          icon={
+            <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          }
+          title="Projects (Lipa na M-Pesa Paybill)"
+        >
+          <div className="rounded-lg bg-slate-50 p-3">
+            <div className="flex justify-between">
+              <span className="text-slate-500">Paybill:</span>
+              <span className="font-bold text-slate-900">544600</span>
+            </div>
+            <div className="mt-1 flex justify-between">
+              <span className="text-slate-500">Account:</span>
+              <span className="font-bold text-slate-900">P77330#NAME</span>
+            </div>
+          </div>
+          <p className="text-xs text-slate-500">Replace NAME with your name.</p>
         </PaymentMethodCard>
       </div>
 

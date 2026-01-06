@@ -55,7 +55,14 @@ export default function MinistriesPage() {
             </Link>
           </div>
           <div className="relative h-48 overflow-hidden rounded-xl">
-            <Image src="/images/placeholder-ministry.svg" alt="Ministries" fill className="object-cover" />
+            <Image
+              src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
+              alt="Ministries"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 40vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-blue-950/20" />
           </div>
         </div>
       </div>
@@ -66,8 +73,8 @@ export default function MinistriesPage() {
         <button
           aria-label="Scroll ministries left"
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border-2 border-blue-700 rounded-full shadow p-1.5 hover:bg-blue-700 hover:text-white transition text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ marginLeft: '-1rem', width: '2rem', height: '2rem' }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/90 shadow-lg p-2 text-blue-900 transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ marginLeft: '-0.75rem' }}
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -76,8 +83,7 @@ export default function MinistriesPage() {
         {/* Ministries Scrollable Bar */}
         <div
           ref={scrollRef}
-          className="flex gap-3 overflow-x-auto pb-2 hide-scrollbar scroll-smooth min-h-[170px] sm:min-h-[180px] md:min-h-[190px]"
-          style={{ scrollBehavior: 'smooth', background: 'linear-gradient(90deg, #2563eb22 0%, #fff 100%)', borderRadius: '1.5rem', border: '2px solid #2563eb' }}
+          className="hide-scrollbar flex gap-3 overflow-x-auto pb-2 scroll-smooth min-h-[170px] sm:min-h-[180px] md:min-h-[190px] rounded-2xl bg-white/70 shadow-sm px-2"
         >
           {ministriesData.map((m) => (
             <MinistryCard key={m.id} {...m} />
@@ -87,8 +93,8 @@ export default function MinistriesPage() {
         <button
           aria-label="Scroll ministries right"
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border-2 border-blue-700 rounded-full shadow p-1.5 hover:bg-blue-700 hover:text-white transition text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ marginRight: '-1rem', width: '2rem', height: '2rem' }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/90 shadow-lg p-2 text-blue-900 transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ marginRight: '-0.75rem' }}
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

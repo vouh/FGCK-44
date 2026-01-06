@@ -3,36 +3,78 @@
     "id": "mens-ministry",
     "name": "Men's Ministry",
     "description": "Building strong men of faith who lead their families and serve the community with integrity.",
-    "image": "https://images.unsplash.com/photo-1549488497-60e576269666?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Be watchful, stand firm in the faith, act like men, be strong. Let all that you do be done in love. (1 Corinthians 16:13–14)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400"
+    ]
   },
   {
     "id": "womens-ministry",
     "name": "Women's Ministry",
     "description": "Empowering women to grow in grace, fellowship together, and make a difference in God's kingdom.",
-    "image": "https://images.unsplash.com/photo-1576669894473-b3c16a695e26?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "She is clothed with strength and dignity; she can laugh at the days to come. (Proverbs 31:25)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400"
+    ]
   },
   {
     "id": "youth-ministry",
     "name": "Youth Ministry",
     "description": "Inspiring the next generation to encounter God, build authentic relationships, and live out their faith.",
-    "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Don’t let anyone look down on you because you are young, but set an example for the believers. (1 Timothy 4:12)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400"
+    ]
   },
   {
     "id": "childrens-ministry",
     "name": "Children's Ministry",
     "description": "A fun and safe environment where kids learn about Jesus through Bible stories, songs, and play.",
-    "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Let the little children come to me, and do not hinder them. (Mark 10:14)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400"
+    ]
   },
   {
     "id": "worship-ministry",
     "name": "Worship Team",
     "description": "Leading the congregation in spirit-filled worship through music, song, and creative arts.",
-    "image": "https://images.unsplash.com/photo-1510590337019-5ef2d3977e2f?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Worship the Lord with gladness; come before him with joyful songs. (Psalm 100:2)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
+    ]
   },
   {
     "id": "ushering-ministry",
     "name": "Ushering & Hospitality",
     "description": "Welcoming guests with a warm smile and ensuring a smooth and organized service experience.",
-    "image": "https://images.unsplash.com/photo-1529267107722-a8c6913c7c25?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
+    "phone": "0113788919",
+    "quote": "Do not forget to show hospitality to strangers. (Hebrews 13:2)",
+    "gallery": [
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1400"
+    ]
   }
 ]

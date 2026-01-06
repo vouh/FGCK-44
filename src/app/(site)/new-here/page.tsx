@@ -23,8 +23,15 @@ export default function NewHerePage() {
               Let Us Know You&apos;re Coming
             </Link>
           </div>
-          <div className="relative hidden h-64 md:block md:h-auto">
-            <Image src="/images/hero-bg.svg" alt="Welcome" fill className="object-cover opacity-50" />
+          <div className="relative h-56 sm:h-64 md:h-auto">
+            <Image
+              src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1600"
+              alt="Welcome"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-blue-950/40" />
           </div>
         </div>
       </div>
@@ -103,8 +110,8 @@ export default function NewHerePage() {
           <div className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 font-bold">2</div>
             <div>
-              <h4 className="font-bold text-slate-900">Come As You Are</h4>
-              <p className="mt-1 text-sm text-slate-600">No dress code. Wear what makes you comfortable.</p>
+              <h4 className="font-bold text-slate-900">We Love Visitors</h4>
+              <p className="mt-1 text-sm text-slate-600">You&apos;ll be warmly welcomed—feel free to ask anyone for help or directions.</p>
             </div>
           </div>
           <div className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5">
