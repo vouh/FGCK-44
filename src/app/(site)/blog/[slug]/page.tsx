@@ -17,7 +17,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <PageShell
       title={blog.title}
-      description={blog.excerpt || "Read this blog post"}
+      description={blog.subheading || "Read this blog post"}
     >
       <article className="grid gap-6">
         {/* Featured Image */}
@@ -35,19 +35,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Blog Meta */}
         <div className="rounded-2xl border border-blue-900/10 bg-white p-6 shadow-sm">
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
-            {blog.author && (
-              <div>
-                <span className="font-semibold text-slate-900">By:</span> {blog.author}
-              </div>
-            )}
             {blog.date && (
               <div>
                 <span className="font-semibold text-slate-900">Posted:</span> {blog.date}
-              </div>
-            )}
-            {blog.category && (
-              <div className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-900">
-                {blog.category}
               </div>
             )}
           </div>
@@ -55,13 +45,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Blog Content */}
           <div className="mt-6 border-t border-slate-200 pt-6">
             <div className="prose prose-slate max-w-none">
-              {blog.content ? (
-                <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-              ) : (
-                <p className="text-sm leading-relaxed text-slate-600 whitespace-pre-wrap">
-                  {blog.excerpt || "No content available."}
-                </p>
-              )}
+              <div dangerouslySetInnerHTML={{ __html: blog.content }} />
             </div>
           </div>
 

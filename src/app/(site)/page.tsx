@@ -169,9 +169,9 @@ export default function HomePage() {
                 {latestSermon ? (
                   <>
                     <div className="group relative mb-3 h-52 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-slate-100">
-                      {latestSermon.youtubeUrl ? (
+                      {latestSermon.youtube ? (
                         <Image 
-                          src={`https://img.youtube.com/vi/${latestSermon.youtubeUrl.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
+                          src={`https://img.youtube.com/vi/${latestSermon.youtube.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
                           alt="Latest sermon" 
                           fill 
                           className="object-cover transition-transform duration-500 group-hover:scale-110" 
@@ -189,9 +189,9 @@ export default function HomePage() {
                     </div>
                     <h5 className="text-lg font-bold text-slate-900">{latestSermon.title}</h5>
                     <p className="mt-1 text-sm text-slate-600">{latestSermon.date || "No date"}</p>
-                    {latestSermon.youtubeUrl ? (
+                    {latestSermon.youtube ? (
                       <a 
-                        href={latestSermon.youtubeUrl} 
+                        href={latestSermon.youtube} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1"
@@ -272,16 +272,6 @@ export default function HomePage() {
                     <p className="mt-1 text-sm text-slate-600">Status: Active</p>
                     <Link href={`/projects/${slugify(latestProject.title)}`} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-900 transition-transform hover:translate-x-1">
                       Learn more 
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </>
-                ) : (
-                  <p className="text-slate-500 text-sm">No projects available yet.</p>
-                )}
-              </QuickInfoCard>
-                      Learn how to help 
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>

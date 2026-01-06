@@ -51,19 +51,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           )}
 
           <div className="grid gap-4 text-sm text-slate-600">
-            {project.status && (
+            {project.deadline && (
               <div>
-                <span className="font-semibold text-slate-900">Status:</span>{' '}
-                <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-bold ${
-                  project.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-slate-100 text-slate-800'
-                }`}>
-                  {project.status}
-                </span>
-              </div>
-            )}
-            {project.timeline && (
-              <div>
-                <span className="font-semibold text-slate-900">Timeline:</span> {project.timeline}
+                <span className="font-semibold text-slate-900">Deadline:</span> {project.deadline}
               </div>
             )}
           </div>
@@ -77,14 +67,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           )}
 
-          {project.impact && (
-            <div className="mt-6 border-t border-slate-200 pt-6">
-              <div className="text-sm font-extrabold text-blue-950">Impact</div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-wrap">
-                {project.impact}
-              </p>
-            </div>
-          )}
+
 
           {/* How to Support */}
           <div className="mt-6 rounded-xl bg-blue-50 p-4">
