@@ -15,7 +15,7 @@ export default function PastorsPage() {
           {/* Pastor Image */}
           <div className="relative h-80 lg:h-full min-h-[400px]">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+              src="/images/pastor.png"
               alt="Pastor John Ngaruiya"
               fill
               className="object-cover"
@@ -27,11 +27,11 @@ export default function PastorsPage() {
           {/* Pastor Info */}
           <div className="relative flex flex-col justify-center p-8 lg:p-12">
             <span className="inline-flex w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
-              Senior Pastor
+              Church Pastor
             </span>
             <h2 className="mt-4 text-3xl font-black lg:text-4xl">Pastor John Ngaruiya</h2>
             <p className="mt-6 text-lg leading-relaxed text-white/80">
-              Pastor John Ngaruiya has been faithfully serving as the Senior Pastor of FGCK Githurai 44 
+              Pastor John Ngaruiya has been faithfully serving as the Pastor of FGCK Githurai 44 
               (Jesus Healing Center) for many years. His dedication to preaching the Word of God and 
               shepherding our congregation has been a blessing to countless families in our community.
             </p>
