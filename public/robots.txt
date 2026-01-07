@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.fgck-githurai44.com
+
+# Sitemaps
+Sitemap: https://www.fgck-githurai44.com/sitemap.xml
