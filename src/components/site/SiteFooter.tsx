@@ -58,7 +58,10 @@ export function SiteFooter() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>{site.contact.addressLine}</span>
+                <div>
+                  <div>{site.contact.addressLine}</div>
+                  <div className="mt-1 text-blue-300">P.O. BOX {site.contact.poBox}</div>
+                </div>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/80">
                 <svg className="h-5 w-5 shrink-0 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

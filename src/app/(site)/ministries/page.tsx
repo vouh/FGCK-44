@@ -1,18 +1,31 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import ministriesData from "@/lib/ministries.json";
 import { useRef } from "react";
+import { ResponsiveImage } from "@/components/site/ResponsiveImage";
 
-function MinistryCard({ name, description, image, id }: { name: string; description: string; image: string; id: string }) {
+function MinistryCard({
+  name,
+  description,
+  image,
+  images,
+  id,
+}: {
+  name: string;
+  description: string;
+  image: string;
+  images?: string[];
+  id: string;
+}) {
+  const displayImage = images?.[0] || image;
   return (
     <Link
       href={`/ministries/${id}`}
       className="group min-w-[260px] max-w-xs flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md mx-2"
     >
       <div className="relative h-40 bg-slate-100">
-        <Image src={image} alt={name} fill className="object-cover" />
+        <ResponsiveImage src={displayImage} alt={name} fill fit="containOnMobile" className="bg-slate-100" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-lg font-bold text-white group-hover:text-blue-200">{name}</h3>
@@ -55,11 +68,11 @@ export default function MinistriesPage() {
             </Link>
           </div>
           <div className="relative h-48 overflow-hidden rounded-xl">
-            <Image
+            <ResponsiveImage
               src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
               alt="Ministries"
               fill
-              className="object-cover"
+              fit="containOnMobile"
               sizes="(min-width: 768px) 40vw, 100vw"
             />
             <div className="absolute inset-0 bg-blue-950/20" />

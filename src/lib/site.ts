@@ -6,6 +6,7 @@ export const site = {
     phone: "0113788919",
     email: "fgckgithurai44@gmail.com",
     addressLine: "Githurai 44, Nairobi, Kenya",
+    poBox: "65941-00607",
   },
   serviceTimes: [
     { label: "1st Service", time: "9:00am - 10:45am" },

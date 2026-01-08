@@ -16,6 +16,7 @@ export interface Sermon {
   title: string;
   description: string;
   youtube: string;
+  image?: string;
   date: string;
   createdAt: number;
   updatedAt: number;

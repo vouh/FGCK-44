@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pastor's Office",
-  description: "Meet Senior Pastor John Ngaruiya and our pastoral team at Full Gospel Church Githurai 44.",
+  description: "Meet Pastor Joseph Ngaruiya John and our pastoral team at Full Gospel Church Githurai 44.",
 };
 
 export default function PastorsPage() {
@@ -16,41 +16,56 @@ export default function PastorsPage() {
       description="Meet our senior pastor and learn about pastoral care at FGCK Githurai 44."
     >
       {/* Pastor Profile */}
-      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-900 text-white shadow-xl animate-fade-in">
+      <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950 to-blue-900 text-white shadow-2xl animate-fade-in border border-white/10">
         <div className="grid lg:grid-cols-2">
           {/* Pastor Image */}
-          <div className="relative h-80 lg:h-full min-h-[400px]">
+          <div className="relative h-96 lg:h-full min-h-[500px]">
             <Image
               src="/images/pastor.png"
-              alt="Pastor John Ngaruiya"
+              alt="Pastor Joseph Ngaruiya John"
               fill
-              className="object-cover"
+              className="object-contain lg:object-cover bg-blue-900"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-blue-950/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-blue-950/60" />
           </div>
 
           {/* Pastor Info */}
-          <div className="relative flex flex-col justify-center p-8 lg:p-12">
-            <span className="inline-flex w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
-              Church Pastor
+          <div className="relative flex flex-col justify-center p-10 lg:p-16">
+            <span className="inline-flex w-fit rounded-full bg-blue-600 px-4 py-1 text-xs font-black uppercase tracking-[0.2em] shadow-lg">
+              Senior Pastor
             </span>
-            <h2 className="mt-4 text-3xl font-black lg:text-4xl">Pastor John Ngaruiya</h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/80">
-              Pastor John Ngaruiya has been faithfully serving as the Pastor of FGCK Githurai 44 
-              (Jesus Healing Center) for many years. His dedication to preaching the Word of God and 
-              shepherding our congregation has been a blessing to countless families in our community.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-white/80">
-              With a heart for souls and a passion for spiritual growth, Pastor Ngaruiya leads our 
-              church with wisdom, love, and unwavering faith. Under his leadership, our church has 
-              grown into a vibrant community of believers committed to serving Christ.
-            </p>
+            <h2 className="mt-6 text-4xl font-black lg:text-6xl tracking-tight">Pastor Joseph Ngaruiya John</h2>
+            
+            <div className="mt-8 space-y-6">
+              <p className="text-xl leading-relaxed text-white/90 font-medium">
+                Pastor Joseph Ngaruiya John is a dedicated servant of God with a profound calling to shepherd the flock 
+                at FGCK Githurai 44 (Jesus Healing Center). He is a holder of a <span className="text-blue-300 font-bold">Bachelor of Arts in Theology</span> 
+                and has dedicated his life to teaching the uncompromised Word of God.
+              </p>
+              
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl bg-white/5 p-4 border border-white/10 backdrop-blur-md">
+                  <div className="text-blue-300 text-sm font-bold uppercase tracking-wider">Family Life</div>
+                  <p className="mt-1 text-white/80">Married to <span className="font-bold text-white">Prisca Wambui Ngaruiya</span> for over 35 years.</p>
+                </div>
+                <div className="rounded-2xl bg-white/5 p-4 border border-white/10 backdrop-blur-md">
+                  <div className="text-blue-300 text-sm font-bold uppercase tracking-wider">Legacy</div>
+                  <p className="mt-1 text-white/80">A father of <span className="font-bold text-white">3 children</span> and a grandfather of <span className="font-bold text-white">4</span>.</p>
+                </div>
+              </div>
+
+              <p className="text-lg leading-relaxed text-white/80">
+                With wisdom, love, and unwavering faith, Pastor Ngaruiya continues to lead our vibrant community, 
+                sharing the life-changing message of Jesus Christ and fostering spiritual growth in Githurai and beyond.
+              </p>
+            </div>
+
             <a
               href={`mailto:${site.contact.email}`}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition-colors hover:text-white"
+              className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white/10 px-6 py-4 text-base font-bold text-white transition-all hover:bg-white/20 hover:translate-y-[-2px]"
             >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               {site.contact.email}

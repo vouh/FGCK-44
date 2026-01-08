@@ -35,7 +35,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900">Address</h4>
-                    <p className="mt-1 text-sm text-slate-600">{site.contact.addressLine}</p>
+                    <p className="mt-1 text-sm text-slate-600">
+                      {site.contact.addressLine}<br />
+                      P.O. BOX {site.contact.poBox}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
