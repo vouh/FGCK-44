@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Give",
+  description: "Support the mission and work of Full Gospel Church Githurai 44 through tithes and offerings.",
+};
 
 function PaymentMethodCard({
   icon,

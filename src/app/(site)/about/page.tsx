@@ -1,5 +1,11 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site/PageShell";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about our mission, vision, and the leadership of Full Gospel Church Githurai 44.",
+};
 
 function LeaderCard({ name, role }: { name: string; role: string }) {
   return (

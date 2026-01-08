@@ -2,6 +2,12 @@ import Image from "next/image";
 import { PageShell } from "@/components/site/PageShell";
 import { site } from "@/lib/site";
 import ContactForm from "@/components/site/ContactForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Have questions? We'd love to hear from you. Reach out to FGCK Githurai 44 anytime.",
+};
 
 export default function ContactPage() {
   return (

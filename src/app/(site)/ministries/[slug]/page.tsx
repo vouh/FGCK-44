@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/site/PageShell";
 import ministriesData from "@/lib/ministries.json";
+import type { Metadata } from "next";
 
 type Ministry = {
   id: string;
@@ -12,6 +13,25 @@ type Ministry = {
   phone?: string;
   quote?: string;
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const ministry = (ministriesData as Ministry[]).find((m) => m.id === slug);
+  if (!ministry) {
+    return {
+      title: "Ministry not found",
+    };
+  }
+  return {
+    title: ministry.name,
+    description: ministry.description,
+    openGraph: {
+      title: ministry.name,
+      description: ministry.description,
+      images: [ministry.image],
+    },
+  };
+}
 
 export default async function MinistryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

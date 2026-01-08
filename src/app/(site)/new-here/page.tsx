@@ -2,6 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Plan Your Visit",
+  description: "New to FGCK Githurai 44? We'd love to welcome you this Sunday. Find directions, service times, and what to expect.",
+};
 
 export default function NewHerePage() {
   return (

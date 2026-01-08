@@ -2,6 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import { site } from "@/lib/site";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pastor's Office",
+  description: "Meet Senior Pastor John Ngaruiya and our pastoral team at Full Gospel Church Githurai 44.",
+};
 
 export default function PastorsPage() {
   return (
