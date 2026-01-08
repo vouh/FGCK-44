@@ -171,22 +171,6 @@ export default function GivePage() {
           <a href="tel:0113788919" className="ml-1 font-bold text-blue-900 hover:underline">0113788919</a>.
         </p>
       </div>
-    </PageShell>
-  );
-}
-          <div className="rounded-lg bg-slate-50 p-3">
-            <div className="flex justify-between">
-              <span className="text-slate-500">Paybill:</span>
-              <span className="font-bold text-slate-900">544600</span>
-            </div>
-            <div className="mt-1 flex justify-between">
-              <span className="text-slate-500">Account:</span>
-              <span className="font-bold text-slate-900">P77330#NAME</span>
-            </div>
-          </div>
-          <p className="text-xs text-slate-500">Replace NAME with your name.</p>
-        </PaymentMethodCard>
-      </div>
 
       {/* Scripture */}
       <div className="mt-12 rounded-2xl bg-slate-100 p-8 text-center">
