@@ -173,8 +173,27 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden">
-          {children}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden flex flex-col">
+          <div className="flex-1">
+            {children}
+          </div>
+          
+          <footer className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+               <div>© {new Date().getFullYear()} Full Gospel Church Githurai 44. All rights reserved.</div>
+               <div className="flex items-center gap-1">
+                 Powered by{" "}
+                 <Link
+                   href="https://spectre-tech.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="font-bold text-blue-600 dark:text-blue-400 drop-shadow-[0_0_8px_rgba(37,99,235,0.4)] transition-all hover:text-blue-500"
+                 >
+                   Spectre Tech limited
+                 </Link>
+               </div>
+            </div>
+          </footer>
         </main>
       </div>
 

@@ -25,6 +25,20 @@ export default function LoginPage() {
           </div>
         </div>
         <AuthPanel />
+        <div className="mt-12 text-center text-xs text-slate-400">
+          © {new Date().getFullYear()} Full Gospel Church Githurai 44. All rights reserved. <br />
+          <span className="mt-1 block">
+            Powered by{" "}
+            <a
+              href="https://spectre-tech.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-blue-500 transition-all hover:text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.4)]"
+            >
+              Spectre Tech limited
+            </a>
+          </span>
+        </div>
       </div>
     </div>
   );

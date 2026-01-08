@@ -101,7 +101,20 @@ export function SiteFooter() {
         {/* Bottom bar */}
         <div className="relative border-t border-white/10 py-6">
           <div className="flex flex-col items-center justify-between gap-4 text-sm text-white/60 md:flex-row">
-            <div>© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
+            <div>
+              © {new Date().getFullYear()} {site.name}. All rights reserved.
+              <span className="ml-2 inline-flex items-center gap-1">
+                Powered by{" "}
+                <Link
+                  href="https://spectre-tech.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-blue-400 transition-all hover:text-blue-300 drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]"
+                >
+                  Spectre Tech limited
+                </Link>
+              </span>
+            </div>
             <div className="flex gap-6">
               <Link href="/give" className="transition-colors hover:text-white">Give</Link>
               <Link href="/contact" className="transition-colors hover:text-white">Contact</Link>
