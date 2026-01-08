@@ -11,7 +11,7 @@ async function findBySlug<T extends { title: string }>(collectionName: string, s
      const querySnapshot = await getDocs(collection(db, collectionName));
      const found = querySnapshot.docs.find(doc => slugify(doc.data().title) === slug);
      if (found) {
-        return { id: found.id, ...found.data() } as T;
+        return { id: found.id, ...found.data() } as unknown as T;
      }
      return null;
   } catch (e) {
@@ -37,7 +37,7 @@ export async function getEventById(id: string): Promise<Event | null> {
         const docRef = doc(db, COLLECTIONS.EVENTS, id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            return { id: docSnap.id, ...docSnap.data() } as Event;
+            return { id: docSnap.id, ...docSnap.data() } as unknown as Event;
         }
     } catch (e) {
         console.error("Error fetching event for metadata:", e);
