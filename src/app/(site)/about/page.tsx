@@ -165,16 +165,7 @@ export default function AboutPage() {
         {/* Pastor Section */}
         <div className="mb-12 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 shadow-2xl">
           <div className="grid md:grid-cols-5">
-            <div className="relative h-80 md:col-span-2 md:h-auto">
-              <Image
-                src="/images/pastor.png"
-                alt="Pastor Joseph Ngaruiya John"
-                fill
-                className="object-contain md:object-cover bg-blue-900"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-blue-950/40" />
-            </div>
-            <div className="relative flex flex-col justify-center p-8 md:col-span-3 lg:p-12">
+            <div className="relative flex flex-col justify-center p-8 md:col-span-3 lg:p-12 md:order-1">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-600 px-4 py-2 shadow-lg">
                 <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -190,144 +181,71 @@ export default function AboutPage() {
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Bachelor in Theology</span>
                 </div>
                 <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/20">
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-300">35+ Years of Service</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Over 10 Years of Service</span>
+                </div>
+                <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/20">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Married for 35+ Years</span>
                 </div>
               </div>
+            </div>
+            <div className="relative h-80 md:col-span-2 md:h-auto md:order-2">
+              <Image
+                src="/images/pastor.png"
+                alt="Pastor Joseph Ngaruiya John"
+                fill
+                className="object-contain md:object-cover bg-blue-900"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent md:bg-gradient-to-l md:from-transparent md:to-blue-950/40" />
             </div>
           </div>
         </div>
 
         {/* Elders Section */}
-        <div className="mb-12">
-          <div className="mb-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 shadow-md">
-              <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
+        <div className="mb-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="grid md:grid-cols-2">
+            <div className="flex flex-col justify-center p-8 lg:p-12">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 shadow-sm">
+                <svg className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h4 className="text-3xl font-black text-slate-900">Church Elders</h4>
+              <p className="mt-4 text-lg leading-relaxed text-slate-600">
+                Our elders provide spiritual oversight, wisdom, and counseling to the church family. They are dedicated to prayer, teaching sound doctrine, and ensuring the spiritual health of the congregation.
+              </p>
             </div>
-            <div>
-              <h4 className="text-2xl font-black text-slate-900">Church Elders</h4>
-              <p className="text-slate-600">Providing spiritual guidance and wisdom to the congregation</p>
-            </div>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all hover:shadow-xl hover:-translate-y-1">
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-slate-100">
-                <Image src="/images/placeholder-person.svg" alt="Elder" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 backdrop-blur-md">
-                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                    <span className="text-xs font-bold text-white">Active Elder</span>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h5 className="text-xl font-black text-slate-900">Elder Name</h5>
-                <p className="mt-1 text-sm font-semibold text-blue-600">Church Elder</p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  Serving with wisdom and compassion, providing spiritual oversight and pastoral care to our church family.
-                </p>
-              </div>
-            </div>
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all hover:shadow-xl hover:-translate-y-1">
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-slate-100">
-                <Image src="/images/placeholder-person.svg" alt="Elder" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 backdrop-blur-md">
-                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                    <span className="text-xs font-bold text-white">Active Elder</span>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h5 className="text-xl font-black text-slate-900">Elder Name</h5>
-                <p className="mt-1 text-sm font-semibold text-blue-600">Church Elder</p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  Committed to shepherding the flock with biblical teaching and godly counsel.
-                </p>
-              </div>
-            </div>
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all hover:shadow-xl hover:-translate-y-1">
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-slate-100">
-                <Image src="/images/placeholder-person.svg" alt="Elder" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 backdrop-blur-md">
-                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                    <span className="text-xs font-bold text-white">Active Elder</span>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h5 className="text-xl font-black text-slate-900">Elder Name</h5>
-                <p className="mt-1 text-sm font-semibold text-blue-600">Church Elder</p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  Dedicated to prayer, spiritual mentorship, and supporting the vision of the church.
-                </p>
-              </div>
+            <div className="relative min-h-[300px] bg-slate-100">
+              <Image
+                src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&q=80&w=1000"
+                alt="Church Elders"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
 
         {/* Deacons Section */}
-        <div>
-          <div className="mb-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 shadow-md">
-              <svg className="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+        <div className="mb-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="grid md:grid-cols-2">
+            <div className="flex flex-col justify-center p-8 lg:p-12">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 shadow-sm">
+                <svg className="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h4 className="text-3xl font-black text-slate-900">Church Deacons</h4>
+              <p className="mt-4 text-lg leading-relaxed text-slate-600">
+                Serving the church through practical ministry, our deacons ensure that the needs of the members and the facility are met with excellence and compassion.
+              </p>
             </div>
-            <div>
-              <h4 className="text-2xl font-black text-slate-900">Church Deacons</h4>
-              <p className="text-slate-600">Serving the church through practical ministry and support</p>
-            </div>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
-              <div className="relative h-48 bg-gradient-to-br from-green-100 to-blue-100">
-                <Image src="/images/placeholder-person.svg" alt="Deacon" fill className="object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 text-center">
-                <h5 className="text-lg font-black text-slate-900">Deacon Name</h5>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-green-600">Church Deacon</p>
-                <p className="mt-2 text-xs text-slate-600">Serving with diligence and faithfulness</p>
-              </div>
-            </div>
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
-              <div className="relative h-48 bg-gradient-to-br from-green-100 to-blue-100">
-                <Image src="/images/placeholder-person.svg" alt="Deacon" fill className="object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 text-center">
-                <h5 className="text-lg font-black text-slate-900">Deacon Name</h5>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-green-600">Church Deacon</p>
-                <p className="mt-2 text-xs text-slate-600">Committed to practical service</p>
-              </div>
-            </div>
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
-              <div className="relative h-48 bg-gradient-to-br from-green-100 to-blue-100">
-                <Image src="/images/placeholder-person.svg" alt="Deacon" fill className="object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 text-center">
-                <h5 className="text-lg font-black text-slate-900">Deacon Name</h5>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-green-600">Church Deacon</p>
-                <p className="mt-2 text-xs text-slate-600">Supporting ministry operations</p>
-              </div>
-            </div>
-            <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
-              <div className="relative h-48 bg-gradient-to-br from-green-100 to-blue-100">
-                <Image src="/images/placeholder-person.svg" alt="Deacon" fill className="object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 text-center">
-                <h5 className="text-lg font-black text-slate-900">Deacon Name</h5>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-green-600">Church Deacon</p>
-                <p className="mt-2 text-xs text-slate-600">Dedicated to church care</p>
-              </div>
+            <div className="relative min-h-[300px] bg-slate-100">
+              <Image
+                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1000"
+                alt="Church Deacons"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>

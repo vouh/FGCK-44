@@ -2,8 +2,14 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Disallow: /dashboard
+Disallow: /login
+Disallow: /api
+
 # Host
-Host: https://www.fgck-githurai44.com
+Host: https://fgck-githurai44.com
 
 # Sitemaps
-Sitemap: https://www.fgck-githurai44.com/sitemap.xml
+Sitemap: https://fgck-githurai44.com/sitemap.xml
