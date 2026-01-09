@@ -38,6 +38,19 @@
     "quote": "Don't let anyone look down on you because you are young, but set an example for the believers. (1 Timothy 4:12)"
   },
   {
+    "id": "junior-youth-ministry",
+    "name": "Junior Youth Ministry",
+    "description": "Nurturing pre-teens and young adolescents in their transition from childhood to youth, fostering a strong foundation in Christ and healthy peer relationships.",
+    "image": "images/youth.jpeg",
+    "images": [
+      "images/youth1.jpeg",
+      "images/youth2.jpeg"
+    ],
+    "phone": "0113788919",
+    "meetingHours": "Saturdays 2:00 PM - 4:00 PM",
+    "quote": "Remember your Creator in the days of your youth, before the days of trouble come. (Ecclesiastes 12:1)"
+  },
+  {
     "id": "childrens-ministry",
     "name": "Children's Ministry",
     "description": "A fun and safe environment where kids learn about Jesus through Bible stories, songs, and play. We believe in building a strong foundation of faith from a young age.",
