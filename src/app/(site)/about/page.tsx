@@ -27,7 +27,7 @@ export default function AboutPage() {
       {/* Hero Image */}
       <div className="relative mb-10 h-64 overflow-hidden rounded-2xl bg-slate-100 md:h-80">
         <Image
-          src="https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=2000"
+          src="/images/pw1.jpeg"
           alt="About FGCK"
           fill
           className="object-cover"
@@ -190,7 +190,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-80 md:col-span-2 md:h-auto md:order-2">
               <Image
-                src="/images/pastor.png"
+                src="/images/pastorofficial.png"
                 alt="Pastor Joseph Ngaruiya John"
                 fill
                 className="object-contain md:object-cover bg-blue-900"
@@ -216,7 +216,7 @@ export default function AboutPage() {
             </div>
             <div className="relative min-h-[300px] bg-slate-100">
               <Image
-                src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&q=80&w=1000"
+                src="/images/elders.jpeg"
                 alt="Church Elders"
                 fill
                 className="object-cover"
@@ -241,7 +241,7 @@ export default function AboutPage() {
             </div>
             <div className="relative min-h-[300px] bg-slate-100">
               <Image
-                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1000"
+                src="/images/deacons.jpeg"
                 alt="Church Deacons"
                 fill
                 className="object-cover"
