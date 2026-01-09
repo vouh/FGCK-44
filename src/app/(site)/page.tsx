@@ -151,6 +151,46 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Theme of the Year 2026 Section */}
+      <section className="relative w-full py-32 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transform scale-105"
+          style={{ 
+            backgroundImage: 'url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80")',
+          }}
+        />
+        
+        {/* Blue Overlay & Gradient */}
+        <div className="absolute inset-0 bg-blue-900/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-900/40 to-blue-900/30" />
+
+        {/* Content */}
+        <Container>
+          <div className="relative z-10 max-w-5xl mx-auto text-center">
+            {/* Glassmorphism Card */}
+            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 md:p-14 border border-white/20 shadow-2xl ring-1 ring-white/10">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-300/30 text-blue-50 text-xs font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-sm">
+                2026 Theme
+              </span>
+              
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
+                Year of God&apos;s Favor & <br className="hidden md:block"/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-white to-blue-100 filter drop-shadow-sm">
+                  Divine Acceleration
+                </span>
+              </h2>
+              
+              <p className="text-lg md:text-xl text-blue-50 leading-relaxed font-medium max-w-3xl mx-auto drop-shadow-md mb-8">
+                Welcome to a year of open doors and supernatural speed. In 2026, we are walking in the fullness of God&apos;s favor, believing for breakthroughs that defy natural timelines. It is time for divine acceleration in every area of your life.
+              </p>
+
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto opacity-50 rounded-full" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Quick Info Section - Latest Updates */}
       <section className="bg-gradient-to-b from-slate-50 to-white py-20">
         <Container>
