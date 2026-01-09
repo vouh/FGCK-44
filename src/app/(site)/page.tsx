@@ -157,7 +157,7 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transform scale-105"
           style={{ 
-            backgroundImage: 'url("/images/newyear.jpg")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=800")',
           }}
         />
         
@@ -367,42 +367,42 @@ export default function HomePage() {
               title="Sermons"
               description="Listen to inspiring messages from our pastors. Browse by topic, speaker, or series."
               href="/sermons"
-              image="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=800"
+              image="/images/f2.jpeg"
               index={0}
             />
             <FeatureCard
               title="Events"
               description="Stay updated with weekly services, special gatherings, and community outreach."
               href="/events"
-              image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800"
+              image="/images/youth3.jpeg"
               index={1}
             />
             <FeatureCard
               title="Ministries"
               description="Find your place in our community through various ministry departments."
               href="/ministries"
-              image="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800"
+              image="/images/choir2.jpeg"
               index={2}
             />
             <FeatureCard
               title="Our Pastors"
               description="Meet our spiritual leaders who shepherd our congregation with love."
               href="/pastors"
-              image="https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=800"
+              image="/images/pastorofficial.png"
               index={3}
             />
             <FeatureCard
               title="Blog"
               description="Read devotionals, announcements, and updates from our church family."
               href="/blog"
-              image="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=800"
+              image="/images/blog.jgp"
               index={4}
             />
             <FeatureCard
               title="New Here?"
               description="Plan your first visit and learn what to expect on Sunday morning."
               href="/new-here"
-              image="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=800"
+              image="/images/welcome.jpg"
               index={5}
             />
           </div>
