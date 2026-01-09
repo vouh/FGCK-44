@@ -182,7 +182,7 @@ export default function HomePage() {
               </h2>
               
               <p className="text-lg md:text-xl text-blue-50 leading-relaxed font-medium max-w-3xl mx-auto drop-shadow-md mb-8">
-                &quot;For You, O Lord, will bless the righteous; With favor You will surround him as with a shield.&quot; <br/>
+                &quot;For You, O Lord, will bless the righteous; With favor You will surround them as with a shield.&quot; <br/>
                 <span className="text-sm opacity-80 mt-2 block">- Psalm 5:12</span>
               </p>
 
