@@ -57,11 +57,11 @@
     "id": "childrens-ministry",
     "name": "Children's Ministry",
     "description": "A fun and safe environment where kids learn about Jesus through Bible stories, songs, and play. We believe in building a strong foundation of faith from a young age.",
-    "image": "images/children.jpeg",
+    "image": "images/children2.jpeg",
     "images": [
       "images/children1.jpeg",
       "images/children3.jpeg",
-       "images/children2.jpeg",
+       "images/children.jpeg",
       "images/children5.jpeg", 
         "images/children7.jpeg"
     ],
