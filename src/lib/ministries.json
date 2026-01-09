@@ -3,10 +3,10 @@
     "id": "mens-ministry",
     "name": "Men's Ministry",
     "description": "Building strong men of faith who lead their families and serve the community with integrity. We focus on spiritual growth, accountability, and practical leadership in our homes and workplaces.",
-    "image": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=900",
+    "image": "images/men4.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=900"
+      "images/men5.jpeg",
+      "images/men4.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Tue 7:00 PM - 8:00 PM",

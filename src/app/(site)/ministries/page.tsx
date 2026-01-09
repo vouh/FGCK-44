@@ -69,7 +69,7 @@ export default function MinistriesPage() {
           </div>
           <div className="relative h-48 overflow-hidden rounded-xl">
             <ResponsiveImage
-              src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1400"
+              src="/images/choir1.jpeg"
               alt="Ministries"
               fill
               fit="containOnMobile"
