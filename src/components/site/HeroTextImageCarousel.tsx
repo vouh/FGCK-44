@@ -11,7 +11,7 @@ export const heroSlides = [
     heading: "Welcome to\nFull Gospel Church\nGithurai 44",
     tagline: "Jesus Healing Center",
     description: "We are grateful for your presence and thankful that you are part of our fellowship. Join us every Sunday as we worship together.",
-    image: "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=2000",
+    image: "/pulic/images/sitting.jpg",
     buttons: [
       { text: "Service Times", href: "/about#service-times" },
       { text: "Watch Sermons", href: "/sermons" }
@@ -31,7 +31,7 @@ export const heroSlides = [
     heading: "Discover Our\nMinistries",
     tagline: "Find Your Place to Serve",
     description: "Serve, grow, and connect with our church family through our ministries.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=2000",
+    image: "/pulic/images/pw4.jpeg",
     buttons: [
       { text: "Explore Ministries", href: "/ministries" },
       { text: "Join a Team", href: "/contact" }
@@ -41,7 +41,7 @@ export const heroSlides = [
     heading: "Get to Know About\nOur Events",
     tagline: "Be Part of Our Community",
     description: "Join us for special gatherings, outreach, and vibrant community events.",
-    image: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=2000",
+    image: "/pulic/images/youth3.jpeg",
     buttons: [
       { text: "Upcoming Events", href: "/events" },
       { text: "Plan Your Visit →", href: "/new-here" }
