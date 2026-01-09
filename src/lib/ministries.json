@@ -46,7 +46,8 @@
       "images/children1.jpeg",
       "images/children3.jpeg",
        "images/children2.jpeg",
-      "images/children5.jpeg"
+      "images/children5.jpeg", 
+        "images/children7.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Sun 10:45 AM - 1:00 PM",
@@ -110,10 +111,10 @@
     "id": "development-ministry",
     "name": "Development Ministry",
     "description": "Overseeing church physical development and projects. This ministry ensures that the church's facilities are well-maintained and coordinates new building projects.",
-    "image": "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/churchproj.png",
     "images": [
-      "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1541888941259-7b9d9218d6bf?auto=format&fit=crop&q=80&w=900"
+      "/images/project2.jpeg",
+      "/images/project1.jpeg"
     ],
     "phone": "0113788919",
     "quote": "Unless the Lord builds the house, the builders labor in vain. (Psalm 127:1)"
@@ -122,9 +123,9 @@
     "id": "ushers-ministry",
     "name": "Ushers Ministry",
     "description": "Ensuring a smooth and organized service experience by guiding congregation members and maintaining order in the house of God.",
-    "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/hospitality.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900"
+      "/images/hospitality.jpeg"
     ],
     "phone": "0113788919",
     "quote": "For a day in your courts is better than a thousand elsewhere. I would rather be a doorkeeper in the house of my God than dwell in the tents of wickedness. (Psalm 84:10)"
@@ -133,9 +134,9 @@
     "id": "hospitality-ministry",
     "name": "Hospitality Ministry",
     "description": "Welcoming guests with a warm smile and demonstrating God's love through kindness and service to everyone who walks through our doors.",
-    "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/hospitality2.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900"
+      "/images/hospitality2.jpeg"
     ],
     "phone": "0113788919",
     "quote": "Do not forget to show hospitality to strangers, for by so doing some have shown hospitality to angels without knowing it. (Hebrews 13:2)"
@@ -144,9 +145,10 @@
     "id": "royal-queens",
     "name": "Royal Queens",
     "description": "A special fellowship of women called to serve with dignity, grace, and spiritual excellence in God's kingdom.",
-    "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
+    "image": "images/rq1.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900"
+      "/images/royalqueens.jpeg",
+      "/images/royalqueens1.jpeg"
     ],
     "phone": "0113788919",
     "quote": "You are a chosen people, a royal priesthood, a holy nation. (1 Peter 2:9)"
@@ -155,9 +157,9 @@
     "id": "media-ministry",
     "name": "Media Ministry",
     "description": "Using technology and creative arts to amplify the Gospel message through video, audio, and digital platforms.",
-    "image": "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/media.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900"
+      "/images/media.jpeg"
     ],
     "phone": "0113788919",
     "quote": "Go into all the world and preach the gospel to all creation. (Mark 16:15)"
