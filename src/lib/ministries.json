@@ -179,5 +179,20 @@
     ],
     "phone": "0113788919",
     "quote": "Go into all the world and preach the gospel to all creation. (Mark 16:15)"
+  },
+  {
+    "id": "evangelism-ministry",
+    "name": "Evangelism Ministry",
+    "description": "Spreading the Good News of Jesus Christ to our community and beyond. We are dedicated to outreach missions, community witnessing, and sharing the message of salvation with everyone, fulfilling the Great Commission with passion and love.",
+    "image": "/images/evange5.jpeg",
+    "images": [
+      "/images/evange2.jpeg",
+      "/images/evange3.jpeg",
+      "/images/evange7.jpeg",
+      "/images/evange6.jpeg"
+    ],
+    "phone": "0113788919",
+    "meetingHours": "Saturdays 10:00 AM - 12:00 PM",
+    "quote": "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit. (Matthew 28:19)"
   }
 ]
