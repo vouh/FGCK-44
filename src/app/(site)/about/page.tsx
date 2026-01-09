@@ -27,7 +27,7 @@ export default function AboutPage() {
       {/* Hero Image */}
       <div className="relative mb-10 h-64 overflow-hidden rounded-2xl bg-slate-100 md:h-80">
         <Image
-          src="/images/pw1.jpeg"
+          src="/images/sitting2.jpg"
           alt="About FGCK"
           fill
           className="object-cover"

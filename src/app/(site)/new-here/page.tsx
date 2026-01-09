@@ -31,7 +31,7 @@ export default function NewHerePage() {
           </div>
           <div className="relative h-56 sm:h-64 md:h-auto">
             <Image
-              src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1600"
+              src="/images/welcome.jpg"
               alt="Welcome"
               fill
               className="object-cover"
