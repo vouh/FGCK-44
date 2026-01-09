@@ -157,7 +157,7 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transform scale-105"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80")',
+            backgroundImage: 'url("/images/newyear.jpeg")',
           }}
         />
         
@@ -182,7 +182,8 @@ export default function HomePage() {
               </h2>
               
               <p className="text-lg md:text-xl text-blue-50 leading-relaxed font-medium max-w-3xl mx-auto drop-shadow-md mb-8">
-                Welcome to a year of open doors and supernatural speed. In 2026, we are walking in the fullness of God&apos;s favor, believing for breakthroughs that defy natural timelines. It is time for divine acceleration in every area of your life.
+                &quot;For You, O Lord, will bless the righteous; With favor You will surround him as with a shield.&quot; <br/>
+                <span className="text-sm opacity-80 mt-2 block">- Psalm 5:12</span>
               </p>
 
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto opacity-50 rounded-full" />
