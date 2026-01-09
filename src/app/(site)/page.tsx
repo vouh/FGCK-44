@@ -157,7 +157,7 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transform scale-105"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80&w=800")',
+            backgroundImage: 'url("/images/newyear.jpg")',
           }}
         />
         
@@ -395,7 +395,7 @@ export default function HomePage() {
               title="Blog"
               description="Read devotionals, announcements, and updates from our church family."
               href="/blog"
-              image="/images/blog.jgp"
+              image="/images/blog.jpg"
               index={4}
             />
             <FeatureCard
