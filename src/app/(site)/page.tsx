@@ -157,7 +157,7 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transform scale-105"
           style={{ 
-            backgroundImage: 'url("/images/newyear.jpeg")',
+            backgroundImage: 'url("/images/newyear.jpg")',
           }}
         />
         
@@ -171,7 +171,7 @@ export default function HomePage() {
             {/* Glassmorphism Card */}
             <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 md:p-14 border border-white/20 shadow-2xl ring-1 ring-white/10">
               <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-300/30 text-blue-50 text-xs font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-sm">
-                2026 Theme
+                2026 Theme  
               </span>
               
               <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight leading-tight drop-shadow-lg">
