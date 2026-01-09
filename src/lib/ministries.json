@@ -16,10 +16,9 @@
     "id": "womens-ministry",
     "name": "Women's Ministry",
     "description": "Empowering women to grow in grace, fellowship together, and make a difference in God's kingdom. Our ministry provides a space for support, mentorship, and deep spiritual connection.",
-    "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
+    "image": "images/women.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900"
+      "images/women.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Wed 2:00 PM - 3:00 PM",
@@ -29,11 +28,10 @@
     "id": "youth-ministry",
     "name": "Youth Ministry",
     "description": "Inspiring the next generation to encounter God, build authentic relationships, and live out their faith. We are a vibrant community of young believers passionate about Jesus.",
-    "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
+    "image": "images/youth3.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=900"
+      "images/youth1.jpeg",
+      "images/youth2.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Wed 7:00 PM - 8:00 PM and after Sunday services",
@@ -43,9 +41,12 @@
     "id": "childrens-ministry",
     "name": "Children's Ministry",
     "description": "A fun and safe environment where kids learn about Jesus through Bible stories, songs, and play. We believe in building a strong foundation of faith from a young age.",
-    "image": "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900",
+    "image": "images/children.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=900"
+      "images/children1.jpeg",
+      "images/children3.jpeg",
+       "images/children2.jpeg",
+      "images/children5.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Sun 10:45 AM - 1:00 PM",
@@ -60,10 +61,9 @@
     "id": "dorcas-ministry",
     "name": "Dorcas Ministry",
     "description": "Dedicated to helping the needy in our community and church. We contribute through various charitable acts, providing relief, and showing the practical love of Christ to those in difficult circumstances.",
-    "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/dorcas.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=900"
+      "/images/evenge7.jpeg"
     ],
     "phone": "0113788919",
     "quote": "She was always doing good and helping the poor. (Acts 9:36)"
@@ -72,9 +72,11 @@
     "id": "choir-ministry",
     "name": "Choir Ministry",
     "description": "Lifting our hearts in praise through choral music. The choir leads the congregation in worship with spiritually uplifting songs and hymns.",
-    "image": "https://images.unsplash.com/photo-1462961913984-c1b52e4f00bc?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/choir4.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1462961913984-c1b52e4f00bc?auto=format&fit=crop&q=80&w=900"
+      "/images/choir1.jpeg",
+       "/images/choir2.jpeg",
+        "/images/choir3.jpeg"
     ],
     "phone": "0113788919",
     "quote": "Sing to the Lord a new song; sing to the Lord, all the earth. (Psalm 96:1)"
@@ -83,10 +85,11 @@
     "id": "praise-and-worship",
     "name": "Praise and Worship Ministry",
     "description": "Leading the congregation into the presence of God through contemporary worship music. This ministry focuses on fostering an atmosphere of deep spiritual connection through songs.",
-    "image": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/pw2.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=900",
-      "https://images.unsplash.com/photo-1516280440614-37939bbdd4f1?auto=format&fit=crop&q=80&w=900"
+      "images/pw3.jpeg",
+      "images/pw7.jpeg",
+      "images/pw6.jpeg"
     ],
     "phone": "0113788919",
     "quote": "God is spirit, and those who worship him must worship in spirit and truth. (John 4:24)"
@@ -95,9 +98,9 @@
     "id": "intercessory-ministry",
     "name": "Intercessory Ministry",
     "description": "Standing in the gap through fervent prayer, interceding for the church, community, and nations. We believe in the power of prayer to bring transformation.",
-    "image": "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900",
+    "image": "/images/f2.jpeg",
     "images": [
-      "https://images.unsplash.com/photo-1438032009581-05ea18774e10?auto=format&fit=crop&q=80&w=900"
+      "images/intecessory.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Mon & Fri 7:00 PM - 8:00 PM",
