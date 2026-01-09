@@ -381,7 +381,7 @@ export default function HomePage() {
               title="Ministries"
               description="Find your place in our community through various ministry departments."
               href="/ministries"
-              image="/images/choir2.jpeg"
+              image="/images/hospitality.jpeg"
               index={2}
             />
             <FeatureCard
