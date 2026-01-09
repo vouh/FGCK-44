@@ -21,7 +21,7 @@ export const heroSlides = [
     heading: "Get Inspired by Our\nSermons",
     tagline: "Inspiring Messages",
     description: "Listen to powerful sermons and grow in faith with us every week.",
-    image: "/images/f7.jpeg",
+    image: "/images/f1.jpeg",
     buttons: [
       { text: "Browse Sermons", href: "/sermons" },
       { text: "Meet Pastors", href: "/pastors" }
