@@ -40,11 +40,14 @@
   {
     "id": "junior-youth-ministry",
     "name": "Junior Youth Ministry",
-    "description": "Nurturing pre-teens and young adolescents in their transition from childhood to youth, fostering a strong foundation in Christ and healthy peer relationships.",
-    "image": "images/youth.jpeg",
+    "description": "Creating a safe and joyful space for young believers to connect, worship, and grow together—building  that honora community of young believers and prepare us for the next stage of youth ministry.",
+    "image": "images/jnryouth4.jpeg",
     "images": [
-      "images/youth1.jpeg",
-      "images/youth2.jpeg"
+      "images/jnryouth3.jpeg",
+      "/images/jnryouth2.jpeg",
+      "images/jnryouth5.jpeg",
+      "images/jnryouth1.jpeg",
+      "/images/jnryouth4.jpeg"
     ],
     "phone": "0113788919",
     "meetingHours": "Saturdays 2:00 PM - 4:00 PM",
