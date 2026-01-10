@@ -95,6 +95,7 @@ export default function HeroTextImageCarousel() {
           alt="FGCK hero background"
           fill
           priority
+          unoptimized
           className="object-cover"
           sizes="100vw"
         />
@@ -146,6 +147,7 @@ export default function HeroTextImageCarousel() {
                 alt={`Hero image ${index + 1}`}
                 fill
                 priority
+                unoptimized
                 className="object-cover"
                 sizes="(min-width: 1024px) 40vw, 0px"
               />
