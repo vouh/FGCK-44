@@ -51,7 +51,6 @@ export const heroSlides = [
 
 export default function HeroTextImageCarousel() {
   const [index, setIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
   const [isClient, setIsClient] = useState(false);
 
@@ -64,15 +63,13 @@ export default function HeroTextImageCarousel() {
     if (!isClient) return;
     const interval = setInterval(() => {
       setDirection(1);
-      setPrevIndex(index);
       setIndex((i: number) => (i + 1) % heroSlides.length);
-    }, 7000); // 7 seconds
+    }, 10000); // 10 seconds
     return () => clearInterval(interval);
-  }, [isClient, index]);
+  }, [isClient]);
 
   const paginate = (dir: number) => {
     setDirection(dir);
-    setPrevIndex(index);
     setIndex((prev: number) => {
       let next = prev + dir;
       if (next < 0) return heroSlides.length - 1;
@@ -83,7 +80,6 @@ export default function HeroTextImageCarousel() {
 
   // Current slide data
   const currentSlide = heroSlides[index];
-  const previousSlide = heroSlides[prevIndex];
 
   return (
     <div className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden">
@@ -92,26 +88,8 @@ export default function HeroTextImageCarousel() {
         <link key={i} rel="preload" as="image" href={slide.image} />
       ))}
 
-      {/* Full hero background - previous image layer for smooth crossfade */}
+      {/* Full hero background - always shows current image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={previousSlide.image}
-          alt="FGCK hero background"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
-
-      {/* Animated background overlay for smooth transitions */}
-      <motion.div
-        key={`bg-${index}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-        className="absolute inset-0 z-[1]"
-      >
         <Image
           src={currentSlide.image}
           alt="FGCK hero background"
@@ -120,10 +98,10 @@ export default function HeroTextImageCarousel() {
           className="object-cover"
           sizes="100vw"
         />
-      </motion.div>
+      </div>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-4 sm:pt-10 lg:pt-16 pb-14 sm:pb-24 lg:pb-16">
         {/* Text */}
@@ -158,30 +136,11 @@ export default function HeroTextImageCarousel() {
           </div>
         </div>
 
-        {/* Desktop: big borderless image accent */}
+        {/* Desktop: big borderless image accent - always shows current slide image */}
         <div className="hidden lg:flex items-center justify-center relative w-full max-w-3xl">
           <div className="relative h-[28rem] w-[28rem] xl:h-[32rem] xl:w-[32rem]">
-            {/* Static fallback image - shows previous slide for crossfade */}
+            {/* Static image - always shows current slide */}
             <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <Image
-                src={previousSlide.image}
-                alt={`Hero image fallback`}
-                fill
-                priority
-                className="object-cover"
-                sizes="(min-width: 1024px) 40vw, 0px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/35 via-transparent to-transparent" />
-            </div>
-
-            {/* Animated overlay for transitions */}
-            <motion.div
-              key={`hero-${index}`}
-              className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.0, ease: "easeOut" }}
-            >
               <Image
                 src={currentSlide.image}
                 alt={`Hero image ${index + 1}`}
@@ -191,7 +150,7 @@ export default function HeroTextImageCarousel() {
                 sizes="(min-width: 1024px) 40vw, 0px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-950/35 via-transparent to-transparent" />
-            </motion.div>
+            </div>
           </div>
         </div>
 
