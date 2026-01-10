@@ -51,15 +51,22 @@ export const heroSlides = [
 
 export default function HeroTextImageCarousel() {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
+  const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure client-side only rendering to avoid hydration issues
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
+    if (!isClient) return;
     const interval = setInterval(() => {
       setDirection(1);
       setIndex((i: number) => (i + 1) % heroSlides.length);
-    }, 7000); // 7 seconds
+    }, 5000); // 5 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [isClient]);
 
   const paginate = (dir: number) => {
     setDirection(dir);
@@ -71,50 +78,72 @@ export default function HeroTextImageCarousel() {
     });
   };
 
+  // Current slide data
+  const currentSlide = heroSlides[index];
+
   return (
     <div className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden">
-      {/* Full hero background carousel */}
-      <AnimatePresence initial={false}>
+      {/* Preload all hero images */}
+      {heroSlides.map((slide, i) => (
+        <link key={i} rel="preload" as="image" href={slide.image} />
+      ))}
+
+      {/* Full hero background - static layer that always shows current image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={currentSlide.image}
+          alt="FGCK hero background"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Animated background overlay for smooth transitions */}
+      <AnimatePresence mode="popLayout">
         <motion.div
-          key={index}
+          key={`bg-${index}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 z-[1]"
         >
           <Image
-            src={heroSlides[index].image}
+            src={currentSlide.image}
             alt="FGCK hero background"
             fill
-            priority={true}
+            priority
             className="object-cover"
             sizes="100vw"
           />
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-4 sm:pt-10 lg:pt-16 pb-14 sm:pb-24 lg:pb-16">
         {/* Text */}
         <div className="w-full max-w-4xl lg:pl-16">
-          <AnimatePresence initial={false} custom={direction}>
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: direction > 0 ? -60 : 60 }}
+              key={`text-${index}`}
+              initial={{ opacity: 0, x: direction > 0 ? 40 : -40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction > 0 ? 60 : -60 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              exit={{ opacity: 0, x: direction > 0 ? -40 : 40 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="w-full"
             >
-              <HeroSlideText slide={heroSlides[index]} />
+              <HeroSlideText slide={currentSlide} />
             </motion.div>
           </AnimatePresence>
 
           <div className="mt-6 mb-8 sm:mb-20 lg:mb-0 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
-            {heroSlides[index].buttons.map((btn, i) => (
+            {currentSlide.buttons.map((btn, i) => (
               <a
-                key={i}
+                key={`${index}-${i}`}
                 href={btn.href}
                 className={
                   i === 0
@@ -131,17 +160,37 @@ export default function HeroTextImageCarousel() {
         {/* Desktop: big borderless image accent */}
         <div className="hidden lg:flex items-center justify-center relative w-full max-w-3xl">
           <div className="relative h-[28rem] w-[28rem] xl:h-[32rem] xl:w-[32rem]">
-            <AnimatePresence initial={false} custom={direction}>
+            {/* Static fallback image */}
+            <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <Image
+                src={currentSlide.image}
+                alt={`Hero image ${index + 1}`}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 1024px) 40vw, 0px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/35 via-transparent to-transparent" />
+            </div>
+
+            {/* Animated overlay for transitions */}
+            <AnimatePresence mode="wait">
               <motion.div
-                key={index}
-                className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl bg-black/10"
-                custom={direction}
-                initial={{ opacity: 0, x: direction > 0 ? 140 : -140, scale: 0.98 }}
+                key={`hero-${index}`}
+                className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl"
+                initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: direction > 0 ? -140 : 140, scale: 0.98 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <Image src={heroSlides[index].image} alt={`Hero image ${index + 1}`} fill className="object-cover" sizes="(min-width: 1024px) 40vw, 0px" />
+                <Image
+                  src={currentSlide.image}
+                  alt={`Hero image ${index + 1}`}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 0px"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/35 via-transparent to-transparent" />
               </motion.div>
             </AnimatePresence>
