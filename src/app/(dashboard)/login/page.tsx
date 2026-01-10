@@ -30,7 +30,7 @@ export default function LoginPage() {
           <span className="mt-1 block">
             Powered by{" "}
             <a
-              href="https://spectre-tech.netlify.app/"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-blue-500 transition-all hover:text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.4)]"
