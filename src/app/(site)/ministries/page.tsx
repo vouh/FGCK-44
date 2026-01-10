@@ -22,17 +22,17 @@ function MinistryCard({
   return (
     <Link
       href={`/ministries/${id}`}
-      className="group min-w-[260px] max-w-xs flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md mx-2"
+      className="group min-w-[280px] sm:min-w-[260px] max-w-xs flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md mx-2"
     >
-      <div className="relative h-40 bg-slate-100">
-        <ResponsiveImage src={displayImage} alt={name} fill fit="containOnMobile" className="bg-slate-100" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+      <div className="relative h-52 sm:h-40 bg-blue-950">
+        <ResponsiveImage src={displayImage} alt={name} fill fit="containOnMobile" className="bg-blue-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-lg font-bold text-white group-hover:text-blue-200">{name}</h3>
+          <h3 className="text-xl sm:text-lg font-bold text-white group-hover:text-blue-200 leading-tight">{name}</h3>
         </div>
       </div>
       <div className="p-5">
-        <p className="text-sm text-slate-600">{description}</p>
+        <p className="text-sm text-slate-600 line-clamp-2 md:line-clamp-none">{description}</p>
         <span className="mt-3 inline-block text-sm font-semibold text-blue-900">Learn more →</span>
       </div>
     </Link>
@@ -67,13 +67,14 @@ export default function MinistriesPage() {
               Contact Us to Join
             </Link>
           </div>
-          <div className="relative h-48 overflow-hidden rounded-xl">
+          <div className="relative h-56 sm:h-48 overflow-hidden rounded-xl bg-blue-950">
             <ResponsiveImage
               src="/images/choir1.jpeg"
               alt="Ministries"
               fill
               fit="containOnMobile"
               sizes="(min-width: 768px) 40vw, 100vw"
+              className="bg-blue-950"
             />
             <div className="absolute inset-0 bg-blue-950/20" />
           </div>

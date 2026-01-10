@@ -109,7 +109,7 @@ export function SiteFooter() {
             <p>
               Powered by{" "}
               <Link
-                href="https://spectre-tech.netlify.app/"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-blue-400 transition-all hover:text-blue-300 drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]"

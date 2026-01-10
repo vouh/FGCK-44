@@ -209,30 +209,37 @@ export default function HomePage() {
               <QuickInfoCard title="Latest Sermon" delay={0}>
                 {latestSermon ? (
                   <>
-                    <div className="group relative mb-4 h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-slate-100 shadow-md">
+                    <div className="group relative mb-4 h-52 sm:h-64 overflow-hidden rounded-2xl bg-blue-950 shadow-md">
                       {latestSermon.image ? (
                         <Image
                           src={latestSermon.image}
                           alt={latestSermon.title}
                           fill
-                          className="object-contain sm:object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       ) : latestSermon.youtube ? (
                         <Image
                           src={`https://img.youtube.com/vi/${latestSermon.youtube.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
                           alt={latestSermon.title}
                           fill
-                          className="object-contain sm:object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       ) : (
                         <Image
                           src="/images/placeholder-sermon.svg"
                           alt="Latest sermon"
                           fill
-                          className="object-contain sm:object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       )}
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+                      {/* Title overlay similar to ministry cards */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h5 className="text-lg sm:text-xl font-black text-white line-clamp-2 leading-tight drop-shadow-md">
+                          {latestSermon.title}
+                        </h5>
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
                         <div className="rounded-full bg-white/90 p-4 shadow-xl">
                           <svg className="h-8 w-8 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
@@ -240,7 +247,6 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <h5 className="text-xl font-black text-slate-900 line-clamp-1">{latestSermon.title}</h5>
                     <p className="mt-1 text-xs font-bold uppercase tracking-wider text-slate-500">
                       {latestSermon.date || "No date"}
                     </p>
@@ -277,13 +283,19 @@ export default function HomePage() {
               <QuickInfoCard title="Upcoming Event" delay={100}>
                 {latestEvent ? (
                   <>
-                    <div className="group relative mb-4 h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-blue-100 shadow-md">
+                    <div className="group relative mb-4 h-52 sm:h-64 overflow-hidden rounded-2xl bg-blue-950 shadow-md">
                       <Image
                         src={latestEvent.image || "/images/placeholder-event.svg"}
                         alt={latestEvent.title}
                         fill
-                        className="object-contain sm:object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                        className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h5 className="text-lg sm:text-xl font-black text-white line-clamp-2 leading-tight drop-shadow-md">
+                          {latestEvent.title}
+                        </h5>
+                      </div>
                       <div className="absolute top-4 left-4 rounded-xl bg-white/95 p-3 shadow-xl backdrop-blur-sm">
                         <div className="text-center">
                           <div className="text-xs font-black uppercase tracking-widest text-red-600">{eventDate.month}</div>
@@ -291,7 +303,6 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <h5 className="text-xl font-black text-slate-900 line-clamp-1">{latestEvent.title}</h5>
                     <p className="mt-1 text-xs font-bold uppercase tracking-wider text-slate-500">
                       {latestEvent.date || "Date TBD"}
                     </p>
@@ -311,14 +322,18 @@ export default function HomePage() {
               <QuickInfoCard title="Featured Project" delay={200}>
                 {latestProject ? (
                   <>
-                    <div className="group relative mb-4 h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-md">
+                    <div className="group relative mb-4 h-52 sm:h-64 overflow-hidden rounded-2xl bg-blue-950 shadow-md">
                       <Image
                         src={latestProject.image || "/images/placeholder-project.svg"}
                         alt={latestProject.title}
                         fill
-                        className="object-contain sm:object-cover bg-slate-100 transition-transform duration-500 group-hover:scale-110"
+                        className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h5 className="mb-3 text-lg sm:text-xl font-black text-white line-clamp-2 leading-tight drop-shadow-md">
+                          {latestProject.title}
+                        </h5>
                         <div className="flex items-center gap-3">
                           <div className="h-2 flex-1 rounded-full bg-white/25">
                             <div
@@ -330,7 +345,6 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <h5 className="text-xl font-black text-slate-900 line-clamp-1">{latestProject.title}</h5>
                     <p className="mt-1 text-xs font-bold uppercase tracking-wider text-slate-500">Status: Active</p>
                     <Link
                       href={`/projects/${slugify(latestProject.title)}`}

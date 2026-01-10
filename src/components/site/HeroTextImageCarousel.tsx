@@ -95,7 +95,7 @@ export default function HeroTextImageCarousel() {
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/85 via-blue-950/70 to-blue-950/85" />
 
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-8 sm:pt-10 lg:pt-16 pb-28 sm:pb-24 lg:pb-16">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-4 sm:pt-10 lg:pt-16 pb-14 sm:pb-24 lg:pb-16">
         {/* Text */}
         <div className="w-full max-w-4xl lg:pl-16">
           <AnimatePresence mode="wait" initial={false}>
@@ -111,7 +111,7 @@ export default function HeroTextImageCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-6 mb-16 sm:mb-20 lg:mb-0 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
+          <div className="mt-6 mb-8 sm:mb-20 lg:mb-0 grid grid-cols-2 gap-2 w-full max-w-xs sm:max-w-md">
             {heroSlides[index].buttons.map((btn, i) => (
               <a
                 key={i}
@@ -153,7 +153,7 @@ export default function HeroTextImageCarousel() {
           <button
             aria-label="Previous image"
             onClick={() => paginate(-1)}
-            className="rounded-full bg-white/90 p-3 text-blue-950 shadow-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="rounded-full bg-white/90 p-1.5 sm:p-3 text-blue-950 shadow-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -162,7 +162,7 @@ export default function HeroTextImageCarousel() {
           <button
             aria-label="Next image"
             onClick={() => paginate(1)}
-            className="rounded-full bg-white/90 p-3 text-blue-950 shadow-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="rounded-full bg-white/90 p-1.5 sm:p-3 text-blue-950 shadow-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
