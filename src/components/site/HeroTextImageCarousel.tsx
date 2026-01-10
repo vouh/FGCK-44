@@ -74,20 +74,20 @@ export default function HeroTextImageCarousel() {
   return (
     <div className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden">
       {/* Full hero background carousel */}
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence initial={false}>
         <motion.div
           key={index}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: "easeInOut" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <Image
             src={heroSlides[index].image}
             alt="FGCK hero background"
             fill
-            priority={index === 0}
+            priority={true}
             className="object-cover"
             sizes="100vw"
           />
@@ -98,13 +98,13 @@ export default function HeroTextImageCarousel() {
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-10 px-4 sm:px-8 max-w-[96rem] xl:max-w-[120rem] mx-auto pt-4 sm:pt-10 lg:pt-16 pb-14 sm:pb-24 lg:pb-16">
         {/* Text */}
         <div className="w-full max-w-4xl lg:pl-16">
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={index}
               initial={{ opacity: 0, x: direction > 0 ? -60 : 60 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction > 0 ? 60 : -60 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               className="w-full"
             >
               <HeroSlideText slide={heroSlides[index]} />
