@@ -46,6 +46,14 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/projects"
+                  className="group flex items-center gap-2 text-sm text-white/80 transition-all hover:text-white hover:translate-x-1"
+                >
+                  Our Projects
+                </Link>
+              </li>
             </ul>
           </div>
 

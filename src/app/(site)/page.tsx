@@ -475,34 +475,60 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 py-24">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-20 text-8xl animate-float" style={{ display: 'none' }}>✦</div>
-          <div className="absolute bottom-10 right-20 text-6xl animate-float delay-300">★</div>
-        </div>
+      {/* Our Projects Section */}
+      <section className="relative py-24 bg-slate-50 overflow-hidden">
         <Container>
-          <div className="relative text-center animate-fade-in">
-            <h2 className="text-3xl font-black text-white sm:text-4xl lg:text-5xl">Ready to Join Our Community?</h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-blue-200">
-              We&apos;d love to welcome you this Sunday. Come experience the warmth of our church family.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="group rounded-lg bg-white px-8 py-4 text-sm font-bold text-blue-950 shadow-lg transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
-              >
-                Contact Us
-                <span className="inline-block transition-transform group-hover:translate-x-1"> →</span>
-              </Link>
-              <Link
-                href="/give"
-                className="rounded-lg border-2 border-white/30 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20 hover:scale-105"
-              >
-                Support Our Mission
-              </Link>
-            </div>
-          </div>
+           <div className="grid gap-12 lg:grid-cols-2 items-center">
+             {/* Left Content */}
+             <div className="relative order-2 lg:order-1">
+               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-2xl">
+                 <Image 
+                   src="/images/project1.jpeg"
+                   alt="Community Projects"
+                   fill
+                   className="object-cover transition-transform duration-700 hover:scale-105"
+                 />
+                 <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply" />
+               </div>
+               {/* Decorative element */}
+               <div className="absolute -bottom-6 -left-6 -z-10 h-24 w-24 rounded-full bg-blue-100" />
+               <div className="absolute -top-6 -right-6 -z-10 h-32 w-32 rounded-full bg-blue-50" />
+             </div>
+
+             {/* Right Content */}
+             <div className="order-1 lg:order-2">
+               <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-bold tracking-widest uppercase mb-4">
+                 Community Impact
+               </span>
+               <h2 className="text-3xl font-black text-slate-900 sm:text-4xl mb-6">
+                 Our Projects
+               </h2>
+               <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                 We take part in various projects involving the community, church building, and outreach programs. From construction to community support, we are committed to making a tangible difference in the lives of those around us.
+               </p>
+               
+               <div className="flex flex-wrap gap-4">
+                 <Link
+                   href="/projects"
+                   className="inline-flex items-center gap-2 rounded-lg bg-blue-900 px-6 py-3 text-sm font-bold text-white transition-all hover:bg-blue-800 hover:scale-105 shadow-lg shadow-blue-900/20"
+                 >
+                   See All Projects
+                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                   </svg>
+                 </Link>
+                 <Link
+                   href="/give"
+                   className="inline-flex items-center gap-2 rounded-lg border-2 border-blue-900/10 bg-white px-6 py-3 text-sm font-bold text-blue-900 transition-all hover:bg-blue-50 hover:border-blue-900/30 hover:scale-105"
+                 >
+                   Support Our Projects
+                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                   </svg>
+                 </Link>
+               </div>
+             </div>
+           </div>
         </Container>
       </section>
     </>
