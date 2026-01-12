@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image, { ImageProps } from "next/image";
 import { getYoutubeThumbnail } from "@/lib/youtube";
 
-interface SermonImageProps extends Omit<ImageProps, "src"> {
+interface SermonImageProps extends Omit<ImageProps, "src" | "alt"> {
   youtubeUrl?: string | null;
   imageUrl?: string | null;
   title: string;
