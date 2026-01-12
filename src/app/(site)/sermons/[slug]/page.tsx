@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
+import { getYoutubeEmbedUrl } from "@/lib/youtube";
 
 export default function SermonDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -64,7 +65,7 @@ export default function SermonDetailPage({ params }: { params: Promise<{ slug: s
         {sermon.youtube && (
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
             <iframe
-              src={`https://www.youtube.com/embed/${sermon.youtube.split('/').pop()?.split('?')[0]}`}
+              src={getYoutubeEmbedUrl(sermon.youtube)}
               title={sermon.title}
               className="absolute inset-0 h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

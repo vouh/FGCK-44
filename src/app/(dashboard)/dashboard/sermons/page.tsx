@@ -10,11 +10,8 @@ import {
   deleteSermon,
   Sermon,
 } from "@/lib/firestore";
-
-function getYoutubeId(url: string) {
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
-  return match ? match[1] : null;
-}
+import { getYoutubeThumbnail } from "@/lib/youtube";
+import { SermonImage } from "@/components/site/SermonImage";
 
 export default function SermonsAdminPage() {
   const [sermons, setSermons] = useState<Sermon[]>([]);
@@ -126,27 +123,18 @@ export default function SermonsAdminPage() {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sermons.map((sermon) => {
-            const videoId = getYoutubeId(sermon.youtube);
-            const displayImage = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
-
             return (
               <div
                 key={sermon.id}
                 className="group relative bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
               >
                 <div className="aspect-video w-full bg-slate-900 relative overflow-hidden">
-                  {displayImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={displayImage}
-                      alt={sermon.title}
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-500">
-                      <Youtube className="w-12 h-12 opacity-50" />
-                    </div>
-                  )}
+                  <SermonImage
+                    youtubeUrl={sermon.youtube}
+                    title={sermon.title}
+                    fill
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                  />
 
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
                     <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/50 group-hover:scale-110 transition-transform">

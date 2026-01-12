@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getSermonBySlug } from "@/lib/firestore/server-utils";
+import { getYoutubeThumbnail } from "@/lib/youtube";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -11,9 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  // Extract thumbnail from Youtube if possible, or use default
-  // Youtube thumbnails: https://img.youtube.com/vi/<video-id>/maxresdefault.jpg
-  // Assuming sermon.youtube is full URL or ID.
+  const thumbnail = sermon.image || getYoutubeThumbnail(sermon.youtube, "maxresdefault") || "/images/placeholder-sermon.svg";
   
   return {
     title: sermon.title,
@@ -22,6 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: sermon.title,
         description: sermon.description,
         type: "video.other",
+        images: [
+          {
+            url: thumbnail,
+            width: 1280,
+            height: 720,
+            alt: sermon.title,
+          }
+        ]
     }
   };
 }

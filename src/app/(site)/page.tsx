@@ -21,6 +21,8 @@ import {
   slugify
 } from "@/lib/firestore";
 import { Loader2 } from "lucide-react";
+import { getYoutubeThumbnail } from "@/lib/youtube";
+import { SermonImage } from "@/components/site/SermonImage";
 
 function FeatureCard({
   title,
@@ -210,28 +212,13 @@ export default function HomePage() {
                 {latestSermon ? (
                   <>
                     <div className="group relative mb-4 h-52 sm:h-64 overflow-hidden rounded-2xl bg-blue-950 shadow-md">
-                      {latestSermon.image ? (
-                        <Image
-                          src={latestSermon.image}
-                          alt={latestSermon.title}
-                          fill
-                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      ) : latestSermon.youtube ? (
-                        <Image
-                          src={`https://img.youtube.com/vi/${latestSermon.youtube.split('/').pop()?.split('?')[0]}/maxresdefault.jpg`}
-                          alt={latestSermon.title}
-                          fill
-                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      ) : (
-                        <Image
-                          src="/images/placeholder-sermon.svg"
-                          alt="Latest sermon"
-                          fill
-                          className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      )}
+                      <SermonImage
+                        youtubeUrl={latestSermon.youtube}
+                        imageUrl={latestSermon.image}
+                        title={latestSermon.title}
+                        fill
+                        className="object-contain sm:object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
                       {/* Title overlay similar to ministry cards */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-4 left-4 right-4">

@@ -7,6 +7,8 @@ import { PageShell } from "@/components/site/PageShell";
 import { useState, useEffect } from "react";
 import { getSermons, Sermon, slugify } from "@/lib/firestore";
 import { Loader2 } from "lucide-react";
+import { getYoutubeThumbnail } from "@/lib/youtube";
+import { SermonImage } from "@/components/site/SermonImage";
 
 function SermonCard({
   title,
@@ -23,18 +25,16 @@ function SermonCard({
   youtube?: string;
   slug?: string;
 }) {
-  const youtubeId = youtube?.split("/").pop()?.split("?")[0];
-  const thumbnail = image || (youtubeId ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg` : undefined);
-
   return (
     <Link
       href={`/sermons/${slug}`}
       className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
     >
       <div className="relative h-44 bg-slate-100">
-        <Image
-          src={thumbnail || "/images/placeholder-sermon.svg"}
-          alt={title}
+        <SermonImage
+          imageUrl={image}
+          youtubeUrl={youtube}
+          title={title}
           fill
           className="object-contain sm:object-cover bg-slate-100"
           sizes="(max-width: 768px) 100vw, 33vw"
@@ -95,9 +95,6 @@ export default function SermonsPage() {
   const featuredSermon = sermons[0];
   const restSermons = sermons.slice(1);
 
-  const featuredYoutubeId = featuredSermon?.youtube?.split("/").pop()?.split("?")[0];
-  const featuredThumb = featuredSermon?.image || (featuredYoutubeId ? `https://img.youtube.com/vi/${featuredYoutubeId}/maxresdefault.jpg` : undefined);
-
   return (
     <PageShell title="Sermons" description="Listen to inspiring messages from our pastors. Browse by topic, speaker, or series.">
       {/* Tracking removed */}
@@ -118,12 +115,14 @@ export default function SermonsPage() {
             <div className="mb-10 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950 to-blue-900 text-white">
               <div className="grid md:grid-cols-2">
                 <div className="relative h-64 md:h-auto">
-                  <Image
-                    src={featuredThumb || "/images/placeholder-sermon.svg"}
-                    alt={featuredSermon.title}
+                  <SermonImage
+                    youtubeUrl={featuredSermon.youtube}
+                    imageUrl={featuredSermon.image}
+                    title={featuredSermon.title}
                     fill
                     className="object-contain sm:object-cover bg-blue-900"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
                   />
                 </div>
                 <div className="flex flex-col justify-center p-8">
