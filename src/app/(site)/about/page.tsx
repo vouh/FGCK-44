@@ -101,14 +101,14 @@ export default function AboutPage() {
                 <div className="rounded-xl bg-slate-50 px-4 py-3">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-slate-700">Monday</span>
-                    <span className="font-bold text-blue-900">7:00am – 8:00pm</span>
+                    <span className="font-bold text-blue-900">7:00pm – 8:00pm</span>
                   </div>
                   <div className="mt-1 text-sm text-slate-600">Intercessory Prayers</div>
                 </div>
                 <div className="rounded-xl bg-slate-50 px-4 py-3">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-slate-700">Tuesday</span>
-                    <span className="font-bold text-blue-900">7:00am – 8:00pm</span>
+                    <span className="font-bold text-blue-900">7:00pm – 8:00pm</span>
                   </div>
                   <div className="mt-1 text-sm text-slate-600">Men Fellowship</div>
                 </div>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 <div className="rounded-xl bg-slate-50 px-4 py-3">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-slate-700">Friday</span>
-                    <span className="font-bold text-blue-900">7:00am – 8:00pm</span>
+                    <span className="font-bold text-blue-900">7:00pm – 8:00pm</span>
                   </div>
                   <div className="mt-1 text-sm text-slate-600">Intercessory Prayers</div>
                 </div>
