@@ -148,11 +148,8 @@ export default function SermonsPage() {
           )}
 
           {/* Sermon Grid */}
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="mb-6 mt-10">
             <h3 className="text-xl font-bold text-slate-900">All Sermons</h3>
-            <Link href="/sermons/archive" className="text-sm font-semibold text-blue-900 hover:underline">
-              View Archive & Search →
-            </Link>
           </div>
 
           {restSermons.length === 0 && sermons.length === 1 ? (
