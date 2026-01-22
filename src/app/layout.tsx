@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   },
   description:
     "Full Gospel Church Githurai 44 — Jesus Healing Center. Join us for sermons, events, ministries, projects, and community.",
-  metadataBase: new URL("https://www.fgck-githurai44.com"),
+  metadataBase: new URL("https://fgckgithurai44.org"),
   keywords: ["Church", "Githurai 44", "Full Gospel", "Sermons", "Kenya", "Jesus Healing Center", "Christianity", "Worship"],
   authors: [{ name: "FGCK Githurai 44" }],
   openGraph: {
     title: "Full Gospel Church Githurai 44",
     description: "Jesus Healing Center - Githurai 44. Join our community.",
-    url: "https://fgck-githurai44.com",
+    url: "https://fgckgithurai44.org",
     siteName: "Full Gospel Church Githurai 44",
     images: [
       {

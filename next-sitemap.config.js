@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://fgck-githurai44.com',
+  siteUrl: 'https://fgckgithurai44.org',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   exclude: ['/dashboard', '/dashboard/*', '/login', '/api/*'],

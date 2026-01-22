@@ -9,7 +9,7 @@ Disallow: /login
 Disallow: /api
 
 # Host
-Host: https://fgck-githurai44.com
+Host: https://fgckgithurai44.org
 
 # Sitemaps
-Sitemap: https://fgck-githurai44.com/sitemap.xml
+Sitemap: https://fgckgithurai44.org/sitemap.xml
