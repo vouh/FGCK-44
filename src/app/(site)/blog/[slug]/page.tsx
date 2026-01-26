@@ -93,16 +93,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
         {/* Blog Meta & Content */}
         <div className="rounded-2xl border border-blue-900/10 bg-white p-6 md:p-8 shadow-sm">
-          {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">{blog.title}</h1>
-          
-          {/* Subheading */}
-          {blog.subheading && (
-            <p className="mt-4 text-xl md:text-2xl text-slate-600 leading-relaxed font-medium">{blog.subheading}</p>
-          )}
-          
           {/* Date */}
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-base text-slate-600 pb-6 border-b border-slate-200">
+          <div className="flex flex-wrap items-center gap-4 text-base text-slate-600 pb-6 border-b border-slate-200">
             {blog.date && (
               <div className="flex items-center gap-2">
                 <svg className="h-5 w-5 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,7 +106,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           </div>
 
           {/* Blog Content */}
-          <div className="mt-8">
+          <div className="mt-6">
             <div 
               className="blog-content max-w-none" 
               dangerouslySetInnerHTML={{ __html: formatContent(blog.content) }} 
