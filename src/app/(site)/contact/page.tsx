@@ -5,8 +5,34 @@ import ContactForm from "@/components/site/ContactForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Have questions? We'd love to hear from you. Reach out to FGCK Githurai 44 anytime.",
+  title: "Contact Us - Get in Touch",
+  description: "Have questions? We'd love to hear from you. Reach out to FGCK Githurai 44 - Jesus Healing Center anytime. Find our location, phone, email, and service times.",
+  keywords: ["Contact FGCK Githurai 44", "Church Location", "Church Phone Number", "Church Email", "Visit Church Githurai"],
+  openGraph: {
+    title: "Contact FGCK Githurai 44 - Get in Touch",
+    description: "Have questions? Reach out to Full Gospel Church Githurai 44 anytime. Find our location and contact information.",
+    url: "https://fgckgithurai44.org/contact",
+    siteName: "Full Gospel Church Githurai 44",
+    images: [
+      {
+        url: "/images/hero-bg.svg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Full Gospel Church Githurai 44",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact FGCK Githurai 44 - Get in Touch",
+    description: "Have questions? Reach out to Full Gospel Church Githurai 44 anytime.",
+    images: ["/images/hero-bg.svg"],
+  },
+  alternates: {
+    canonical: "https://fgckgithurai44.org/contact",
+  },
 };
 
 export default function ContactPage() {

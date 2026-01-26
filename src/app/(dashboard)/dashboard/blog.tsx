@@ -89,17 +89,92 @@ export default function BlogAdminPage() {
         ))}
       </div>
       {showModal && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 w-full max-w-md shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Add New Blog</h2>
-            <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Title" value={newBlog.title} onChange={e => setNewBlog({ ...newBlog, title: e.target.value })} />
-            <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Subheading" value={newBlog.subheading} onChange={e => setNewBlog({ ...newBlog, subheading: e.target.value })} />
-            <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Image URL" value={newBlog.image} onChange={e => setNewBlog({ ...newBlog, image: e.target.value })} />
-            <input className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Date" type="date" value={newBlog.date} onChange={e => setNewBlog({ ...newBlog, date: e.target.value })} />
-            <textarea className="w-full border rounded-lg px-3 py-2 mb-2" placeholder="Content" rows={4} value={newBlog.content} onChange={e => setNewBlog({ ...newBlog, content: e.target.value })} />
-            <div className="flex gap-2 justify-end mt-2">
-              <button className="bg-slate-100 px-4 py-2 rounded" onClick={() => setShowModal(false)} disabled={submitting}>Cancel</button>
-              <button className="bg-blue-900 text-white px-4 py-2 rounded font-bold" onClick={handleAdd} disabled={submitting}>
+        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-xl p-6 md:p-8 w-full max-w-3xl shadow-lg my-8">
+            <h2 className="text-2xl font-bold mb-2">Add New Blog</h2>
+            <p className="text-sm text-slate-600 mb-6">Fill in the details below. Use double line breaks for paragraphs.</p>
+            
+            <div className="space-y-4">
+              {/* Title */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Title *</label>
+                <input 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                  placeholder="Enter blog title" 
+                  value={newBlog.title} 
+                  onChange={e => setNewBlog({ ...newBlog, title: e.target.value })} 
+                />
+              </div>
+              
+              {/* Subheading */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Subheading</label>
+                <input 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                  placeholder="Brief description or subtitle" 
+                  value={newBlog.subheading} 
+                  onChange={e => setNewBlog({ ...newBlog, subheading: e.target.value })} 
+                />
+              </div>
+              
+              {/* Image URL */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                <input 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                  placeholder="https://example.com/image.jpg (Recommended: 1200x630px)" 
+                  value={newBlog.image} 
+                  onChange={e => setNewBlog({ ...newBlog, image: e.target.value })} 
+                />
+                <p className="text-xs text-slate-500 mt-1">💡 Recommended size: 1200x630px for best display</p>
+              </div>
+              
+              {/* Date */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Date</label>
+                <input 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                  type="date" 
+                  value={newBlog.date} 
+                  onChange={e => setNewBlog({ ...newBlog, date: e.target.value })} 
+                />
+              </div>
+              
+              {/* Content with Markdown tips */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Content *</label>
+                <div className="mb-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-slate-700">
+                  <p className="font-semibold text-blue-900 mb-1">📝 Formatting Tips:</p>
+                  <ul className="space-y-1 ml-4 list-disc">
+                    <li>Press <kbd className="px-1 py-0.5 bg-white border rounded">Enter</kbd> twice to create new paragraphs</li>
+                    <li>Use emojis like ✨ 🔥 💡 to make content engaging</li>
+                    <li>Keep paragraphs short (3-4 lines) for easy reading</li>
+                  </ul>
+                </div>
+                <textarea 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm" 
+                  placeholder="Write your blog content here...\n\nPress Enter twice between paragraphs.\n\nEach paragraph will be formatted automatically." 
+                  rows={12} 
+                  value={newBlog.content} 
+                  onChange={e => setNewBlog({ ...newBlog, content: e.target.value })} 
+                />
+                <p className="text-xs text-slate-500 mt-1">{newBlog.content.length} characters</p>
+              </div>
+            </div>
+            
+            <div className="flex gap-3 justify-end mt-6 pt-4 border-t">
+              <button 
+                className="bg-slate-100 hover:bg-slate-200 px-6 py-2.5 rounded-lg font-semibold transition" 
+                onClick={() => setShowModal(false)} 
+                disabled={submitting}
+              >
+                Cancel
+              </button>
+              <button 
+                className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-2.5 rounded-lg font-bold transition disabled:opacity-50" 
+                onClick={handleAdd} 
+                disabled={submitting}
+              >
                 {submitting ? "Adding..." : "Add Blog"}
               </button>
             </div>

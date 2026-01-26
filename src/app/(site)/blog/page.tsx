@@ -93,7 +93,7 @@ export default function BlogPage() {
                     src={featuredBlog.image || "/images/placeholder-sermon.svg"} 
                     alt="Featured post" 
                     fill 
-                    className="object-cover" 
+                    className="object-contain md:object-cover" 
                   />
                 </div>
                 <div className="flex flex-col justify-center p-8">

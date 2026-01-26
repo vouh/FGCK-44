@@ -5,8 +5,34 @@ import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pastor's Office",
-  description: "Meet Pastor Joseph Ngaruiya John and our pastoral team at Full Gospel Church Githurai 44.",
+  title: "Pastor's Office - Meet Our Pastor",
+  description: "Meet Pastor Joseph Ngaruiya John and our pastoral team at Full Gospel Church Githurai 44. Learn about pastoral care, counseling services, and spiritual leadership.",
+  keywords: ["Pastor Joseph Ngaruiya", "FGCK Pastor", "Church Leadership", "Pastoral Care", "Githurai Pastor", "Senior Pastor"],
+  openGraph: {
+    title: "Pastor's Office - FGCK Githurai 44",
+    description: "Meet Pastor Joseph Ngaruiya John and learn about pastoral care at FGCK Githurai 44.",
+    url: "https://fgckgithurai44.org/pastors",
+    siteName: "Full Gospel Church Githurai 44",
+    images: [
+      {
+        url: "/images/pastor.png",
+        width: 1200,
+        height: 630,
+        alt: "Pastor Joseph Ngaruiya John - FGCK Githurai 44",
+      },
+    ],
+    locale: "en_KE",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pastor's Office - FGCK Githurai 44",
+    description: "Meet Pastor Joseph Ngaruiya John and learn about pastoral care.",
+    images: ["/images/pastor.png"],
+  },
+  alternates: {
+    canonical: "https://fgckgithurai44.org/pastors",
+  },
 };
 
 export default function PastorsPage() {

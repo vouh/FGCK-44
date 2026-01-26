@@ -5,8 +5,34 @@ import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Plan Your Visit",
-  description: "New to FGCK Githurai 44? We'd love to welcome you this Sunday. Find directions, service times, and what to expect.",
+  title: "Plan Your Visit - New Here?",
+  description: "New to FGCK Githurai 44? We'd love to welcome you this Sunday. Find directions, service times, parking information, and what to expect at Jesus Healing Center.",
+  keywords: ["Visit FGCK Githurai 44", "First Time Visitor", "Church Service Times", "New to Church", "Sunday Service Githurai"],
+  openGraph: {
+    title: "Plan Your Visit - New to FGCK Githurai 44?",
+    description: "We'd love to welcome you this Sunday. Find directions, service times, and what to expect at Jesus Healing Center.",
+    url: "https://fgckgithurai44.org/new-here",
+    siteName: "Full Gospel Church Githurai 44",
+    images: [
+      {
+        url: "/images/welcome.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Welcome to Full Gospel Church Githurai 44",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plan Your Visit - New to FGCK Githurai 44?",
+    description: "We'd love to welcome you this Sunday. Find directions and service times.",
+    images: ["/images/welcome.jpg"],
+  },
+  alternates: {
+    canonical: "https://fgckgithurai44.org/new-here",
+  },
 };
 
 export default function NewHerePage() {

@@ -3,8 +3,34 @@ import { PageShell } from "@/components/site/PageShell";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Give",
-  description: "Support the mission and work of Full Gospel Church Githurai 44 through tithes and offerings.",
+  title: "Give - Support Our Ministry",
+  description: "Support the mission and work of Full Gospel Church Githurai 44 through tithes and offerings. Your generosity helps us serve the community and spread God's love. Multiple giving options available.",
+  keywords: ["Church Giving", "Tithes and Offerings", "Support FGCK", "Church Donations", "M-Pesa Church Giving"],
+  openGraph: {
+    title: "Give - Support FGCK Githurai 44 Ministry",
+    description: "Support the mission of Full Gospel Church Githurai 44 through tithes and offerings. Multiple giving options available.",
+    url: "https://fgckgithurai44.org/give",
+    siteName: "Full Gospel Church Githurai 44",
+    images: [
+      {
+        url: "/images/f2.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Support Full Gospel Church Githurai 44",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Give - Support FGCK Githurai 44 Ministry",
+    description: "Support the mission of Full Gospel Church Githurai 44 through tithes and offerings.",
+    images: ["/images/f2.jpeg"],
+  },
+  alternates: {
+    canonical: "https://fgckgithurai44.org/give",
+  },
 };
 
 function PaymentMethodCard({

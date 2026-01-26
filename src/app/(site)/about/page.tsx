@@ -3,8 +3,34 @@ import { PageShell } from "@/components/site/PageShell";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about our mission, vision, and the leadership of Full Gospel Church Githurai 44.",
+  title: "About Us - Mission & Vision",
+  description: "Learn about our mission, vision, and the leadership of Full Gospel Church Githurai 44 - Jesus Healing Center. Discover our history and commitment to serving the Githurai community.",
+  keywords: ["About FGCK Githurai 44", "Church Mission", "Church Vision", "Jesus Healing Center", "Church Leadership"],
+  openGraph: {
+    title: "About FGCK Githurai 44 - Mission & Vision",
+    description: "Learn about our mission, vision, and leadership at Full Gospel Church Githurai 44 - Jesus Healing Center.",
+    url: "https://fgckgithurai44.org/about",
+    siteName: "Full Gospel Church Githurai 44",
+    images: [
+      {
+        url: "/images/sitting2.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Full Gospel Church Githurai 44 Community",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About FGCK Githurai 44 - Mission & Vision",
+    description: "Learn about our mission, vision, and leadership at Jesus Healing Center, Githurai 44.",
+    images: ["/images/sitting2.jpg"],
+  },
+  alternates: {
+    canonical: "https://fgckgithurai44.org/about",
+  },
 };
 
 function LeaderCard({ name, role }: { name: string; role: string }) {
