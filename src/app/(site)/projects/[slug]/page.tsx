@@ -73,11 +73,11 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Project Details Card */}
-        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 md:p-8 shadow-sm">
           {/* Progress Bar */}
           {typeof project.progress === 'number' && (
             <div className="mb-6">
-              <div className="mb-2 flex items-center justify-between text-sm">
+              <div className="mb-2 flex items-center justify-between text-base">
                 <span className="font-semibold text-slate-900">Progress</span>
                 <span className="font-bold text-blue-900">{project.progress}%</span>
               </div>
@@ -90,7 +90,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
             </div>
           )}
 
-          <div className="grid gap-4 text-sm text-slate-600">
+          <div className="grid gap-4 text-base text-slate-600">
             {project.deadline && (
               <div>
                 <span className="font-semibold text-slate-900">Deadline:</span> {project.deadline}
@@ -100,8 +100,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
 
           {project.description && (
             <div className="mt-6 border-t border-slate-200 pt-6">
-              <div className="text-sm font-extrabold text-blue-950">About This Project</div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-wrap">
+              <div className="text-base font-extrabold text-blue-950">About This Project</div>
+              <p className="mt-3 text-base md:text-lg leading-relaxed md:leading-loose text-slate-700 whitespace-pre-wrap">
                 {project.description}
               </p>
             </div>
@@ -111,8 +111,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
 
           {/* How to Support */}
           <div className="mt-6 rounded-xl bg-blue-50 p-4">
-            <div className="text-sm font-extrabold text-blue-950">How to Support</div>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <div className="text-base font-extrabold text-blue-950">How to Support</div>
+            <p className="mt-3 text-base leading-relaxed text-slate-700">
               Your support can make a real difference in this project. Consider giving towards this mission.
             </p>
             <Link

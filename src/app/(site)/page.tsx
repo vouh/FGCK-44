@@ -389,7 +389,7 @@ export default function HomePage() {
               title="Our Pastors"
               description="Meet our spiritual leaders who shepherd our congregation with love."
               href="/pastors"
-              image="/images/pastorofficial.png"
+              image="/images/pastor.png"
               index={3}
             />
             <FeatureCard

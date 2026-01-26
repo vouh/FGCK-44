@@ -73,8 +73,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         )}
 
         {/* Blog Meta */}
-        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 shadow-sm">
-          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
+        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 md:p-8 shadow-sm">
+          <div className="flex flex-wrap items-center gap-4 text-base text-slate-600">
             {blog.date && (
               <div>
                 <span className="font-semibold text-slate-900">Posted:</span> {blog.date}
@@ -84,9 +84,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
           {/* Blog Content */}
           <div className="mt-6 border-t border-slate-200 pt-6">
-            <div className="prose prose-slate max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-            </div>
+            <div 
+              className="blog-content max-w-none" 
+              dangerouslySetInnerHTML={{ __html: blog.content }} 
+            />
           </div>
 
           <Link href="/blog" className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blue-900">

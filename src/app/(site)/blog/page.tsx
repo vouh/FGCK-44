@@ -35,13 +35,13 @@ function BlogCard({
         />
       </div>
       <div className="p-5">
-        <div className="flex items-center gap-2 text-xs text-slate-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <span>{date || "No date"}</span>
           <span>•</span>
           <span>3 min read</span>
         </div>
-        <h3 className="mt-2 font-bold text-slate-900 group-hover:text-blue-900">{title}</h3>
-        <p className="mt-2 text-sm text-slate-600 line-clamp-2">{subheading}</p>
+        <h3 className="mt-2 text-lg font-bold leading-snug text-slate-900 group-hover:text-blue-900">{title}</h3>
+        <p className="mt-2 text-base leading-relaxed text-slate-600 line-clamp-2">{subheading}</p>
         <span className="mt-4 inline-block text-sm font-semibold text-blue-900">Read more →</span>
       </div>
     </Link>
@@ -97,13 +97,13 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="flex flex-col justify-center p-8">
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <div className="flex items-center gap-2 text-sm text-slate-400">
                     <span>{featuredBlog.date || "No date"}</span>
                     <span>•</span>
                     <span>5 min read</span>
                   </div>
-                  <h2 className="mt-3 text-2xl font-black">{featuredBlog.title}</h2>
-                  <p className="mt-3 text-white/80">{featuredBlog.subheading}</p>
+                  <h2 className="mt-3 text-2xl md:text-3xl font-black leading-tight">{featuredBlog.title}</h2>
+                  <p className="mt-3 text-base md:text-lg leading-relaxed text-white/80">{featuredBlog.subheading}</p>
                   <Link
                     href={`/blog/${slugify(featuredBlog.title)}`}
                     className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-slate-900 transition hover:bg-slate-100"

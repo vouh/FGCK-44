@@ -75,8 +75,8 @@ export default function SermonDetailPage({ params }: { params: Promise<{ slug: s
         )}
 
         {/* Sermon Details Card */}
-        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 shadow-sm">
-          <div className="grid gap-4 text-sm text-slate-600">
+        <div className="rounded-2xl border border-blue-900/10 bg-white p-6 md:p-8 shadow-sm">
+          <div className="grid gap-4 text-base text-slate-600">
             <div>
               <span className="font-semibold text-slate-900">Date:</span> {sermon.date || "N/A"}
             </div>
@@ -84,8 +84,8 @@ export default function SermonDetailPage({ params }: { params: Promise<{ slug: s
 
           {sermon.description && (
             <div className="mt-6 border-t border-slate-200 pt-6">
-              <div className="text-sm font-extrabold text-blue-950">Description</div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-wrap">
+              <div className="text-base font-extrabold text-blue-950">Description</div>
+              <p className="mt-3 text-base md:text-lg leading-relaxed md:leading-loose text-slate-700 whitespace-pre-wrap">
                 {sermon.description}
               </p>
             </div>
