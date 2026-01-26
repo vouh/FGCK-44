@@ -143,22 +143,55 @@ export default function BlogAdminPage() {
               {/* Content with Markdown tips */}
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">Content *</label>
-                <div className="mb-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-slate-700">
-                  <p className="font-semibold text-blue-900 mb-1">📝 Formatting Tips:</p>
-                  <ul className="space-y-1 ml-4 list-disc">
-                    <li>Press <kbd className="px-1 py-0.5 bg-white border rounded">Enter</kbd> twice to create new paragraphs</li>
-                    <li>Use emojis like ✨ 🔥 💡 to make content engaging</li>
-                    <li>Keep paragraphs short (3-4 lines) for easy reading</li>
-                  </ul>
+                <div className="mb-2 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-slate-700">
+                  <p className="font-bold text-blue-900 mb-3">📝 How to Format Your Blog Post:</p>
+                  
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-semibold text-slate-900">✅ Create Paragraphs:</p>
+                      <p className="text-xs ml-4 mt-1">Press <kbd className="px-2 py-0.5 bg-white border rounded shadow-sm font-mono">Enter</kbd> <strong>TWICE</strong> to start a new paragraph.</p>
+                      <div className="ml-4 mt-2 p-2 bg-white rounded border text-xs font-mono">
+                        First paragraph here.<br/>
+                        <span className="text-slate-400">[Press Enter twice]</span><br/>
+                        <br/>
+                        Second paragraph here.
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <p className="font-semibold text-slate-900">✅ Line Breaks Within Paragraph:</p>
+                      <p className="text-xs ml-4 mt-1">Press <kbd className="px-2 py-0.5 bg-white border rounded shadow-sm font-mono">Enter</kbd> <strong>ONCE</strong> to break to a new line within the same paragraph.</p>
+                    </div>
+                    
+                    <div>
+                      <p className="font-semibold text-slate-900">✅ Make It Engaging:</p>
+                      <ul className="text-xs ml-4 mt-1 space-y-1">
+                        <li>• Use emojis: ✨ 🔥 💡 ❤️ 🙏 📖 ⛪</li>
+                        <li>• Keep paragraphs short (3-5 lines max)</li>
+                        <li>• Use Bible verses with quotes</li>
+                        <li>• End with a call to action</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <p className="font-semibold text-slate-900">✅ Images:</p>
+                      <p className="text-xs ml-4 mt-1">Upload images at <strong>1200 x 630 pixels</strong> for best quality on all devices.</p>
+                    </div>
+                    
+                    <div className="pt-2 border-t border-blue-200">
+                      <p className="font-semibold text-slate-900 text-xs">💡 Quick Tip:</p>
+                      <p className="text-xs ml-4 mt-1 italic">Write naturally as you would in a document. The system will automatically format it beautifully on the website!</p>
+                    </div>
+                  </div>
                 </div>
                 <textarea 
-                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm" 
-                  placeholder="Write your blog content here...\n\nPress Enter twice between paragraphs.\n\nEach paragraph will be formatted automatically." 
-                  rows={12} 
+                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-sans text-sm leading-relaxed" 
+                  placeholder="Example:&#10;&#10;Welcome to our church! ⛪&#10;&#10;This is the first paragraph. It's short and easy to read.&#10;&#10;This is the second paragraph. Notice how we pressed Enter twice to create a new paragraph.&#10;&#10;'For God so loved the world...' - John 3:16&#10;&#10;Join us this Sunday! 🙏" 
+                  rows={14} 
                   value={newBlog.content} 
                   onChange={e => setNewBlog({ ...newBlog, content: e.target.value })} 
                 />
-                <p className="text-xs text-slate-500 mt-1">{newBlog.content.length} characters</p>
+                <p className="text-xs text-slate-500 mt-1">{newBlog.content.length} characters • {newBlog.content.split('\n\n').filter(p => p.trim()).length} paragraphs</p>
               </div>
             </div>
             
