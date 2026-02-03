@@ -5,5 +5,6 @@ export const COLLECTIONS = {
   EVENTS: "events",
   PROJECTS: "projects",
   INBOX: "inbox",
+  COMMENTS: "comments",
   PAGE_VISITS: "pageVisits",
 } as const;

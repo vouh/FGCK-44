@@ -11,6 +11,15 @@ export interface Blog {
   updatedAt: number;
 }
 
+export interface Comment {
+  id?: string;
+  blogId: string;
+  authorName: string;
+  content: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface Sermon {
   id?: string;
   title: string;

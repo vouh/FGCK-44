@@ -3,15 +3,21 @@
 import Link from "next/link";
 import { PageShell } from "@/components/site/PageShell";
 import { getBlogs, slugify, Blog } from "@/lib/firestore";
+import { getCommentsByBlogId } from "@/lib/firestore/commentService";
+import { CommentList } from "@/components/site/CommentList";
+import { CommentForm } from "@/components/site/CommentForm";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState, use } from "react";
 import { Loader2 } from "lucide-react";
+import { Comment } from "@/lib/firestore/types";
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const [blog, setBlog] = useState<Blog | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [commentsLoading, setCommentsLoading] = useState(false);
 
   useEffect(() => {
     async function loadBlog() {
@@ -19,6 +25,14 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         const blogs = await getBlogs();
         const found = blogs.find((b) => slugify(b.title) === slug);
         setBlog(found || null);
+        
+        // Load comments if blog found
+        if (found?.id) {
+          setCommentsLoading(true);
+          const blogComments = await getCommentsByBlogId(found.id);
+          setComments(blogComments);
+          setCommentsLoading(false);
+        }
       } catch (error) {
         console.error("Error loading blog:", error);
       } finally {
@@ -27,6 +41,17 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     }
     loadBlog();
   }, [slug]);
+
+  const handleCommentAdded = async () => {
+    if (blog?.id) {
+      try {
+        const updatedComments = await getCommentsByBlogId(blog.id);
+        setComments(updatedComments);
+      } catch (error) {
+        console.error("Error reloading comments:", error);
+      }
+    }
+  };
 
   if (loading) {
     return (
@@ -113,7 +138,25 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             />
           </div>
 
-          <Link href="/blog" className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blue-900">
+          {/* Comments Section */}
+          <div className="mt-8 pt-6 border-t border-slate-200">
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Comments</h2>
+            
+            <div className="grid gap-8">
+              {/* Comments List */}
+              <div>
+                <CommentList comments={comments} isLoading={commentsLoading} />
+              </div>
+
+              {/* Comment Form */}
+              <div className="border-t border-slate-200 pt-6">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">Share Your Thoughts</h3>
+                {blog.id && <CommentForm blogId={blog.id} onCommentAdded={handleCommentAdded} />}
+              </div>
+            </div>
+          </div>
+
+          <Link href="/blog" className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-blue-900">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>

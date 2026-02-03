@@ -17,6 +17,7 @@ import { db } from "@/features/firebase/firebaseConfig";
 import { slugify } from "./utils";
 import { Blog } from "./types";
 import { COLLECTIONS } from "./collections";
+import { deleteCommentsByBlogId } from "./commentService";
 
 const blogsRef = collection(db, COLLECTIONS.BLOGS);
 
@@ -68,6 +69,10 @@ export async function updateBlog(id: string, updates: Partial<Omit<Blog, "id" | 
 
 // Delete a blog post
 export async function deleteBlog(id: string): Promise<void> {
+  // Delete all comments for this blog first (cascade delete)
+  await deleteCommentsByBlogId(id);
+  
+  // Then delete the blog itself
   const docRef = doc(db, COLLECTIONS.BLOGS, id);
   await deleteDoc(docRef);
 }

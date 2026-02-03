@@ -74,7 +74,8 @@ export default function InboxPage() {
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
@@ -180,6 +181,94 @@ export default function InboxPage() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden divide-y divide-slate-100 dark:divide-slate-800">
+          {loading ? (
+            <div className="px-4 py-12 text-center text-slate-500 dark:text-slate-400">
+              <div className="flex justify-center items-center gap-2">
+                <Loader2 className="w-5 h-5 animate-spin" />
+                <span>Loading messages...</span>
+              </div>
+            </div>
+          ) : messages.length === 0 ? (
+            <div className="px-4 py-12 text-center text-slate-500 dark:text-slate-400">
+              No messages found.
+            </div>
+          ) : (
+            messages.map((msg) => (
+              <div
+                key={msg.id}
+                className={cn(
+                  "p-4 transition-colors",
+                  !msg.read && "bg-blue-50/30 dark:bg-blue-900/10"
+                )}
+              >
+                {/* Status & Name */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => msg.id && !msg.read && handleMarkAsRead(msg.id)}
+                      className="p-1"
+                      title={msg.read ? "Read" : "Mark as read"}
+                    >
+                      {msg.read ? (
+                        <CheckCircle className="w-5 h-5 text-green-500" />
+                      ) : (
+                        <Circle className="w-5 h-5 text-blue-500" />
+                      )}
+                    </button>
+                    <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs">
+                      {msg.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="font-semibold text-slate-900 dark:text-white text-sm">{msg.name}</span>
+                  </div>
+                  <button
+                    onClick={() => msg.id && handleDelete(msg.id)}
+                    className="p-2 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                    title="Delete Message"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Contact Info */}
+                <div className="space-y-1 mb-3 text-sm">
+                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <Mail className="w-3 h-3" />
+                    {msg.email}
+                  </div>
+                  {msg.phone && (
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                      <Phone className="w-3 h-3" />
+                      {msg.phone}
+                    </div>
+                  )}
+                </div>
+
+                {/* Message Preview */}
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-2 line-clamp-2">
+                  {msg.message}
+                </p>
+
+                {/* Timestamp & View Button */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-500">
+                    <Clock className="w-3 h-3" />
+                    {formatDate(msg.createdAt)}
+                  </div>
+                  <button
+                    onClick={() => setSelectedMessage(msg)}
+                    className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors flex items-center gap-1"
+                  >
+                    <Eye className="w-3 h-3" />
+                    View
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 
