@@ -105,6 +105,8 @@
     "image": "/images/pw2.jpeg",
     "images": [
       "images/pw3.jpeg",
+       "images/tony1.jpeg",
+        "images/tony2.jpeg",
       "images/pw7.jpeg",
       "images/pw6.jpeg"
     ],
@@ -175,7 +177,10 @@
     "description": "Using technology and creative arts to amplify the Gospel message through video, audio, and digital platforms.",
     "image": "/images/media.jpeg",
     "images": [
-      "/images/media.jpeg"
+      "/images/media.jpeg",
+        "/images/media1.jpeg",
+          "/images/media2.jpeg",
+            "/images/media3.jpeg"
     ],
     "phone": "0113788919",
     "quote": "Go into all the world and preach the gospel to all creation. (Mark 16:15)"
