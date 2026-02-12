@@ -24,6 +24,7 @@ export async function createEvent(event: Omit<Event, "id" | "createdAt" | "updat
   const now = Date.now();
   const docRef = await addDoc(eventsRef, {
     ...event,
+    category: event.category ?? "event",
     createdAt: now,
     updatedAt: now,
   });
@@ -36,6 +37,7 @@ export async function getEvents(): Promise<Event[]> {
   const snapshot = await getDocs(q);
   return snapshot.docs.map((doc) => ({
     id: doc.id,
+    category: (doc.data() as Event).category ?? "event",
     ...doc.data(),
   })) as Event[];
 }
@@ -47,6 +49,7 @@ export async function getUpcomingEvents(count: number = 6): Promise<Event[]> {
   const snapshot = await getDocs(q);
   return snapshot.docs.map((doc) => ({
     id: doc.id,
+    category: (doc.data() as Event).category ?? "event",
     ...doc.data(),
   })) as Event[];
 }
@@ -56,7 +59,11 @@ export async function getEventById(id: string): Promise<Event | null> {
   const docRef = doc(db, COLLECTIONS.EVENTS, id);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    return { id: docSnap.id, ...docSnap.data() } as Event;
+    return {
+      id: docSnap.id,
+      category: (docSnap.data() as Event).category ?? "event",
+      ...docSnap.data(),
+    } as Event;
   }
   return null;
 }
@@ -82,6 +89,7 @@ export async function getRecentEvents(count: number = 3): Promise<Event[]> {
   const snapshot = await getDocs(q);
   return snapshot.docs.map((doc) => ({
     id: doc.id,
+    category: (doc.data() as Event).category ?? "event",
     ...doc.data(),
   })) as Event[];
 }

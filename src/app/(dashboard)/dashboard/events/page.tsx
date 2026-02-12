@@ -22,6 +22,7 @@ export default function EventsAdminPage() {
     image: "",
     date: "",
     description: "",
+    category: "event" as Event["category"],
   });
 
   // Load events from Firestore
@@ -58,13 +59,14 @@ export default function EventsAdminPage() {
       image: event.image,
       date: event.date,
       description: event.description,
+      category: event.category ?? "event",
     });
     setShowModal(true);
   };
 
   const openAddModal = () => {
     setEditingEvent(null);
-    setFormData({ title: "", image: "", date: "", description: "" });
+    setFormData({ title: "", image: "", date: "", description: "", category: "event" });
     setShowModal(true);
   };
 
@@ -81,7 +83,7 @@ export default function EventsAdminPage() {
         setEvents([newEvent, ...events]);
       }
       setShowModal(false);
-      setFormData({ title: "", image: "", date: "", description: "" });
+      setFormData({ title: "", image: "", date: "", description: "", category: "event" });
       setEditingEvent(null);
     } catch (error) {
       console.error("Error saving event:", error);
@@ -113,15 +115,15 @@ export default function EventsAdminPage() {
     <div className="space-y-8 animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Manage Events</h1>
-          <p className="text-slate-600 dark:text-slate-400">Schedule and update upcoming church events.</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Manage Events & Announcements</h1>
+          <p className="text-slate-600 dark:text-slate-400">Schedule and update events and announcements.</p>
         </div>
         <button
           onClick={openAddModal}
           className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:scale-105 shadow-md hover:shadow-lg"
         >
           <Plus className="w-5 h-5" />
-          Add New Event
+          Add New Item
         </button>
       </div>
 
@@ -162,6 +164,11 @@ export default function EventsAdminPage() {
               </div>
 
               <div className="p-5 flex flex-col flex-1">
+                <div className="flex items-center justify-between gap-3 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-blue-600">
+                    {event.category === "announcement" ? "Announcement" : "Event"}
+                  </span>
+                </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">{event.title}</h3>
                 <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 mb-3">
                   <Calendar className="w-3.5 h-3.5" />
@@ -196,7 +203,7 @@ export default function EventsAdminPage() {
           <div className="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                {editingEvent ? "Edit Event" : "Add New Event"}
+                {editingEvent ? "Edit Item" : "Add New Item"}
               </h2>
               <button
                 onClick={() => setShowModal(false)}
@@ -211,10 +218,30 @@ export default function EventsAdminPage() {
                 <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Title</label>
                 <input
                   className="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Event title"
+                  placeholder="Title"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Type</label>
+                <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 p-1 bg-slate-50 dark:bg-slate-800">
+                  {(["event", "announcement"] as Event["category"][]).map((category) => (
+                    <button
+                      key={category}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, category })}
+                      className={cn(
+                        "px-3 py-1.5 text-sm font-semibold rounded-md transition",
+                        formData.category === category
+                          ? "bg-blue-600 text-white shadow"
+                          : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                      )}
+                    >
+                      {category === "announcement" ? "Announcement" : "Event"}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Image</label>
@@ -263,7 +290,7 @@ export default function EventsAdminPage() {
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
               >
                 {saving && <Loader2 className="w-4 h-4 animate-spin" />}
-                {editingEvent ? "Save Changes" : "Add Event"}
+                {editingEvent ? "Save Changes" : "Add Item"}
               </button>
             </div>
           </div>

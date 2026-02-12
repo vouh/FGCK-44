@@ -37,6 +37,7 @@ export interface Event {
   image: string;
   date: string;
   description: string;
+  category: "event" | "announcement";
   createdAt: number;
   updatedAt: number;
 }

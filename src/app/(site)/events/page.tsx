@@ -21,14 +21,17 @@ function EventCard({
   date,
   image,
   id,
+  category,
 }: {
   title: string;
   description?: string;
   date?: string;
   image?: string;
   id: string;
+  category?: Event["category"];
 }) {
   const dateInfo = date ? formatDate(date) : { day: "--", month: "TBD" };
+  const categoryLabel = category === "announcement" ? "Announcement" : "Event";
   
   return (
     <Link
@@ -42,6 +45,9 @@ function EventCard({
           fill 
           className="object-cover" 
         />
+        <div className="absolute left-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-white shadow">
+          {categoryLabel}
+        </div>
         <div className="absolute right-4 top-4 rounded-lg bg-white px-3 py-2 text-center shadow-md">
           <div className="text-xs font-semibold uppercase text-slate-500">{dateInfo.month}</div>
           <div className="text-xl font-black text-blue-900">{dateInfo.day}</div>
@@ -66,6 +72,11 @@ function EventCard({
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategories, setSelectedCategories] = useState<Event["category"][]>([
+    "event",
+    "announcement",
+  ]);
+  const [filterValue, setFilterValue] = useState<"all" | "event" | "announcement">("all");
 
   useEffect(() => {
     async function loadEvents() {
@@ -80,6 +91,19 @@ export default function EventsPage() {
     }
     loadEvents();
   }, []);
+
+  const handleFilterChange = (value: "all" | "event" | "announcement") => {
+    setFilterValue(value);
+    if (value === "all") {
+      setSelectedCategories(["event", "announcement"]);
+    } else {
+      setSelectedCategories([value]);
+    }
+  };
+
+  const filteredEvents = events.filter((event) =>
+    selectedCategories.includes(event.category ?? "event")
+  );
 
   return (
     <PageShell title="Events & Calendar" description="Stay updated with our weekly services, special gatherings, and community outreach events.">
@@ -102,22 +126,39 @@ export default function EventsPage() {
       </div>
 
       {/* Upcoming Events */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-xl font-bold text-slate-900">Upcoming Events</h3>
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h3 className="text-xl font-bold text-slate-900">Upcoming Events & Announcements</h3>
+        <div className="w-full sm:w-48">
+          <select
+            value={filterValue}
+            onChange={(e) => handleFilterChange(e.target.value as "all" | "event" | "announcement")}
+            className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-900 font-semibold text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231e293b' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
+              backgroundPosition: "right 0.75rem center",
+              backgroundRepeat: "no-repeat",
+              paddingRight: "2.5rem",
+            }}
+          >
+            <option value="all">Events & Announcements</option>
+            <option value="event">Events Only</option>
+            <option value="announcement">Announcements Only</option>
+          </select>
+        </div>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
-      ) : events.length === 0 ? (
+      ) : filteredEvents.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-lg text-slate-600">No events available yet.</p>
-          <p className="mt-2 text-sm text-slate-500">Check back soon for upcoming events!</p>
+          <p className="text-lg text-slate-600">No items match these filters.</p>
+          <p className="mt-2 text-sm text-slate-500">Try selecting both Events and Announcements.</p>
         </div>
       ) : (
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
+          {filteredEvents.map((event) => (
             <EventCard 
               key={event.id} 
               id={event.id || ""}
@@ -125,6 +166,7 @@ export default function EventsPage() {
               description={event.description}
               date={event.date}
               image={event.image}
+              category={event.category}
             />
           ))}
         </div>
